@@ -152,15 +152,17 @@
   }
 
   // -----------------------------------------------------------
-  // 3-B. KV雲：出現アニメ完了後にdriftクラス付与
+  // 3-B. KV雲：driftは最初から動作、時差でフェードイン
   // -----------------------------------------------------------
   if (!reduceMotion) {
-    document.querySelectorAll('.cloud--kv1, .cloud--kv2, .cloud--kv3').forEach((cloud) => {
-      cloud.addEventListener('animationend', (e) => {
-        if (e.animationName === 'cloud-appear') {
-          cloud.classList.add('is-drifting');
-        }
-      }, { once: true });
+    const kvClouds = [
+      { sel: '.cloud--kv1', delay: 500 },
+      { sel: '.cloud--kv2', delay: 1000 },
+      { sel: '.cloud--kv3', delay: 1500 },
+    ];
+    kvClouds.forEach(({ sel, delay }) => {
+      const el = document.querySelector(sel);
+      if (el) setTimeout(() => el.classList.add('is-visible'), delay);
     });
   }
 

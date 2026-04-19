@@ -693,7 +693,7 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
 }
 @keyframes kv-sky-shift {
   0%   { background: linear-gradient(180deg, #EEF5FB 0%, #FAFCFE 100%); }
-  100% { background: linear-gradient(180deg, #E8F0FA 0%, #F0F6FD 100%); }
+  100% { background: linear-gradient(180deg, #EEF5FB 0%, #F2F7FC 100%); }
 }
 .kv__inner {
   position: relative;
@@ -853,25 +853,28 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
 }
 .cloud { position: absolute; pointer-events: none; will-change: transform; }
 /* 左上の雲：右へ流れる */
-/* C. 雲の初期登場：ふわっと出現 → JSでクラス付与後にdrift開始 */
+/* C. 雲：driftは最初から実行、opacityだけJSで遅延フェードイン */
 .cloud--kv1 {
   width: 200px; top: 8%; left: -4%;
-  opacity: 0; transform: scale(0.7);
-  animation: cloud-appear 2s var(--ease) 0.5s forwards;
+  opacity: 0;
+  animation: cloud-drift-right 46s ease-in-out infinite;
+  transition: opacity 2s var(--ease);
 }
-.cloud--kv1.is-drifting { animation: cloud-drift-right 46s ease-in-out infinite; opacity: 1; transform: none; }
 .cloud--kv2 {
   width: 140px; top: 36%; right: 10%;
-  opacity: 0; transform: scale(0.7);
-  animation: cloud-appear 2s var(--ease) 1.0s forwards;
+  opacity: 0;
+  animation: cloud-drift-left 48s ease-in-out infinite -12s;
+  transition: opacity 2s var(--ease);
 }
-.cloud--kv2.is-drifting { animation: cloud-drift-left 48s ease-in-out infinite; opacity: 1; transform: none; }
 .cloud--kv3 {
   width: 180px; bottom: 14%; right: -5%;
-  opacity: 0; transform: scale(0.7);
-  animation: cloud-appear 2s var(--ease) 1.5s forwards;
+  opacity: 0;
+  animation: cloud-drift-left 52s ease-in-out infinite -22s;
+  transition: opacity 2s var(--ease);
 }
-.cloud--kv3.is-drifting { animation: cloud-drift-left 52s ease-in-out infinite; opacity: 1; transform: none; }
+.cloud--kv1.is-visible,
+.cloud--kv2.is-visible,
+.cloud--kv3.is-visible { opacity: 1; }
 
 /* 画像左端の縦グラデ帯（テキスト領域の色と繋げる） */
 .kv__edge-grad {
@@ -935,11 +938,6 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
 @keyframes float {
   0%, 100% { transform: translate(0, 0); }
   50%      { transform: translate(10px, -6px); }
-}
-
-/* C. 雲の初期登場：scale + opacity で出現 */
-@keyframes cloud-appear {
-  to { opacity: 1; transform: scale(1); }
 }
 
 /* 雲の横流れ（KV・メガメニュー・背景装飾・Philosophy 共通）
@@ -2169,7 +2167,7 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   /* KV・メガメニュー雲の横流れも停止 */
   .cloud--kv1,
   .cloud--kv2,
-  .cloud--kv3,
+  .cloud--kv3 { animation: none; opacity: 1; transition: none; }
   .overlay-menu__clouds .cloud--1,
   .overlay-menu__clouds .cloud--2 { animation: none; opacity: 1; transform: none; }
   /* A〜F: KV読み込みアニメーション停止 */
