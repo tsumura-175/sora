@@ -4,7 +4,7 @@
 (() => {
   'use strict';
 
-  const USER = 'sora';
+  const USER = 'sora_test';
   const PASS = 'sora_test';
   const KEY  = 'sora_auth';
 
