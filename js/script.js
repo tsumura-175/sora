@@ -152,6 +152,19 @@
   }
 
   // -----------------------------------------------------------
+  // 3-B. KV雲：出現アニメ完了後にdriftクラス付与
+  // -----------------------------------------------------------
+  if (!reduceMotion) {
+    document.querySelectorAll('.cloud--kv1, .cloud--kv2, .cloud--kv3').forEach((cloud) => {
+      cloud.addEventListener('animationend', (e) => {
+        if (e.animationName === 'cloud-appear') {
+          cloud.classList.add('is-drifting');
+        }
+      }, { once: true });
+    });
+  }
+
+  // -----------------------------------------------------------
   // 4. KV パララックス（軽量 + IntersectionObserver制御）
   // -----------------------------------------------------------
   const kvMedia = document.querySelector('.kv__image-wrap');

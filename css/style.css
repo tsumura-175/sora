@@ -853,22 +853,25 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
 }
 .cloud { position: absolute; pointer-events: none; will-change: transform; }
 /* 左上の雲：右へ流れる */
-/* C. 雲の初期登場：ふわっと出現してからdrift開始 */
+/* C. 雲の初期登場：ふわっと出現 → JSでクラス付与後にdrift開始 */
 .cloud--kv1 {
   width: 200px; top: 8%; left: -4%;
   opacity: 0; transform: scale(0.7);
-  animation: cloud-appear 2s var(--ease) 0.5s forwards, cloud-drift-right 46s ease-in-out 2.5s infinite;
+  animation: cloud-appear 2s var(--ease) 0.5s forwards;
 }
+.cloud--kv1.is-drifting { animation: cloud-drift-right 46s ease-in-out infinite; opacity: 1; transform: none; }
 .cloud--kv2 {
   width: 140px; top: 36%; right: 10%;
   opacity: 0; transform: scale(0.7);
-  animation: cloud-appear 2s var(--ease) 1.0s forwards, cloud-drift-left 48s ease-in-out 3.0s infinite;
+  animation: cloud-appear 2s var(--ease) 1.0s forwards;
 }
+.cloud--kv2.is-drifting { animation: cloud-drift-left 48s ease-in-out infinite; opacity: 1; transform: none; }
 .cloud--kv3 {
   width: 180px; bottom: 14%; right: -5%;
   opacity: 0; transform: scale(0.7);
-  animation: cloud-appear 2s var(--ease) 1.5s forwards, cloud-drift-left 52s ease-in-out 3.5s infinite;
+  animation: cloud-appear 2s var(--ease) 1.5s forwards;
 }
+.cloud--kv3.is-drifting { animation: cloud-drift-left 52s ease-in-out infinite; opacity: 1; transform: none; }
 
 /* 画像左端の縦グラデ帯（テキスト領域の色と繋げる） */
 .kv__edge-grad {
