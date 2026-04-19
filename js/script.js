@@ -1,11 +1,10 @@
 /* =============================================================
-   はじまりの家そら｜TOPページ Scripts (PlanA v5)
+   はじまりの家そら｜TOPページ Scripts (PlanA v5 – Refactored)
    - スクロール検知（ヘッダー白化・KVパララックス）
-   - IntersectionObserver（フェードアップ・Numbersカウントアップ）
-   - KVスライダー（2枚クロスフェード）
+   - IntersectionObserver（フェードアップ・Numbersカウントアップ・KV停止制御）
+   - KVスライダー（3枚クロスフェード）
    - オーバーレイメニュー（focus trap, ESC）
-   - お問い合わせフォーム（honeypot + time-trap + 簡易バリデーション）
-   - tel: リンクのJS難読化解除
+   - お問い合わせフォーム（honeypot + time-trap + 簡易バリデーション + aria-describedby）
    ============================================================= */
 
 (() => {
@@ -17,6 +16,8 @@
   // 1. ヘッダー白化（スクロール80px超）
   // -----------------------------------------------------------
   const header = document.getElementById('siteHeader');
+  if (!header) return;
+
   let lastScroll = 0;
   let scrollTicking = false;
 
@@ -43,110 +44,146 @@
   // -----------------------------------------------------------
   const hamburger = document.getElementById('hamburger');
   const overlay = document.getElementById('overlayMenu');
-  const focusableSel = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
-  let lastFocused = null;
 
-  const openMenu = () => {
-    lastFocused = document.activeElement;
-    document.body.classList.add('menu-open');
-    overlay.classList.add('is-open');
-    overlay.setAttribute('aria-hidden', 'false');
-    hamburger.setAttribute('aria-expanded', 'true');
-    hamburger.setAttribute('aria-label', 'メニューを閉じる');
-    document.body.style.overflow = 'hidden';
-    // フォーカスを最初のリンクへ
-    const first = overlay.querySelector(focusableSel);
-    if (first) setTimeout(() => first.focus(), 400);
-  };
+  if (hamburger && overlay) {
+    const focusableSel = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    let lastFocused = null;
 
-  const closeMenu = () => {
-    document.body.classList.remove('menu-open');
-    overlay.classList.remove('is-open');
-    overlay.setAttribute('aria-hidden', 'true');
-    hamburger.setAttribute('aria-expanded', 'false');
-    hamburger.setAttribute('aria-label', 'メニューを開く');
-    document.body.style.overflow = '';
-    if (lastFocused && typeof lastFocused.focus === 'function') {
-      lastFocused.focus();
+    const openMenu = () => {
+      lastFocused = document.activeElement;
+      document.body.classList.add('menu-open');
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      hamburger.setAttribute('aria-expanded', 'true');
+      hamburger.setAttribute('aria-label', 'メニューを閉じる');
+      document.body.style.overflow = 'hidden';
+      const first = overlay.querySelector(focusableSel);
+      if (first) setTimeout(() => first.focus(), 400);
+    };
+
+    const closeMenu = () => {
+      document.body.classList.remove('menu-open');
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'メニューを開く');
+      document.body.style.overflow = '';
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    };
+
+    hamburger.addEventListener('click', () => {
+      if (overlay.classList.contains('is-open')) closeMenu(); else openMenu();
+    });
+
+    const overlayCloseBtn = document.getElementById('overlayClose');
+    if (overlayCloseBtn) {
+      overlayCloseBtn.addEventListener('click', closeMenu);
     }
-  };
 
-  hamburger.addEventListener('click', () => {
-    if (overlay.classList.contains('is-open')) closeMenu(); else openMenu();
-  });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeMenu();
+    });
 
-  // 閉じるボタン（×）
-  const overlayCloseBtn = document.getElementById('overlayClose');
-  if (overlayCloseBtn) {
-    overlayCloseBtn.addEventListener('click', closeMenu);
+    overlay.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', () => {
+        if (overlay.classList.contains('is-open')) closeMenu();
+      });
+    });
+
+    // focus trap
+    overlay.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab' || !overlay.classList.contains('is-open')) return;
+      const focusable = Array.from(overlay.querySelectorAll(focusableSel));
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    });
   }
 
-  // ESC で閉じる
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeMenu();
-  });
-
-  // メニュー内リンククリックで自動的に閉じる（同ページ内アンカーへの遷移）
-  overlay.querySelectorAll('a[href^="#"]').forEach((a) => {
-    a.addEventListener('click', () => {
-      if (overlay.classList.contains('is-open')) closeMenu();
-    });
-  });
-
-  // focus trap
-  overlay.addEventListener('keydown', (e) => {
-    if (e.key !== 'Tab' || !overlay.classList.contains('is-open')) return;
-    const focusable = Array.from(overlay.querySelectorAll(focusableSel));
-    if (focusable.length === 0) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault(); last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault(); first.focus();
-    }
-  });
-
   // -----------------------------------------------------------
-  // 3. KVスライダー（2枚クロスフェード）
+  // 3. KVスライダー（3枚クロスフェード + IntersectionObserver停止制御）
   // -----------------------------------------------------------
   const slider = document.querySelector('[data-kv-slider]');
+  let kvInterval = null;
+
   if (slider && !reduceMotion) {
     const slides = Array.from(slider.querySelectorAll('.kv__img'));
     if (slides.length > 1) {
       let index = 0;
-      setInterval(() => {
-        slides[index].classList.remove('is-active');
-        index = (index + 1) % slides.length;
-        slides[index].classList.add('is-active');
-      }, 6000);
+      const startSlider = () => {
+        if (kvInterval) return;
+        kvInterval = setInterval(() => {
+          slides[index].classList.remove('is-active');
+          index = (index + 1) % slides.length;
+          slides[index].classList.add('is-active');
+        }, 6000);
+      };
+      const stopSlider = () => {
+        if (kvInterval) {
+          clearInterval(kvInterval);
+          kvInterval = null;
+        }
+      };
+
+      // Phase 4-B: IntersectionObserver でKV画面外時にスライダー停止
+      const kvSection = document.querySelector('.kv');
+      if (kvSection && 'IntersectionObserver' in window) {
+        const kvObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              startSlider();
+            } else {
+              stopSlider();
+            }
+          });
+        }, { threshold: 0.1 });
+        kvObserver.observe(kvSection);
+      } else {
+        startSlider();
+      }
     }
   }
 
   // -----------------------------------------------------------
-  // 4. KV パララックス（軽量）
+  // 4. KV パララックス（軽量 + IntersectionObserver制御）
   // -----------------------------------------------------------
   const kvMedia = document.querySelector('.kv__image-wrap');
-  let parallaxTicking = false;
-  const updateParallax = () => {
-    if (kvMedia) {
-      const offset = Math.min(window.scrollY * 0.15, 120);
-      kvMedia.style.transform = `translateY(${-offset}px)`;
-    }
-    parallaxTicking = false;
-  };
   if (!reduceMotion && kvMedia) {
+    let parallaxTicking = false;
+    let kvVisible = true;
+    const updateParallax = () => {
+      if (kvVisible) {
+        const offset = Math.min(window.scrollY * 0.15, 120);
+        kvMedia.style.transform = `translateY(${-offset}px)`;
+      }
+      parallaxTicking = false;
+    };
+
     window.addEventListener('scroll', () => {
       if (!parallaxTicking) {
         window.requestAnimationFrame(updateParallax);
         parallaxTicking = true;
       }
     }, { passive: true });
-  }
 
-  // -----------------------------------------------------------
-  // 4-2. bg-decor 雲：CSSアニメーション（cloud-drift）に一本化したためJS処理は削除
-  // -----------------------------------------------------------
+    // KV外ではパララックス計算をスキップ
+    const kvSection = document.querySelector('.kv');
+    if (kvSection && 'IntersectionObserver' in window) {
+      const parallaxObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          kvVisible = entry.isIntersecting;
+        });
+      }, { threshold: 0 });
+      parallaxObserver.observe(kvSection);
+    }
+  }
 
   // -----------------------------------------------------------
   // 5. IntersectionObserver（フェードアップ）
@@ -163,7 +200,6 @@
 
     document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   } else {
-    // フォールバック：全表示
     document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
   }
 
@@ -190,7 +226,6 @@
     const numIo = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // 各.numを100msずつずらしてカウント開始（視線が順に流れる演出）
           entry.target.querySelectorAll('.num').forEach((el, i) => {
             setTimeout(() => animateCount(el), i * 100);
           });
@@ -207,28 +242,34 @@
   }
 
   // -----------------------------------------------------------
-  // 7. tel: リンク 簡易難読化（mailto相当の対策／実装時にダミー番号で稼働）
-  //    HTML上の "0000-00-0000" はダミー。実番号確定後は HTML を直接書き換え。
-  // -----------------------------------------------------------
-  // 現状はダミー番号がそのまま表示されるだけ。将来 data 属性に分割番号を入れて組み立てる方針も可。
-
-  // -----------------------------------------------------------
-  // 8. お問い合わせフォーム（honeypot + time-trap + 簡易バリデーション）
+  // 7. お問い合わせフォーム（honeypot + time-trap + バリデーション + aria-describedby）
   // -----------------------------------------------------------
   const form = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
   let formLoadedAt = Date.now();
 
-  if (form) {
+  if (form && formStatus) {
+    // バリデーションエラー表示ヘルパー
+    const showFieldError = (fieldId, message) => {
+      const errorEl = document.getElementById(fieldId + '-error');
+      const field = document.getElementById(fieldId);
+      if (errorEl) errorEl.textContent = message;
+      if (field) field.setAttribute('aria-invalid', message ? 'true' : 'false');
+    };
+    const clearAllErrors = () => {
+      form.querySelectorAll('.form-error').forEach(el => { el.textContent = ''; });
+      form.querySelectorAll('[aria-invalid]').forEach(el => { el.setAttribute('aria-invalid', 'false'); });
+    };
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       formStatus.classList.remove('is-success', 'is-error');
       formStatus.textContent = '';
+      clearAllErrors();
 
       // honeypot
       const honey = form.querySelector('input[name="website"]');
       if (honey && honey.value.trim() !== '') {
-        // bot 判定 → 何もせず成功風に表示
         formStatus.classList.add('is-success');
         formStatus.textContent = 'お問い合わせありがとうございました。';
         form.reset();
@@ -242,20 +283,63 @@
         return;
       }
 
-      // 簡易バリデーション（HTML5のrequired属性＋メール形式）
+      // バリデーション
       let hasError = false;
-      form.querySelectorAll('[required]').forEach((el) => {
-        if (!el.value || (el.type === 'checkbox' && !el.checked)) {
-          hasError = true;
-        }
-      });
-      const email = form.querySelector('#f-email');
-      if (email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+      let firstErrorField = null;
+
+      // 種別
+      const fType = document.getElementById('f-type');
+      if (fType && !fType.value) {
+        showFieldError('f-type', 'お問い合わせ種別を選択してください。');
         hasError = true;
+        if (!firstErrorField) firstErrorField = fType;
       }
+
+      // お名前
+      const fName = document.getElementById('f-name');
+      if (fName && !fName.value.trim()) {
+        showFieldError('f-name', 'お名前を入力してください。');
+        hasError = true;
+        if (!firstErrorField) firstErrorField = fName;
+      }
+
+      // メールアドレス
+      const fEmail = document.getElementById('f-email');
+      if (fEmail) {
+        if (!fEmail.value.trim()) {
+          showFieldError('f-email', 'メールアドレスを入力してください。');
+          hasError = true;
+          if (!firstErrorField) firstErrorField = fEmail;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fEmail.value)) {
+          showFieldError('f-email', '正しいメールアドレスを入力してください。');
+          hasError = true;
+          if (!firstErrorField) firstErrorField = fEmail;
+        }
+      }
+
+      // お問い合わせ内容
+      const fMessage = document.getElementById('f-message');
+      if (fMessage && !fMessage.value.trim()) {
+        showFieldError('f-message', 'お問い合わせ内容を入力してください。');
+        hasError = true;
+        if (!firstErrorField) firstErrorField = fMessage;
+      }
+
+      // プライバシーポリシー
+      const fPrivacy = document.getElementById('f-privacy');
+      if (fPrivacy && !fPrivacy.checked) {
+        hasError = true;
+        if (!firstErrorField) firstErrorField = fPrivacy;
+      }
+
       if (hasError) {
         formStatus.classList.add('is-error');
         formStatus.textContent = '入力内容をご確認ください。';
+        // エラーのあるフィールドへスクロール＆フォーカス
+        if (firstErrorField) {
+          firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(() => firstErrorField.focus(), 400);
+        }
         return;
       }
 
@@ -268,10 +352,7 @@
   }
 
   // -----------------------------------------------------------
-  // 9. Voices 無限ループMarquee（カード複製＋CSSアニメーション）
-  //    - CSS側で keyframes voices-scroll により transform: translateX(-50%) するため、
-  //      表示幅の2倍の要素が必要。元のli要素を一度だけ複製してaria-hiddenで追加する。
-  //    - prefers-reduced-motion 時はアニメーション停止＆複製スキップ。
+  // 8. Voices 無限ループMarquee（カード複製＋CSSアニメーション）
   // -----------------------------------------------------------
   const voicesMarquee = document.querySelector('[data-voices-marquee]');
   if (voicesMarquee) {
@@ -285,7 +366,6 @@
         voicesList.appendChild(clone);
       });
     } else if (voicesList && reduceMotion) {
-      // 動作軽減設定：アニメーションを停止
       voicesList.style.animation = 'none';
       voicesList.style.flexWrap = 'wrap';
       voicesList.style.width = 'auto';

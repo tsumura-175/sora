@@ -1,0 +1,65 @@
+/* =============================================================
+   _variables.css  –  CSS Custom Properties / Design Tokens
+   ============================================================= */
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --color-main:   #2E7DD1;
+  --color-light:  #4A9EE8;
+  --color-deep:   #1B4F8E;
+  --color-accent: #5BB3F0;
+  --color-bg:     #FAFCFE;
+  --color-pale:   #EEF5FB;
+  --color-paper:  #F4F8FC;    /* bg と pale の中間。Servicesなど落ち着かせるセクション用 */
+  --color-mist:   #DCE8F4;    /* pale より一段深い。Numbers背景の沈み用 */
+  --color-ink-soft: #3A5878;  /* サブ見出し用の中間色 */
+  --color-text:   #222222;
+  --color-sub:    #6B7280;
+  --color-border: #E2E8F0;
+
+  --font-jp-serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-jp-sans:  "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-en:       "Cormorant Garamond", Georgia, serif;
+
+  --gradient-cta: linear-gradient(135deg, #2E7DD1 0%, #1B4F8E 100%);
+  --gradient-kv-overlay: linear-gradient(135deg,
+      rgba(91,179,240,0.15) 0%,
+      rgba(46,125,209,0.05) 50%,
+      rgba(27,79,142,0.20) 100%);
+  /* 空のストーリー：白→薄青→濃紺 */
+  --gradient-sky-vert: linear-gradient(180deg, #EEF5FB 0%, #FAFCFE 40%, #F4F8FC 100%);
+  --gradient-sky-diag: linear-gradient(160deg, #FAFCFE 0%, #EEF5FB 60%, #DCE8F4 100%);
+
+  --max-content: min(1440px, 92vw);
+  --max-narrow: 760px;
+
+  --header-h-pc: 80px;
+  --header-h-sp: 64px;
+
+  --section-py-pc: clamp(80px, 10vw, 160px);
+  --section-py-sp: clamp(64px, 12vw, 80px);
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* ===== Typography Tokens ===== */
+  --fs-xxs:  0.85rem;   /* 13.6px  極小補助（カテゴリタグ・必須印など） */
+  --fs-xs:   0.9375rem; /* 15px    補助テキスト（キャプション・日付） */
+  --fs-sm:   1rem;      /* 16px    以前の本文サイズ */
+  --fs-base: 1.0625rem; /* 17px    本文基準 */
+  --fs-md:   1.125rem;  /* 18px    強調本文・カード説明 */
+  --fs-lg:   1.1875rem; /* 19px    セクションリード */
+  --fs-xl:   1.375rem;  /* 22px    サブ見出し */
+  --fs-2xl:  1.625rem;  /* 26px    カードタイトル */
+  --fs-3xl:  clamp(1.8rem, 3.2vw, 2.4rem);   /* 中見出し */
+  --fs-4xl:  clamp(2.2rem, 4.4vw, 3.4rem);   /* セクション見出し */
+  --fs-5xl:  clamp(2.6rem, 5.4vw, 4.6rem);   /* KV見出し */
+
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  --lh-tight:   1.45;
+  --lh-normal:  1.75;
+  --lh-relaxed: 1.85;
+}

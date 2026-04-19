@@ -1,0 +1,148 @@
+/* =============================================================
+   _marquee-cta.css  –  ⑪ Marquee  +  ⑫ CTA
+   ============================================================= */
+
+/* ============================================================
+   ⑪ Marquee（流れる帯：Cormorant italic × 和文セリフの混植）
+   - 淡い背景に青の抜き文字（-webkit-text-stroke）
+   - 右斜め上にrotate(-3deg) で帯が駆け上がる印象
+   - 左に流れる無限ループ
+   ============================================================ */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-pale);
+  padding: clamp(20px, 3vw, 40px) 0;
+  transform: rotate(-3deg);
+  margin: 40px -20px;
+}
+.marquee__track {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  animation: marquee-scroll 45s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee__track > span {
+  display: inline-block;
+  flex-shrink: 0;
+  font-family: var(--font-en);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(3rem, 7vw, 7.5rem);
+  line-height: 1;
+  letter-spacing: 0.05em;
+  -webkit-text-stroke: 1.5px var(--color-main);
+  color: transparent;
+  padding-right: 24px;
+}
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-25%); } /* 4セット複製＝-25%で1セット分進む */
+}
+
+/* ============================================================
+   ⑫ CTA（あなたの一歩が、誰かの空を晴らす。）
+   ============================================================ */
+.cta {
+  position: relative;
+  padding: clamp(80px, 10vw, 140px) 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(91,179,240,0.18), transparent 70%),
+    var(--gradient-cta);
+  color: #fff;
+  overflow: hidden;
+  text-align: center;
+}
+.cta__bg {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.cta .cloud {
+  position: absolute;
+  height: auto;
+}
+.cta .cloud--cta1 { top: 12%; left: -4%; width: 36vw; opacity: 0.9; animation: cta-float 14s ease-in-out infinite; }
+.cta .cloud--cta2 { bottom: 8%; right: -2%; width: 28vw; opacity: 0.7; animation: cta-float 18s ease-in-out infinite reverse 1s; }
+.cta .cloud--cta3 { top: 38%; left: 28%; width: 22vw; opacity: 0.5; animation: cta-float 16s ease-in-out infinite 0.5s; }
+.cta .cloud--cta4 { top: 62%; left: 6%; width: 18vw; opacity: 0.45; animation: cta-float 12s ease-in-out infinite reverse; }
+.cta .cloud--cta5 { top: 22%; right: 18%; width: 16vw; opacity: 0.4; animation: cta-float 20s ease-in-out infinite 2s; }
+
+@keyframes cta-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -12px, 0); }
+}
+/* 星屑レイヤー：radial-gradient の極小点を散りばめる */
+.cta__stars {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 18%, rgba(255,255,255,0.55), transparent 60%),
+    radial-gradient(1px 1px at 28% 42%, rgba(255,255,255,0.45), transparent 60%),
+    radial-gradient(1.5px 1.5px at 48% 12%, rgba(255,255,255,0.7), transparent 60%),
+    radial-gradient(1px 1px at 62% 58%, rgba(255,255,255,0.5), transparent 60%),
+    radial-gradient(1.5px 1.5px at 74% 28%, rgba(255,255,255,0.6), transparent 60%),
+    radial-gradient(1px 1px at 88% 68%, rgba(255,255,255,0.45), transparent 60%),
+    radial-gradient(1px 1px at 18% 72%, rgba(255,255,255,0.4), transparent 60%),
+    radial-gradient(1.5px 1.5px at 36% 88%, rgba(255,255,255,0.55), transparent 60%),
+    radial-gradient(1px 1px at 58% 82%, rgba(255,255,255,0.4), transparent 60%),
+    radial-gradient(1.5px 1.5px at 82% 14%, rgba(255,255,255,0.6), transparent 60%),
+    radial-gradient(1px 1px at 94% 44%, rgba(255,255,255,0.45), transparent 60%),
+    radial-gradient(1px 1px at 8% 52%, rgba(255,255,255,0.4), transparent 60%);
+  animation: cta-twinkle 6s ease-in-out infinite;
+  z-index: 0;
+}
+@keyframes cta-twinkle {
+  0%, 100% { opacity: 0.9; }
+  50%      { opacity: 0.55; }
+}
+/* タイトル裏の巨大薄字 TAKE ACTION */
+.cta__bigword {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-en);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(5rem, 14vw, 16rem);
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.05);
+  -webkit-text-stroke: 1px rgba(255,255,255,0.08);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  white-space: nowrap;
+}
+.cta__inner {
+  position: relative;
+  width: var(--max-narrow);
+  max-width: 92vw;
+  margin: 0 auto;
+  z-index: 1;
+}
+.cta__title {
+  font-family: var(--font-jp-serif);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-4xl);
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  color: #fff;
+  margin: 18px 0 24px;
+}
+.cta__lead {
+  font-size: var(--fs-lg);
+  line-height: var(--lh-relaxed);
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 36px;
+}
+.cta__btns {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+.cta__btns .btn--white { min-width: 180px; }
+.cta__btns .btn--ghost { min-width: 180px; }
