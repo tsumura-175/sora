@@ -688,12 +688,6 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   padding-top: var(--header-h-pc);
   background: linear-gradient(180deg, #EEF5FB 0%, #FAFCFE 100%);
   overflow: hidden;
-  /* F. 空の明暗が変わる微動 */
-  animation: kv-sky-shift 10s ease-in-out infinite alternate;
-}
-@keyframes kv-sky-shift {
-  0%   { background: linear-gradient(180deg, #EEF5FB 0%, #FAFCFE 100%); }
-  100% { background: linear-gradient(180deg, #EEF5FB 0%, #F2F7FC 100%); }
 }
 .kv__inner {
   position: relative;
@@ -2170,8 +2164,7 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   .cloud--kv3 { animation: none; opacity: 1; transition: none; }
   .overlay-menu__clouds .cloud--1,
   .overlay-menu__clouds .cloud--2 { animation: none; opacity: 1; transform: none; }
-  /* A〜F: KV読み込みアニメーション停止 */
-  .kv { animation: none; }
+  /* A〜E: KV読み込みアニメーション停止 */
   .kv__image-wrap { animation: none; opacity: 1; transform: none; }
   .kv__en { animation: none; opacity: 1; transform: none; }
   .kv__title { animation: none; opacity: 1; transform: none; }
