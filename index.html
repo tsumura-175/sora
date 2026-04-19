@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="はじまりの家そら｜NPO法人コミュニティケア・ライフ。コミュニティ・訪問看護・訪問介護・看取り住宅の4事業で、人生の旅立ちを支えます。東京都東久留米市。">
+<meta property="og:title" content="はじまりの家 そら | NPO法人コミュニティケア・ライフ">
+<meta property="og:description" content="人生の旅立ちを、はじまりに。コミュニティ・訪問看護・訪問介護・看取り住宅の4事業で暮らしを支えます。">
+<meta property="og:image" content="./images/icon.png">
+<meta property="og:type" content="website">
+<title>はじまりの家 そら | NPO法人コミュニティケア・ライフ</title>
+
+<link rel="icon" type="image/png" href="./images/favicon.png">
+<link rel="apple-touch-icon" href="./images/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&family=Noto+Sans+JP:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<!-- ====================== SVG defs（曲線マスク・ノイズフィルタ） ====================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- KV 左上・左下が緩やかな曲線、右側は直角 -->
+    <clipPath id="kv-mask" clipPathUnits="objectBoundingBox">
+      <path d="M 0 0 L 1 0 L 1 1 L 0.22 1 C 0.08 1, 0 0.88, 0 0.74 Z"/>
+    </clipPath>
+    <!-- Target 1: 右上が丸く削られる -->
+    <clipPath id="target-mask-1" clipPathUnits="objectBoundingBox">
+      <path d="M 0 0 L 0.78 0 C 0.92 0, 1 0.08, 1 0.22 L 1 1 L 0 1 Z"/>
+    </clipPath>
+    <!-- Target 2: 左下が大きな弧で削られる -->
+    <clipPath id="target-mask-2" clipPathUnits="objectBoundingBox">
+      <path d="M 0 0 L 1 0 L 1 1 L 0.32 1 C 0.12 1, 0 0.85, 0 0.65 Z"/>
+    </clipPath>
+    <!-- Target 3: 右下が緩やかに削られる -->
+    <clipPath id="target-mask-3" clipPathUnits="objectBoundingBox">
+      <path d="M 0 0 L 1 0 L 1 0.72 C 1 0.9, 0.88 1, 0.74 1 L 0 1 Z"/>
+    </clipPath>
+    <!-- ノイズテクスチャ -->
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- ====================== ① Header ====================== -->
+<header class="site-header" id="siteHeader">
+  <div class="site-header__inner">
+    <a href="#top" class="site-header__logo" aria-label="はじまりの家そら ホーム">
+      <img src="./images/icon.png" alt="はじまりの家そら" class="site-logo">
+    </a>
+    <nav class="site-header__nav" aria-label="メインナビゲーション">
+      <ul>
+        <li><a href="#philosophy">想い・理念</a></li>
+        <li><a href="#services">事業案内</a></li>
+        <li><a href="#target">対象別案内</a></li>
+        <li><a href="/corporate/">法人・活動情報</a></li>
+        <li><a href="/recruit/">採用情報</a></li>
+        <li><a href="#news">お知らせ</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="overlayMenu">
+      <span class="hamburger__line"></span>
+      <span class="hamburger__line"></span>
+      <span class="hamburger__line"></span>
+    </button>
+  </div>
+</header>
+
+<!-- ====================== ② Overlay Menu ====================== -->
+<nav class="overlay-menu" id="overlayMenu" aria-hidden="true">
+  <button class="overlay-close" id="overlayClose" aria-label="メニューを閉じる">
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path stroke="#fff" stroke-width="1.5" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="overlay-menu__noise" aria-hidden="true"></div>
+  <div class="overlay-menu__clouds" aria-hidden="true">
+    <svg class="cloud cloud--1" viewBox="0 0 200 80" aria-hidden="true"><path fill="rgba(255,255,255,0.08)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+    <svg class="cloud cloud--2" viewBox="0 0 200 80" aria-hidden="true"><path fill="rgba(255,255,255,0.06)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+  </div>
+  <div class="overlay-menu__inner">
+    <div class="overlay-menu__brand">
+      <img src="./images/icon.png" alt="はじまりの家そら" class="overlay-menu__brand-icon">
+      <span class="overlay-menu__brand-en">人生の旅立ちを、はじまりに。</span>
+    </div>
+    <div class="overlay-menu__nav">
+      <ul class="overlay-nav">
+        <li class="overlay-nav__item">
+          <span class="overlay-nav__num" aria-hidden="true">01</span>
+          <a href="#philosophy" class="overlay-nav__link">
+            <span class="overlay-nav__en">ABOUT</span>
+            <span class="overlay-nav__jp">想い・理念</span>
+          </a>
+          <ul class="overlay-nav__sub">
+            <li><a href="/about/">はじまりの家そらとは</a></li>
+            <li><a href="/about/philosophy/">私たちの想い</a></li>
+            <li><a href="/about/message/">代表メッセージ</a></li>
+            <li><a href="/about/values/">大切にしていること</a></li>
+          </ul>
+        </li>
+        <li class="overlay-nav__item">
+          <span class="overlay-nav__num" aria-hidden="true">02</span>
+          <a href="#services" class="overlay-nav__link">
+            <span class="overlay-nav__en">SERVICE</span>
+            <span class="overlay-nav__jp">4つの事業</span>
+          </a>
+          <ul class="overlay-nav__sub">
+            <li><a href="/services/community/">みんなのホームそら</a></li>
+            <li><a href="/services/visiting-nursing/">訪問看護ステーションそら</a></li>
+            <li><a href="/services/care/">そらケアステーション</a></li>
+            <li><a href="/home/">天国につながるホームそら</a></li>
+          </ul>
+        </li>
+        <li class="overlay-nav__item">
+          <span class="overlay-nav__num" aria-hidden="true">03</span>
+          <a href="#target" class="overlay-nav__link">
+            <span class="overlay-nav__en">FOR YOU</span>
+            <span class="overlay-nav__jp">対象別ご案内</span>
+          </a>
+          <ul class="overlay-nav__sub">
+            <li><a href="/for-family/">ご本人・ご家族の方へ</a></li>
+            <li><a href="/for-medical/">医療・介護関係者の方へ</a></li>
+            <li><a href="/for-supporter/">支援・ご寄付をお考えの方へ</a></li>
+          </ul>
+        </li>
+        <li class="overlay-nav__item">
+          <span class="overlay-nav__num" aria-hidden="true">04</span>
+          <a href="/corporate/" class="overlay-nav__link">
+            <span class="overlay-nav__en">CORPORATE</span>
+            <span class="overlay-nav__jp">法人・活動情報</span>
+          </a>
+          <ul class="overlay-nav__sub">
+            <li><a href="/corporate/">法人概要</a></li>
+            <li><a href="/corporate/members/">スタッフ紹介</a></li>
+            <li><a href="/corporate/report/">事業計画・活動報告</a></li>
+            <li><a href="/corporate/access/">アクセス</a></li>
+          </ul>
+        </li>
+        <li class="overlay-nav__item">
+          <span class="overlay-nav__num" aria-hidden="true">05</span>
+          <a href="/recruit/" class="overlay-nav__link">
+            <span class="overlay-nav__en">RECRUIT</span>
+            <span class="overlay-nav__jp">採用情報</span>
+          </a>
+          <ul class="overlay-nav__sub">
+            <li><a href="/recruit/jobs/">募集職種一覧</a></li>
+            <li><a href="/recruit/interview/">スタッフインタビュー</a></li>
+            <li><a href="/recruit/apply/">応募フォーム</a></li>
+          </ul>
+        </li>
+        <li class="overlay-nav__item">
+          <span class="overlay-nav__num" aria-hidden="true">06</span>
+          <a href="#news" class="overlay-nav__link">
+            <span class="overlay-nav__en">NEWS</span>
+            <span class="overlay-nav__jp">お知らせ・ブログ</span>
+          </a>
+          <ul class="overlay-nav__sub">
+            <li><a href="/news/">お知らせ一覧</a></li>
+            <li><a href="/blog/">ブログ・コラム</a></li>
+            <li><a href="/blog/category/event/">イベントレポート</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="overlay-menu__side">
+      <div class="overlay-menu__cta">
+        <a href="#contact" class="btn btn--white" id="overlayContactBtn">お問い合わせ</a>
+        <a href="/contact/visit/" class="btn btn--ghost">見学・ご相談予約</a>
+        <!-- TODO: 寄付外部URL確定後に差し替え -->
+        <a href="/donation/" class="btn btn--ghost">ご寄付のお願い</a>
+      </div>
+      <div class="overlay-menu__info">
+        <p class="overlay-menu__info-label">お電話でのお問い合わせ</p>
+        <a href="tel:0424035850" class="overlay-menu__info-tel">042-403-5850</a>
+        <p class="overlay-menu__info-note">平日 9:00 – 17:30</p>
+      </div>
+      <div class="overlay-menu__sns">
+        <span class="overlay-menu__sns-label">SNS・最新情報</span>
+        <ul>
+          <!-- TODO: SNS URL 確定後に差し替え -->
+          <li><a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.5 1s.7.9 1 1.5c.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-1 1.5s-.9.7-1.5 1c-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.5-1s-.7-.9-1-1.5c-.2-.4-.4-1-.4-2.2-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 1-1.5s.9-.7 1.5-1c.4-.2 1-.4 2.2-.4 1.2-.1 1.6-.1 4.8-.1zm0 5.6a4.2 4.2 0 1 0 0 8.4 4.2 4.2 0 0 0 0-8.4zm0 6.9a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4zm5.4-7a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+          </a></li>
+          <li><a href="#" aria-label="LINE">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 5.82 2 10.5c0 4.21 3.74 7.74 8.79 8.4.34.07.81.23.93.52.1.27.07.68.03.95l-.15.9c-.05.27-.21 1.07.94.58s6.23-3.67 8.5-6.28C22.94 13.42 22 12.04 22 10.5 22 5.82 17.52 2 12 2zm-3.06 11.06H6.75a.56.56 0 0 1-.56-.56V8.69c0-.31.25-.56.56-.56s.56.25.56.56v3.25h1.63c.31 0 .56.25.56.56s-.25.56-.56.56zm1.78-.56a.56.56 0 0 1-1.12 0V8.69a.56.56 0 0 1 1.12 0zm4.12 0c0 .22-.13.42-.33.51a.56.56 0 0 1-.6-.1l-2.28-3.1v2.69a.56.56 0 0 1-1.12 0V8.69c0-.22.13-.42.33-.51a.56.56 0 0 1 .6.1l2.28 3.1V8.69a.56.56 0 0 1 1.12 0zm2.91-2.75a.56.56 0 0 1 0 1.12h-1.63v.94h1.63a.56.56 0 0 1 0 1.12h-2.19a.56.56 0 0 1-.56-.56V8.69c0-.31.25-.56.56-.56h2.19a.56.56 0 0 1 0 1.12h-1.63v.94z"/></svg>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- ====================== ③ KV ====================== -->
+<section class="kv" aria-label="メインビジュアル">
+  <span class="kv__bigword" aria-hidden="true"></span>
+  <div class="kv__inner">
+    <div class="kv__text">
+      <p class="kv__en"><span>Where Hope Begins.</span></p>
+      <h1 class="kv__title">人生の旅立ちを、<br>はじまりに。</h1>
+      <p class="kv__lead">
+        もし今日が最後だとしても、<br>
+        「いま幸せだ」と笑える場所。<br>
+        最期の景色が、いちばん優しいものであるように。
+      </p>
+    </div>
+    <div class="kv__media">
+      <div class="kv__image-wrap">
+        <div class="kv__image-blur" aria-hidden="true"></div>
+        <div class="kv__slider" data-kv-slider>
+          <img src="./images/image.jpg" alt="" class="kv__img is-active content-img" data-slide="0">
+          <img src="./images/image1.jpg" alt="" class="kv__img content-img" data-slide="1">
+          <img src="./images/image6.jpeg" alt="" class="kv__img content-img" data-slide="2">
+        </div>
+        <div class="kv__overlay" aria-hidden="true"></div>
+        <svg class="cloud cloud--kv1" viewBox="0 0 200 80" aria-hidden="true"><path fill="rgba(255,255,255,0.6)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+        <svg class="cloud cloud--kv2" viewBox="0 0 200 80" aria-hidden="true"><path fill="rgba(255,255,255,0.45)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+        <svg class="cloud cloud--kv3" viewBox="0 0 200 80" aria-hidden="true"><path fill="rgba(255,255,255,0.35)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+        <span class="kv__edge-grad" aria-hidden="true"></span>
+        <div class="kv__indicator" aria-hidden="true">
+          <span class="kv__indicator-bar"></span>
+          <span class="kv__indicator-label">01 / 02</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- KV下端の雲ライン（SVG波） -->
+  <svg class="kv__wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="rgba(255,255,255,0.7)" d="M0 40 Q 360 0 720 30 T 1440 30 L 1440 60 L 0 60 Z"/>
+    <path fill="#ffffff" d="M0 52 Q 360 30 720 50 T 1440 48 L 1440 60 L 0 60 Z"/>
+  </svg>
+  <!-- スクロールヒント：KVの外（下端に絶対配置） -->
+  <a href="#philosophy" class="kv__scroll" aria-label="次のセクションへスクロール">
+    <span>SCROLL</span>
+    <span class="kv__scroll-line" aria-hidden="true"><span class="kv__scroll-dot"></span></span>
+  </a>
+</section>
+
+<!-- ====================== ④ Philosophy ====================== -->
+<section class="philosophy reveal" id="philosophy">
+  <div class="bg-decor" aria-hidden="true">
+    <svg class="bg-decor__cloud bg-decor__cloud--lg bg-decor__cloud--tl" viewBox="0 0 200 80"><path fill="rgba(74,158,232,0.5)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+    <svg class="bg-decor__cloud bg-decor__cloud--sm bg-decor__cloud--br" viewBox="0 0 200 80"><path fill="rgba(91,179,240,0.4)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+    <span class="bg-decor__glow bg-decor__glow--top"></span>
+    <span class="bg-decor__grain"></span>
+  </div>
+  <svg class="philosophy__cloud" viewBox="0 0 200 80" aria-hidden="true"><path fill="rgba(74,158,232,0.15)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+  <div class="philosophy__inner">
+    <p class="en-sub reveal-sub">わたしたちの想い</p>
+    <h2 class="philosophy__title">人生の旅立ちを、<br>はじまりに。</h2>
+    <hr class="philosophy__line" aria-hidden="true">
+    <p class="philosophy__body">
+      晴れた日も、雲の多い日も、空はいつもそこにあります。<br>
+      私たちは、ひとりひとりの「いま」を尊重し、ご本人の歩幅で「これから」を一緒に描く存在でありたい。<br>
+      暮らしの場、働く場、相談の場——それぞれの場面で、安心と尊厳を大切にし、地域とともに歩み続けます。
+    </p>
+    <p class="philosophy__sign">— はじまりの家そら</p>
+  </div>
+</section>
+
+<!-- ====================== ⑤ Numbers ====================== -->
+<section class="numbers reveal">
+  <div class="bg-decor" aria-hidden="true">
+    <svg class="bg-decor__cloud bg-decor__cloud--lg bg-decor__cloud--tr" viewBox="0 0 200 80"><path fill="rgba(91,179,240,0.35)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+    <svg class="bg-decor__cloud bg-decor__cloud--sm bg-decor__cloud--bl" viewBox="0 0 200 80"><path fill="rgba(74,158,232,0.3)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+    <span class="bg-decor__grain"></span>
+  </div>
+  <div class="numbers__inner">
+    <p class="en-sub reveal-sub">実績</p>
+    <h2 class="numbers__title">数字で見るそら</h2>
+    <ul class="numbers__list">
+      <li class="numbers__item">
+        <span class="numbers__en">設立</span>
+        <span class="numbers__bar" aria-hidden="true"></span>
+        <span class="numbers__value"><span class="num" data-count="2009">0</span></span>
+        <span class="numbers__unit">年</span>
+        <span class="numbers__bar numbers__bar--vertical" aria-hidden="true"></span>
+        <span class="numbers__caption">法人設立</span>
+      </li>
+      <li class="numbers__item">
+        <span class="numbers__en">ご利用者</span>
+        <span class="numbers__bar" aria-hidden="true"></span>
+        <span class="numbers__value"><span class="num" data-count="120">0</span><span class="num__suffix">+</span></span>
+        <span class="numbers__unit">名</span>
+        <span class="numbers__bar numbers__bar--vertical" aria-hidden="true"></span>
+        <span class="numbers__caption">ご利用者数</span>
+      </li>
+      <li class="numbers__item">
+        <span class="numbers__en">スタッフ</span>
+        <span class="numbers__bar" aria-hidden="true"></span>
+        <span class="numbers__value"><span class="num" data-count="42">0</span></span>
+        <span class="numbers__unit">名</span>
+        <span class="numbers__bar numbers__bar--vertical" aria-hidden="true"></span>
+        <span class="numbers__caption">スタッフ在籍</span>
+      </li>
+      <li class="numbers__item">
+        <span class="numbers__en">拠点</span>
+        <span class="numbers__bar" aria-hidden="true"></span>
+        <span class="numbers__value"><span class="num" data-count="4">0</span></span>
+        <span class="numbers__unit">拠点</span>
+        <span class="numbers__bar numbers__bar--vertical" aria-hidden="true"></span>
+        <span class="numbers__caption">事業所</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ====================== ⑥ Services ====================== -->
+<section class="services reveal" id="services">
+  <div class="bg-decor" aria-hidden="true">
+    <svg class="bg-decor__cloud bg-decor__cloud--sm bg-decor__cloud--tl" viewBox="0 0 200 80"><path fill="rgba(74,158,232,0.25)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+    <span class="bg-decor__grain"></span>
+  </div>
+  <div class="services__inner">
+    <header class="section-head">
+      <p class="en-sub reveal-sub">事業のご案内</p>
+      <h2 class="section-title">4つの事業</h2>
+      <p class="section-lead">コミュニティ・訪問看護・訪問介護・看取り住宅。暮らしのすべてを、そらがつなぎます。</p>
+    </header>
+    <div class="services__grid">
+      <article class="service-card">
+        <div class="service-card__media">
+          <img src="./images/image.jpg" alt="" class="content-img" loading="lazy">
+        </div>
+        <div class="service-card__body">
+          <span class="service-card__num">01</span>
+          <h3 class="service-card__title">みんなのホームそら</h3>
+          <p class="service-card__label">コミュニティ</p>
+          <p class="service-card__desc">地域・多世代が集う開かれた場。健康相談会や季節行事を通じて、人と人がつながります。</p>
+          <a href="/services/community/" class="link-arrow">詳しく見る<span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card__media">
+          <img src="./images/image4.jpeg" alt="" class="content-img" loading="lazy">
+        </div>
+        <div class="service-card__body">
+          <span class="service-card__num">02</span>
+          <h3 class="service-card__title">訪問看護ステーションそら</h3>
+          <p class="service-card__label">訪問看護</p>
+          <p class="service-card__desc">介護保険・医療保険・自費の3種の訪問看護で、ご自宅での療養生活を支えます。</p>
+          <a href="/services/visiting-nursing/" class="link-arrow">詳しく見る<span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card__media">
+          <img src="./images/image5.jpeg" alt="" class="content-img" loading="lazy">
+        </div>
+        <div class="service-card__body">
+          <span class="service-card__num">03</span>
+          <h3 class="service-card__title">そらケアステーション</h3>
+          <p class="service-card__label">訪問介護</p>
+          <p class="service-card__desc">身体介護・生活援助を通じて、住み慣れたご自宅での暮らしを支援します。</p>
+          <a href="/services/care/" class="link-arrow">詳しく見る<span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="service-card">
+        <div class="service-card__media">
+          <img src="./images/image2.jpeg" alt="" class="content-img" loading="lazy">
+        </div>
+        <div class="service-card__body">
+          <span class="service-card__num">04</span>
+          <h3 class="service-card__title">天国につながるホームそら</h3>
+          <p class="service-card__label">看取り・住宅型</p>
+          <p class="service-card__desc">病院でも自宅でもない、第三の場所。無垢材の空間で、最期の時間を穏やかに過ごせます。</p>
+          <a href="/home/" class="link-arrow">詳しく見る<span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ⑦ Target ====================== -->
+<section class="target reveal" id="target">
+  <div class="bg-decor" aria-hidden="true">
+    <svg class="bg-decor__cloud bg-decor__cloud--lg bg-decor__cloud--br" viewBox="0 0 200 80"><path fill="rgba(91,179,240,0.3)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+    <span class="bg-decor__grain"></span>
+  </div>
+  <div class="target__inner">
+    <header class="section-head">
+      <p class="en-sub reveal-sub">ご利用の皆さまへ</p>
+      <h2 class="section-title">対象別のご案内</h2>
+      <p class="section-lead">あなたに必要な情報へ、最短でご案内します。</p>
+    </header>
+    <div class="target__grid">
+      <a href="/for-family/" class="target-card">
+        <div class="target-card__media">
+          <img src="./images/image1.jpg" alt="" class="content-img" style="clip-path: url(#target-mask-1)" loading="lazy">
+        </div>
+        <div class="target-card__body">
+          <h3 class="target-card__title">ご本人・ご家族の方へ</h3>
+          <p class="target-card__desc">サービスのご紹介と、ご利用までの流れをご案内します。</p>
+          <span class="link-arrow link-arrow--double">
+            <em>Read More</em>
+            <span class="link-arrow__jp">詳しく見る<span class="link-arrow__arrow" aria-hidden="true">→</span></span>
+          </span>
+        </div>
+      </a>
+      <a href="/for-medical/" class="target-card">
+        <div class="target-card__media">
+          <img src="./images/image3.jpeg" alt="" class="content-img" style="clip-path: url(#target-mask-2)" loading="lazy">
+        </div>
+        <div class="target-card__body">
+          <h3 class="target-card__title">医療・介護関係者の方へ</h3>
+          <p class="target-card__desc">連携フロー・紹介窓口・対応可能な処置一覧をご案内します。</p>
+          <span class="link-arrow link-arrow--double">
+            <em>Read More</em>
+            <span class="link-arrow__jp">詳しく見る<span class="link-arrow__arrow" aria-hidden="true">→</span></span>
+          </span>
+        </div>
+      </a>
+      <a href="/for-supporter/" class="target-card">
+        <div class="target-card__media">
+          <img src="./images/image.jpg" alt="" class="content-img" style="clip-path: url(#target-mask-3)" loading="lazy">
+        </div>
+        <div class="target-card__body">
+          <h3 class="target-card__title">支援・ご寄付をお考えの方へ</h3>
+          <p class="target-card__desc">NPO活動への支援や寄付の使途、活動報告についてご案内します。</p>
+          <span class="link-arrow link-arrow--double">
+            <em>Read More</em>
+            <span class="link-arrow__jp">詳しく見る<span class="link-arrow__arrow" aria-hidden="true">→</span></span>
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ⑧ Voices ====================== -->
+<section class="voices reveal" id="voices">
+  <div class="bg-decor" aria-hidden="true">
+    <svg class="bg-decor__cloud bg-decor__cloud--lg bg-decor__cloud--tl" viewBox="0 0 200 80"><path fill="rgba(74,158,232,0.3)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+    <svg class="bg-decor__cloud bg-decor__cloud--sm bg-decor__cloud--br" viewBox="0 0 200 80"><path fill="rgba(91,179,240,0.25)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+    <span class="bg-decor__grain"></span>
+  </div>
+  <div class="voices__inner">
+    <header class="section-head">
+      <p class="en-sub reveal-sub">みなさまの声</p>
+      <h2 class="section-title">そらに集う、声。</h2>
+      <p class="section-lead">スタッフ・ご家族・連携先の方々からいただいた言葉です。</p>
+    </header>
+    <div class="voices__marquee" data-voices-marquee>
+    <ul class="voices__list">
+      <li class="voice-card">
+        <span class="voice-card__quote" aria-hidden="true">"</span>
+        <svg class="voice-card__avatar" viewBox="0 0 80 80" aria-hidden="true">
+          <circle cx="40" cy="40" r="40" fill="#EEF5FB"/>
+          <circle cx="40" cy="32" r="14" fill="#4A9EE8"/>
+          <path d="M14 76 Q40 52 66 76" fill="#4A9EE8"/>
+        </svg>
+        <p class="voice-card__text">「ここに来ると元気になれる」という声が、私たちの原動力です。</p>
+        <svg class="voice-card__wave" viewBox="0 0 48 6" aria-hidden="true"><path d="M0 3 Q 6 0 12 3 T 24 3 T 36 3 T 48 3" stroke="currentColor" stroke-width="1" fill="none"/></svg>
+        <p class="voice-card__name">— 田中 / みんなのホームそら スタッフ</p>
+      </li>
+      <li class="voice-card">
+        <span class="voice-card__quote" aria-hidden="true">"</span>
+        <svg class="voice-card__avatar" viewBox="0 0 80 80" aria-hidden="true">
+          <circle cx="40" cy="40" r="40" fill="#EEF5FB"/>
+          <circle cx="40" cy="32" r="14" fill="#2E7DD1"/>
+          <path d="M14 76 Q40 52 66 76" fill="#2E7DD1"/>
+        </svg>
+        <p class="voice-card__text">最期のときまで「ふつうの暮らし」を一緒につくれるのが、この仕事の誇りです。</p>
+        <svg class="voice-card__wave" viewBox="0 0 48 6" aria-hidden="true"><path d="M0 3 Q 6 0 12 3 T 24 3 T 36 3 T 48 3" stroke="currentColor" stroke-width="1" fill="none"/></svg>
+        <p class="voice-card__name">— 佐藤 / 天国につながるホームそら 看護師</p>
+      </li>
+      <li class="voice-card">
+        <span class="voice-card__quote" aria-hidden="true">"</span>
+        <svg class="voice-card__avatar" viewBox="0 0 80 80" aria-hidden="true">
+          <circle cx="40" cy="40" r="40" fill="#EEF5FB"/>
+          <circle cx="40" cy="32" r="14" fill="#5BB3F0"/>
+          <path d="M14 76 Q40 52 66 76" fill="#5BB3F0"/>
+        </svg>
+        <p class="voice-card__text">息子が穏やかに通える場所を見つけられて、家族としても安心しています。</p>
+        <svg class="voice-card__wave" viewBox="0 0 48 6" aria-hidden="true"><path d="M0 3 Q 6 0 12 3 T 24 3 T 36 3 T 48 3" stroke="currentColor" stroke-width="1" fill="none"/></svg>
+        <p class="voice-card__name">— ご利用者ご家族</p>
+      </li>
+      <li class="voice-card">
+        <span class="voice-card__quote" aria-hidden="true">"</span>
+        <svg class="voice-card__avatar" viewBox="0 0 80 80" aria-hidden="true">
+          <circle cx="40" cy="40" r="40" fill="#EEF5FB"/>
+          <circle cx="40" cy="32" r="14" fill="#1B4F8E"/>
+          <path d="M14 76 Q40 52 66 76" fill="#1B4F8E"/>
+        </svg>
+        <p class="voice-card__text">訪問看護との情報共有がきめ細やかで、安心して患者さんを託せます。</p>
+        <svg class="voice-card__wave" viewBox="0 0 48 6" aria-hidden="true"><path d="M0 3 Q 6 0 12 3 T 24 3 T 36 3 T 48 3" stroke="currentColor" stroke-width="1" fill="none"/></svg>
+        <p class="voice-card__name">— 連携医療機関 相談員</p>
+      </li>
+      <li class="voice-card">
+        <span class="voice-card__quote" aria-hidden="true">"</span>
+        <svg class="voice-card__avatar" viewBox="0 0 80 80" aria-hidden="true">
+          <circle cx="40" cy="40" r="40" fill="#EEF5FB"/>
+          <circle cx="40" cy="32" r="14" fill="#4A9EE8"/>
+          <path d="M14 76 Q40 52 66 76" fill="#4A9EE8"/>
+        </svg>
+        <p class="voice-card__text">娘が「明日も行きたい」と言ってくれる場所があることが何よりの支えです。</p>
+        <svg class="voice-card__wave" viewBox="0 0 48 6" aria-hidden="true"><path d="M0 3 Q 6 0 12 3 T 24 3 T 36 3 T 48 3" stroke="currentColor" stroke-width="1" fill="none"/></svg>
+        <p class="voice-card__name">— ご利用者ご家族</p>
+      </li>
+    </ul>
+    </div>
+    <div class="voices__more">
+      <a href="#" class="link-arrow">もっと読む<span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ⑨ News ====================== -->
+<section class="news reveal" id="news">
+  <div class="news__inner">
+    <span class="news__vertical" aria-hidden="true">お・知・ら・せ</span>
+    <header class="section-head">
+      <p class="en-sub reveal-sub">最新の情報</p>
+      <h2 class="section-title">お知らせ</h2>
+    </header>
+    <ul class="news__list">
+      <!-- TODO: 確定のお知らせ内容に差し替え（静的3件固定） -->
+      <li class="news-card">
+        <a href="#">
+          <time class="news-card__date" datetime="2025-09-15">2025 . 09 . 15</time>
+          <span class="news-card__cat news-card__cat--info">お知らせ</span>
+          <h3 class="news-card__title">秋のオープンデイを開催します</h3>
+          <span class="news-card__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+          </span>
+        </a>
+      </li>
+      <li class="news-card">
+        <a href="#">
+          <time class="news-card__date" datetime="2025-08-22">2025 . 08 . 22</time>
+          <span class="news-card__cat news-card__cat--recruit">採用</span>
+          <h3 class="news-card__title">支援員（正職員）募集を開始しました</h3>
+          <span class="news-card__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+          </span>
+        </a>
+      </li>
+      <li class="news-card">
+        <a href="#">
+          <time class="news-card__date" datetime="2025-07-10">2025 . 07 . 10</time>
+          <span class="news-card__cat news-card__cat--event">活動</span>
+          <h3 class="news-card__title">夏の作品展示会のご報告</h3>
+          <span class="news-card__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+          </span>
+        </a>
+      </li>
+    </ul>
+    <div class="news__more">
+      <!-- TODO: お知らせ一覧ページが下層別PJで完成後にリンク差し替え -->
+      <a href="#" class="link-arrow">すべてのお知らせを見る<span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ⑩-2 Contact ====================== -->
+<section class="contact reveal" id="contact">
+  <div class="contact__inner">
+    <div class="contact__intro">
+      <p class="en-sub reveal-sub">ご相談・お問い合わせ</p>
+      <h2 class="section-title">お気軽に<br>ご相談ください。</h2>
+      <p class="contact__lead">
+        サービスのご利用相談、関係機関からのお問い合わせ、採用や支援についてなど、<br>
+        どんなご相談でもお待ちしています。<br>
+        いただいたご連絡には、担当者より3営業日以内にご返信いたします。
+      </p>
+      <div class="contact__alt">
+        <p class="contact__alt-label">お電話でのお問い合わせ</p>
+        <a href="tel:0424035850" class="contact__tel" data-tel-mask>
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.2 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.2 1z"/></svg>
+          <span data-tel-display>042-403-5850</span>
+        </a>
+        <p class="contact__alt-note">受付時間：平日 9:00 – 17:30</p>
+      </div>
+    </div>
+    <form class="contact__form" id="contactForm" action="#" method="post" novalidate>
+      <!-- TODO: Formspree / Netlify Forms 等のエンドポイントに action を差し替え -->
+      <p class="form-row">
+        <label for="f-type">お問い合わせ種別 <span class="required">必須</span></label>
+        <select id="f-type" name="type" required aria-required="true">
+          <option value="">選択してください</option>
+          <option>サービス利用相談</option>
+          <option>関係機関として</option>
+          <option>採用について</option>
+          <option>ご寄付・ご支援</option>
+          <option>その他</option>
+        </select>
+      </p>
+      <p class="form-row">
+        <label for="f-name">お名前 <span class="required">必須</span></label>
+        <input type="text" id="f-name" name="name" required aria-required="true" autocomplete="name">
+      </p>
+      <p class="form-row form-row--split">
+        <span class="form-col">
+          <label for="f-email">メールアドレス <span class="required">必須</span></label>
+          <input type="email" id="f-email" name="email" required aria-required="true" autocomplete="email">
+        </span>
+        <span class="form-col">
+          <label for="f-tel">電話番号 <span class="optional">任意</span></label>
+          <input type="tel" id="f-tel" name="tel" autocomplete="tel">
+        </span>
+      </p>
+      <p class="form-row">
+        <label for="f-relation">ご関係 <span class="optional">任意</span></label>
+        <select id="f-relation" name="relation">
+          <option value="">選択してください</option>
+          <option>ご本人</option>
+          <option>ご家族</option>
+          <option>支援者</option>
+          <option>医療・福祉関係者</option>
+          <option>その他</option>
+        </select>
+      </p>
+      <p class="form-row">
+        <label for="f-message">お問い合わせ内容 <span class="required">必須</span></label>
+        <textarea id="f-message" name="message" rows="6" required aria-required="true" placeholder="50文字程度を目安に、ご状況やご相談内容をお聞かせください。"></textarea>
+      </p>
+      <p class="form-row form-row--check">
+        <label>
+          <input type="checkbox" id="f-privacy" name="privacy" required aria-required="true">
+          <a href="#" class="form-link">プライバシーポリシー</a>に同意する <span class="required">必須</span>
+        </label>
+      </p>
+      <!-- honeypot（人間には見えない、botのみ入力する罠） -->
+      <p class="hp" aria-hidden="true"><label>このフィールドは入力しないでください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></p>
+      <p class="form-row form-row--submit">
+        <button type="submit" class="btn btn--primary">送信する</button>
+      </p>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<!-- ====================== ⑩ Access ====================== -->
+<section class="access reveal" id="access">
+  <div class="access__inner">
+    <div class="access__text">
+      <p class="en-sub reveal-sub">所在地・連絡先</p>
+      <h2 class="section-title">拠点・お問い合わせ先</h2>
+      <dl class="access__list">
+        <div class="access__row">
+          <dt>住所</dt>
+          <dd>〒203-0032<br>東京都東久留米市前沢5-5-11</dd>
+        </div>
+        <div class="access__row">
+          <dt>電話</dt>
+          <dd><a href="tel:0424035850" class="access__tel" data-tel-mask><span data-tel-display>042-403-5850</span></a></dd>
+        </div>
+        <div class="access__row">
+          <dt>受付時間</dt>
+          <dd>平日 9:00 – 17:30<br>（土日祝 休み）</dd>
+        </div>
+      </dl>
+    </div>
+    <div class="access__map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.5!2d139.5121076!3d35.7408175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018e7fa11abb513%3A0x8c69bba982acd781!2z44Gv44GY44G-44KK44Gu5a6244Gd44KJ!5e0!3m2!1sja!2sjp!4v1713456000000!5m2!1sja!2sjp"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        title="はじまりの家そら 地図"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ⑪ Marquee（流れる帯：Cormorant italic × 和文セリフ） ====================== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Where Hope Begins.&nbsp;&nbsp;·&nbsp;&nbsp;人生の旅立ちを、はじまりに。&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <span>Where Hope Begins.&nbsp;&nbsp;·&nbsp;&nbsp;人生の旅立ちを、はじまりに。&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <span>Where Hope Begins.&nbsp;&nbsp;·&nbsp;&nbsp;人生の旅立ちを、はじまりに。&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+    <span>Where Hope Begins.&nbsp;&nbsp;·&nbsp;&nbsp;人生の旅立ちを、はじまりに。&nbsp;&nbsp;·&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<!-- ====================== ⑫ CTA ====================== -->
+<section class="cta" id="cta">
+  <div class="cta__bg" aria-hidden="true">
+    <svg class="cloud cloud--cta1" viewBox="0 0 200 80"><path fill="rgba(255,255,255,0.10)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+    <svg class="cloud cloud--cta2" viewBox="0 0 200 80"><path fill="rgba(255,255,255,0.07)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+    <svg class="cloud cloud--cta3" viewBox="0 0 200 80"><path fill="rgba(255,255,255,0.05)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+    <svg class="cloud cloud--cta4" viewBox="0 0 200 80"><path fill="rgba(255,255,255,0.06)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+    <svg class="cloud cloud--cta5" viewBox="0 0 200 80"><path fill="rgba(255,255,255,0.05)" d="M30 60 Q10 60 10 40 Q10 20 30 22 Q40 5 60 12 Q80 0 95 18 Q120 12 125 35 Q145 38 145 55 Q145 70 125 70 L40 70 Q30 70 30 60 Z"/></svg>
+    <span class="cta__stars"></span>
+    <span class="cta__bigword" aria-hidden="true">TAKE ACTION</span>
+  </div>
+  <div class="cta__inner">
+    <p class="en-sub en-sub--white">あなたの一歩から</p>
+    <h2 class="cta__title">あなたの一歩が、<br>誰かの空を晴らす。</h2>
+    <p class="cta__lead">
+      ご相談、ご見学、採用や寄付のご検討まで——<br>
+      どんな小さなことでも、まずはお声をお寄せください。
+    </p>
+    <div class="cta__btns">
+      <a href="#contact" class="btn btn--white">お問い合わせ</a>
+      <a href="/contact/visit/" class="btn btn--ghost">見学・ご相談予約</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ====================== ⑬ Footer ====================== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <img src="./images/icon.png" alt="はじまりの家そら" class="site-footer__logo">
+      <p class="site-footer__corp">NPO法人コミュニティケア・ライフ</p>
+      <address class="site-footer__address">
+        〒203-0032<br>
+        東京都東久留米市前沢5-5-11<br>
+        TEL：<a href="tel:0424035850">042-403-5850</a>
+      </address>
+      <!-- SNSリンク（URLは確定後に差し替え） -->
+      <ul class="site-footer__social" aria-label="公式SNS">
+        <li>
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram（新しいタブで開く）">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.88 5.88 0 0 0-2.13 1.38A5.88 5.88 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.8.73 1.48 1.38 2.13.65.65 1.33 1.07 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.8-.31 1.48-.73 2.13-1.38.65-.65 1.07-1.33 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.88 5.88 0 0 0-1.38-2.13A5.88 5.88 0 0 0 19.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0z"/>
+              <path d="M12 5.84a6.16 6.16 0 1 0 0 12.32A6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8z"/>
+              <circle cx="18.41" cy="5.59" r="1.44"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LINE公式アカウント（新しいタブで開く）">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314M9.13 13.069H6.903c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.597c.348 0 .63.283.63.63 0 .344-.282.629-.63.629m2.047 0c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.345 0 .63.285.63.63v4.332c0 .344-.285.629-.63.629m5.28 0c-.285 0-.554-.135-.72-.36l-2.25-3.06v2.791c0 .344-.285.629-.63.629-.345 0-.63-.285-.63-.629V8.108c0-.271.171-.51.42-.6.09-.03.18-.03.27-.03.195 0 .375.09.495.24l2.25 3.06V8.108c0-.345.285-.63.63-.63.346 0 .63.285.63.63v4.332c0 .27-.18.51-.42.6-.09.03-.18.03-.255.03m4.125-2.79c.345 0 .63.283.63.627 0 .345-.285.63-.63.63h-1.603v1.004h1.603c.345 0 .63.285.63.63 0 .345-.285.629-.63.629h-2.233c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63h2.233c.345 0 .63.285.63.63 0 .345-.285.63-.63.63h-1.603v1.005h1.603z"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+      <div class="site-footer__col">
+        <p class="site-footer__col-title">想い・理念</p>
+        <ul>
+          <li><a href="/about/">はじまりの家そらとは</a></li>
+          <li><a href="/about/philosophy/">私たちの想い</a></li>
+          <li><a href="/about/message/">代表メッセージ</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <p class="site-footer__col-title">4つの事業</p>
+        <ul>
+          <li><a href="/services/community/">みんなのホームそら</a></li>
+          <li><a href="/services/visiting-nursing/">訪問看護ステーションそら</a></li>
+          <li><a href="/services/care/">そらケアステーション</a></li>
+          <li><a href="/home/">天国につながるホームそら</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <p class="site-footer__col-title">対象別ご案内</p>
+        <ul>
+          <li><a href="/for-family/">ご本人・ご家族の方へ</a></li>
+          <li><a href="/for-medical/">医療・介護関係者の方へ</a></li>
+          <li><a href="/for-supporter/">支援・ご寄付をお考えの方へ</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col">
+        <p class="site-footer__col-title">法人・採用</p>
+        <ul>
+          <li><a href="/corporate/">法人概要</a></li>
+          <li><a href="/recruit/">採用情報</a></li>
+          <li><a href="#news">お知らせ</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="site-footer__bottom">
+    <p class="site-footer__copy">© NPO法人コミュニティケア・ライフ</p>
+    <ul class="site-footer__legal">
+      <li><a href="/privacy/">プライバシーポリシー</a></li>
+      <li><a href="/sitemap/">サイトマップ</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="./js/script.js" defer></script>
+</body>
+</html>
