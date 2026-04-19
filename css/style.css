@@ -688,6 +688,12 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   padding-top: var(--header-h-pc);
   background: linear-gradient(180deg, #EEF5FB 0%, #FAFCFE 100%);
   overflow: hidden;
+  /* F. 空の明暗が変わる微動 */
+  animation: kv-sky-shift 10s ease-in-out infinite alternate;
+}
+@keyframes kv-sky-shift {
+  0%   { background: linear-gradient(180deg, #EEF5FB 0%, #FAFCFE 100%); }
+  100% { background: linear-gradient(180deg, #E8F0FA 0%, #F0F6FD 100%); }
 }
 .kv__inner {
   position: relative;
@@ -723,7 +729,7 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   grid-column: 2 / 3;
   padding-right: clamp(16px, 2vw, 40px);
 }
-.kv__en { margin-bottom: 24px; opacity: 0; animation: kv-fade-in 1s var(--ease) 200ms forwards; }
+.kv__en { margin-bottom: 24px; opacity: 0; transform: translate(-20px, 30px); animation: kv-text-in 1s var(--ease) 0.2s forwards; }
 .kv__en span {
   font-family: var(--font-en); font-style: italic;
   font-size: 0.875rem; letter-spacing: 0.3em;
@@ -738,8 +744,8 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   color: var(--color-deep);
   margin-bottom: 28px;
   white-space: nowrap;
-  opacity: 0; transform: translateY(30px);
-  animation: kv-fade-in 900ms var(--ease) 320ms forwards;
+  opacity: 0; transform: translateY(50px);
+  animation: kv-fade-in 1s var(--ease) 0.5s forwards;
 }
 .kv__lead {
   font-size: var(--fs-lg);
@@ -747,15 +753,14 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   line-height: var(--lh-relaxed);
   color: var(--color-text);
   max-width: 480px;
-  opacity: 0; transform: translateY(20px);
-  animation: kv-fade-in 900ms var(--ease) 600ms forwards;
+  opacity: 0; transform: translateY(40px);
+  animation: kv-fade-in 1s var(--ease) 0.9s forwards;
 }
 /* スクロールヒントはKV最下端に配置（画像・テキストと被らないよう十分下へ） */
 .kv__scroll {
   position: absolute;
   left: 50%;
   bottom: 0;
-  transform: translate(-50%, 50%);
   display: inline-flex; flex-direction: column; align-items: center; gap: 12px;
   font-family: var(--font-en);
   font-size: 0.78rem;
@@ -763,7 +768,11 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   color: var(--color-deep);
   text-decoration: none;
   z-index: 5;
-  opacity: 0; animation: kv-fade-in 1s var(--ease) 900ms forwards;
+  opacity: 0; transform: translate(-50%, calc(50% - 20px));
+  animation: kv-scroll-in 1s var(--ease) 1.8s forwards;
+}
+@keyframes kv-scroll-in {
+  to { opacity: 1; transform: translate(-50%, 50%); }
 }
 .kv__scroll span:first-child { writing-mode: vertical-rl; animation: blink 2.4s ease-in-out infinite; }
 /* 縦ラインの上を青ドットが上から下へ流れる、シンプルな1本線表現 */
@@ -783,6 +792,15 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   animation: scroll-dot 2.2s ease-in-out infinite;
 }
 
+/* A. KV画像リビール：insetの右辺を100%→0にしてカーテンのように開く
+      clip-path: url(#kv-mask) と併用するため inset + url は不可。
+      代わに mask で左→右リビールを実現 */
+@keyframes kv-reveal {
+  from { opacity: 0; transform: scale(1.05); }
+  to   { opacity: 1; transform: scale(1); }
+}
+/* B. kv__en 斜め登場 */
+@keyframes kv-text-in { to { opacity: 1; transform: translate(0, 0); } }
 @keyframes kv-fade-in { to { opacity: 1; transform: translateY(0); } }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 @keyframes scroll-dot {
@@ -800,6 +818,8 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   position: relative;
   width: 100%; height: 100%;
   clip-path: url(#kv-mask);
+  /* A. リビール：scale + fadeで画像が浮かび上がる */
+  animation: kv-reveal 1.2s var(--ease) 0.3s both;
 }
 .kv__image-blur {
   position: absolute; inset: 0;
@@ -833,11 +853,22 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
 }
 .cloud { position: absolute; pointer-events: none; will-change: transform; }
 /* 左上の雲：右へ流れる */
-.cloud--kv1 { width: 200px; top: 8%; left: -4%; animation: cloud-drift-right 46s ease-in-out infinite; }
-/* 右中の小さい雲：左へ流れる（小さい雲は速く見えやすいので他と同等以上に長く） */
-.cloud--kv2 { width: 140px; top: 36%; right: 10%; animation: cloud-drift-left 48s ease-in-out infinite -12s; }
-/* 右下の雲：左へ流れる */
-.cloud--kv3 { width: 180px; bottom: 14%; right: -5%; animation: cloud-drift-left 52s ease-in-out infinite -22s; }
+/* C. 雲の初期登場：ふわっと出現してからdrift開始 */
+.cloud--kv1 {
+  width: 200px; top: 8%; left: -4%;
+  opacity: 0; transform: scale(0.7);
+  animation: cloud-appear 2s var(--ease) 0.5s forwards, cloud-drift-right 46s ease-in-out 2.5s infinite;
+}
+.cloud--kv2 {
+  width: 140px; top: 36%; right: 10%;
+  opacity: 0; transform: scale(0.7);
+  animation: cloud-appear 2s var(--ease) 1.0s forwards, cloud-drift-left 48s ease-in-out 3.0s infinite;
+}
+.cloud--kv3 {
+  width: 180px; bottom: 14%; right: -5%;
+  opacity: 0; transform: scale(0.7);
+  animation: cloud-appear 2s var(--ease) 1.5s forwards, cloud-drift-left 52s ease-in-out 3.5s infinite;
+}
 
 /* 画像左端の縦グラデ帯（テキスト領域の色と繋げる） */
 .kv__edge-grad {
@@ -884,7 +915,7 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   50%, 98%  { left: 60%; }
   100%      { left: 0; }
 }
-/* KV下端の雲ライン */
+/* KV下端の雲ライン + D. 下から押し上がる登場 */
 .kv__wave {
   position: absolute;
   left: 0; right: 0; bottom: -1px;
@@ -892,10 +923,20 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   display: block;
   pointer-events: none;
   z-index: 4;
+  opacity: 0; transform: translateY(100%);
+  animation: kv-wave-rise 0.8s var(--ease) 1.5s forwards;
+}
+@keyframes kv-wave-rise {
+  to { opacity: 1; transform: translateY(0); }
 }
 @keyframes float {
   0%, 100% { transform: translate(0, 0); }
   50%      { transform: translate(10px, -6px); }
+}
+
+/* C. 雲の初期登場：scale + opacity で出現 */
+@keyframes cloud-appear {
+  to { opacity: 1; transform: scale(1); }
 }
 
 /* 雲の横流れ（KV・メガメニュー・背景装飾・Philosophy 共通）
@@ -2111,7 +2152,7 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   .section-title { color: #000; }
 }
 
-/* 動作軽減設定：Ken Burns・星屑・雲フロートを停止 */
+/* 動作軽減設定：全アニメーションを停止 */
 @media (prefers-reduced-motion: reduce) {
   .service-card__media img,
   .target-card__media img { animation: none; }
@@ -2127,5 +2168,13 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   .cloud--kv2,
   .cloud--kv3,
   .overlay-menu__clouds .cloud--1,
-  .overlay-menu__clouds .cloud--2 { animation: none; }
+  .overlay-menu__clouds .cloud--2 { animation: none; opacity: 1; transform: none; }
+  /* A〜F: KV読み込みアニメーション停止 */
+  .kv { animation: none; }
+  .kv__image-wrap { animation: none; opacity: 1; transform: none; }
+  .kv__en { animation: none; opacity: 1; transform: none; }
+  .kv__title { animation: none; opacity: 1; transform: none; }
+  .kv__lead { animation: none; opacity: 1; transform: none; }
+  .kv__scroll { animation: none; opacity: 1; transform: translate(-50%, 50%); }
+  .kv__wave { animation: none; opacity: 1; transform: none; }
 }
