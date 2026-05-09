@@ -120,8 +120,8 @@ body.is-cta-visible .floating-cta.floating-cta {
 
 /* ---------- バリアント：① お問い合わせ（プライマリ） ---------- */
 .floating-cta__btn--primary {
-  /* デザイン案③：濃い青を一段明るく＋縦方向グラデーション（フッター・オーバーレイと同トーン） */
-  background: var(--gradient-deep-dawn);
+  /* 「送信する」ボタン（.btn--primary）と同じグラデーションを共有 */
+  background: var(--gradient-cta);
   color: #ffffff;
 }
 /* ホバー時に重ねるオーバーレイ色（単色 → opacity フェード） */

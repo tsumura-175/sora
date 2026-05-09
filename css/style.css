@@ -21,13 +21,12 @@
   --color-sub:    #6B7280;
   --color-border: #E2E8F0;
 
-  /* === デザイン案③：夜明け前トーン（濃い青を一段明るく＋紫み／藍み） ===
-     使用箇所：フッター最下部・メガメニュー・固定CTA（プライマリ） */
-  --color-deep-dawn-1: #3A5F9E;  /* 上端：従来 #1B4F8E より明度UP＋紫み */
-  --color-deep-dawn-2: #1F3A6E;  /* 下端：藍寄りに沈める */
-  --gradient-deep-dawn: linear-gradient(180deg,
-      var(--color-deep-dawn-1) 0%,
-      var(--color-deep-dawn-2) 100%);
+  /* === フッター・メガメニュー用：#4085CF を上端に置いた落ち着きのあるブルーグラデ === */
+  --color-footer-1: #4085CF;  /* 上端：指定色 */
+  --color-footer-2: #2C66A8;  /* 下端：上端を一段沈めた色（自然なグラデ用） */
+  --gradient-footer: linear-gradient(180deg,
+      var(--color-footer-1) 0%,
+      var(--color-footer-2) 100%);
 
 
   /* Typography */
@@ -203,8 +202,8 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
    ============================================================= */
 .overlay-menu {
   position: fixed; inset: 0;
-  /* デザイン案③：濃い青を一段明るく＋下方向にごく薄いグラデーション（夜明け前） */
-  background: var(--gradient-deep-dawn);
+  /* フッターと同じブルーグラデーションで統一 */
+  background: var(--gradient-footer);
   z-index: 105;
   display: flex; align-items: stretch; justify-content: center;
   opacity: 0; visibility: hidden;
@@ -339,7 +338,8 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   font-size: clamp(1.25rem, 2.3vw, 1.85rem);
   font-weight: 500;
   letter-spacing: 0.28em;
-  color: var(--color-accent);
+  /* フッターと同じ青背景上で読みやすいよう白系に。ホバー時 #fff へ昇格（L323-324） */
+  color: rgba(255, 255, 255, 0.92);
   line-height: 1.15;
 }
 .overlay-nav__jp {
@@ -445,13 +445,53 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
 .overlay-menu__sns ul a:hover { background: var(--color-light); border-color: var(--color-light); }
 
 /* =============================================================
+   Footer Wave Divider（CTA → Footer の境界をなめらかに）
+   ============================================================= */
+.site-footer-wave {
+  background: var(--color-pale); /* #EEF5FB（薄青の余白） */
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+.site-footer-wave__svg {
+  display: block;
+  width: 100%;
+  height: clamp(90px, 10vw, 145px); /* 振幅1.5倍に合わせて縦も比例UP */
+  margin-bottom: -2px; /* サブピクセル隙間対策（フッター上端への重ね） */
+}
+
+/* =============================================================
    Footer
    ============================================================= */
 .site-footer {
-  /* デザイン案③：濃い青を一段明るく＋下方向グラデーション（オーバーレイ／固定CTAと同トーン） */
-  background: var(--gradient-deep-dawn);
-  color: rgba(255,255,255,0.85);
+  /* サイトメインブルー揃えの中間トーン（--color-light → --color-main） */
+  background: var(--gradient-footer);
+  color: rgba(255,255,255,0.92);
   padding: clamp(48px, 6vw, 80px) 0 0;
+  margin-top: -1px;       /* 上の wave divider との隙間を確実に潰す */
+  position: relative;
+  z-index: 2;             /* wave の z-index:1 より上に重ねる */
+}
+.site-footer__bird {
+  position: absolute;
+  top: clamp(16px, 2.4vw, 28px);
+  left: clamp(20px, 4vw, 56px);
+  width: clamp(34px, 3.8vw, 54px);
+  aspect-ratio: 296 / 362;
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-mask-image: url("../images/bird.svg");
+          mask-image: url("../images/bird.svg");
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  transform: scaleX(-1) rotate(12deg); /* 左右反転 + ほんの少し右上を向かせる */
+  pointer-events: none;
+  z-index: 1;
 }
 .site-footer__inner {
   width: var(--max-content);
@@ -473,14 +513,14 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
 }
 .site-footer__corp {
   font-size: var(--fs-xs);
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.75);
   letter-spacing: 0.08em;
 }
 .site-footer__address {
   font-style: normal;
   font-size: var(--fs-sm);
   line-height: 1.8;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255,255,255,0.90);
   margin-top: 8px;
 }
 .site-footer__address a { color: rgba(255,255,255,0.95); }
@@ -497,8 +537,8 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.18);
+  color: #fff;
   transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 .site-footer__social a:hover,
@@ -534,7 +574,7 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   letter-spacing: 0.15em;
   margin-bottom: 14px;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.25);
 }
 /* カラムタイトルのリンク化に伴うスタイル
    下層リスト（site-footer__col a）の白でない色やホワイトスペース指定が
@@ -571,7 +611,7 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
 .site-footer__col ul { display: flex; flex-direction: column; gap: 8px; }
 .site-footer__col a {
   font-size: var(--fs-sm);
-  color: rgba(255,255,255,0.88);
+  color: rgba(255,255,255,0.95);
   letter-spacing: 0.06em;
   /* 和文の文字途中での折り返しを禁止し、自然な単語境界で改行させる。
      はみ出す長尺項目だけ break-word で安全に折り返す。 */
@@ -586,7 +626,7 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   width: var(--max-content);
   margin: clamp(32px, 4vw, 56px) auto 0;
   padding: 18px 0;
-  border-top: 1px solid rgba(255,255,255,0.12);
+  border-top: 1px solid rgba(255,255,255,0.22);
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap;
   gap: 12px;
@@ -594,13 +634,13 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
 .site-footer__copy {
   font-family: var(--font-jp-serif);
   font-size: var(--fs-xxs);
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.78);
   letter-spacing: 0.1em;
 }
 .site-footer__legal { display: flex; gap: 20px; }
 .site-footer__legal a {
   font-size: var(--fs-xxs);
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.92);
   transition: color 200ms var(--ease);
 }
 .site-footer__legal a:hover { color: #fff; }
