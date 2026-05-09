@@ -1,10 +1,5 @@
 /* =============================================================
-   はじまりの家そら｜TOPページ Scripts (PlanA v5 – Refactored)
-   - スクロール検知（ヘッダー白化・KVパララックス）
-   - IntersectionObserver（フェードアップ・Numbersカウントアップ・KV停止制御）
-   - KVスライダー（3枚クロスフェード）
-   - オーバーレイメニュー（focus trap, ESC）
-   - お問い合わせフォーム（honeypot + time-trap + 簡易バリデーション + aria-describedby）
+   ヘルパーステーションそら｜TOPページ Scripts
    ============================================================= */
 
 (() => {
@@ -132,7 +127,7 @@
         }
       };
 
-      // Phase 4-B: IntersectionObserver でKV画面外時にスライダー停止
+      // KV画面外時はスライダーを停止
       const kvSection = document.querySelector('.kv');
       if (kvSection && 'IntersectionObserver' in window) {
         const kvObserver = new IntersectionObserver((entries) => {
@@ -149,21 +144,6 @@
         startSlider();
       }
     }
-  }
-
-  // -----------------------------------------------------------
-  // 3-B. KV雲：driftは最初から動作、時差でフェードイン
-  // -----------------------------------------------------------
-  if (!reduceMotion) {
-    const kvClouds = [
-      { sel: '.cloud--kv1', delay: 500 },
-      { sel: '.cloud--kv2', delay: 1000 },
-      { sel: '.cloud--kv3', delay: 1500 },
-    ];
-    kvClouds.forEach(({ sel, delay }) => {
-      const el = document.querySelector(sel);
-      if (el) setTimeout(() => el.classList.add('is-visible'), delay);
-    });
   }
 
   // -----------------------------------------------------------
@@ -254,6 +234,20 @@
     document.querySelectorAll('.num').forEach((el) => {
       el.textContent = (parseInt(el.dataset.count, 10) || 0).toLocaleString();
     });
+  }
+
+  // -----------------------------------------------------------
+  // 6-B. Floating CTA：#cta セクションが画面に少しでも入ったらフェードアウト
+  //      （body.is-cta-visible を付け外し、表示制御は CSS 側で行う）
+  // -----------------------------------------------------------
+  const ctaSection = document.getElementById('cta');
+  if (ctaSection && 'IntersectionObserver' in window) {
+    const ctaObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        document.body.classList.toggle('is-cta-visible', entry.isIntersecting);
+      });
+    }, { threshold: 0 });
+    ctaObserver.observe(ctaSection);
   }
 
   // -----------------------------------------------------------
@@ -364,28 +358,6 @@
       form.reset();
       formLoadedAt = Date.now();
     });
-  }
-
-  // -----------------------------------------------------------
-  // 8. Voices 無限ループMarquee（カード複製＋CSSアニメーション）
-  // -----------------------------------------------------------
-  const voicesMarquee = document.querySelector('[data-voices-marquee]');
-  if (voicesMarquee) {
-    const voicesList = voicesMarquee.querySelector('.voices__list');
-    if (voicesList && !reduceMotion) {
-      const originals = Array.from(voicesList.children);
-      originals.forEach((el) => {
-        const clone = el.cloneNode(true);
-        clone.setAttribute('aria-hidden', 'true');
-        clone.classList.add('voice-card--clone');
-        voicesList.appendChild(clone);
-      });
-    } else if (voicesList && reduceMotion) {
-      voicesList.style.animation = 'none';
-      voicesList.style.flexWrap = 'wrap';
-      voicesList.style.width = 'auto';
-      voicesList.style.justifyContent = 'center';
-    }
   }
 
 })();

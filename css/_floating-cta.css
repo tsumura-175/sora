@@ -1,0 +1,147 @@
+/* =============================================================
+   _floating-cta.css – PC追従型フローティングCTA
+   ============================================================= */
+
+/* 水平スクロール対策（退避時の translate 100% で右外へ出るため） */
+html { overflow-x: clip; }
+
+.floating-cta {
+  position: fixed;
+  right: 0;
+  top: 62%; /* 画面中央よりやや下に配置 */
+  z-index: 90;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #ffffff;
+  border-radius: 14px 0 0 14px;
+  box-shadow: -8px 0 24px rgba(27, 79, 142, 0.12);
+  overflow: hidden;
+
+  /* 初期：右画面外に退避＋上下中央 */
+  transform: translate(100%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.5s var(--ease, cubic-bezier(0.22, 0.61, 0.36, 1)),
+    opacity 0.4s var(--ease, cubic-bezier(0.22, 0.61, 0.36, 1));
+}
+
+/* スクロール後：右からスライドイン（既存ヘッダーの is-scrolled と連動） */
+.site-header.is-scrolled ~ .floating-cta {
+  transform: translate(0, -50%);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 退避状態（メニュー展開中／CTAセクション到達時）。二重指定で特定度を上げる */
+body.menu-open .floating-cta.floating-cta,
+body.is-cta-visible .floating-cta.floating-cta {
+  transform: translate(100%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- ボタン本体（独立スタイル：.btn は流用しない） ---------- */
+.floating-cta__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  min-height: 180px;
+  padding: 16px 0 18px;
+
+  text-decoration: none;
+  font-family: var(--font-jp-sans);
+  font-weight: 600;
+  font-size: 0.8rem;
+  line-height: 1;
+
+  /* レイヤー型ホバー演出のための土台
+     （::before に色をオーバーレイし、opacity で滑らかに切り替える） */
+  position: relative;
+  isolation: isolate;
+
+  transition: color 0.55s var(--ease, cubic-bezier(0.22, 0.61, 0.36, 1));
+}
+
+/* ホバー時の色をオーバーレイとして敷き、opacity で滑らかに浮かび上がらせる。
+   ※ グラデーション⇄単色の background は CSS で補間できないため、
+   　 直接 hover で background を切り替えると一瞬でスナップしてしまう。
+   　 opacity を介すことで「光が差し込むように」色味が育つ動きになる。 */
+.floating-cta__btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.55s var(--ease, cubic-bezier(0.22, 0.61, 0.36, 1));
+}
+.floating-cta__btn:hover::before,
+.floating-cta__btn:focus-visible::before {
+  opacity: 1;
+}
+
+/* ボタン同士の区切り線（参考デザイン同様の細い水平線） */
+.floating-cta__btn + .floating-cta__btn {
+  border-top: 1px solid var(--color-border);
+}
+
+.floating-cta__btn:focus-visible {
+  outline: 2px solid var(--color-light);
+  outline-offset: -3px;
+}
+
+/* ---------- アイコン（上段） ---------- */
+.floating-cta__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-cta__icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  margin-bottom: 14px;
+}
+
+/* ---------- テキスト（下段・縦書き） ---------- */
+.floating-cta__text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 0.15em;
+  font-feature-settings: "palt" 0;
+}
+
+/* ---------- バリアント：① お問い合わせ（プライマリ） ---------- */
+.floating-cta__btn--primary {
+  /* デザイン案③：濃い青を一段明るく＋縦方向グラデーション（フッター・オーバーレイと同トーン） */
+  background: var(--gradient-deep-dawn);
+  color: #ffffff;
+}
+/* ホバー時に重ねるオーバーレイ色（単色 → opacity フェード） */
+.floating-cta__btn--primary::before {
+  background: var(--color-main);
+}
+.floating-cta__btn--primary:hover,
+.floating-cta__btn--primary:focus-visible {
+  color: #ffffff;
+}
+
+/* ---------- バリアント：② 見学・ご相談予約（セカンダリ） ---------- */
+.floating-cta__btn--secondary {
+  background: #ffffff;
+  color: var(--color-main);
+}
+.floating-cta__btn--secondary::before {
+  background: var(--color-pale);
+}
+.floating-cta__btn--secondary:hover,
+.floating-cta__btn--secondary:focus-visible {
+  color: var(--color-deep);
+}
