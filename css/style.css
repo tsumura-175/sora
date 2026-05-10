@@ -948,8 +948,8 @@ section.reveal.is-visible {
 .kv__scroll {
   position: absolute;
   left: 50%;
-  bottom: 0;
-  transform: translate(-50%, 50%);
+  bottom: 16px;
+  transform: translateX(-50%);
   display: inline-flex; flex-direction: column; align-items: center; gap: 12px;
   font-family: var(--font-en);
   font-size: 0.78rem;
@@ -959,30 +959,31 @@ section.reveal.is-visible {
   z-index: 5;
   opacity: 0; animation: kv-fade-in 1s var(--ease) 900ms forwards;
 }
-.kv__scroll span:first-child { writing-mode: vertical-rl; animation: blink 2.4s ease-in-out infinite; }
+.kv__scroll > span:first-child { writing-mode: vertical-rl; animation: blink 2.4s ease-in-out infinite; }
 .kv__scroll-line {
   display: block; position: relative;
-  width: 1px; height: 72px;
+  width: 1px; height: 56px;
   background: var(--color-deep);
   opacity: 0.55;
 }
 .kv__scroll-dot {
   position: absolute; left: 50%; top: 0;
   width: 5px; height: 5px;
-  margin-left: -2.5px;
   border-radius: 50%;
   background: var(--color-main);
   box-shadow: 0 0 0 3px rgba(46,125,209,0.18);
+  transform: translate(-50%, 0);
   animation: scroll-dot 2.2s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 @keyframes kv-fade-in { to { opacity: 1; transform: translateY(0); } }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 @keyframes scroll-dot {
-  0%   { top: -6px; opacity: 0; }
-  15%  { opacity: 1; }
-  80%  { opacity: 1; }
-  100% { top: 72px; opacity: 0; }
+  0%   { transform: translate(-50%, 0); opacity: 0; }
+  15%  { transform: translate(-50%, 6px); opacity: 1; }
+  92%  { transform: translate(-50%, 46px); opacity: 1; }
+  100% { transform: translate(-50%, 51px); opacity: 0; }
 }
 
 .kv__media {
@@ -2046,3 +2047,501 @@ section.reveal.is-visible {
   .overlay-menu__clouds .cloud--1,
   .overlay-menu__clouds .cloud--2 { animation: none; }
 }
+
+/* =============================================================
+   ▼ 下層ページ共通パーツ（about.html ほかで使用）
+   ・is-subpage（下層ページ用 body クラス：ヘッダー常時表示）
+   ・breadcrumb（KV 内・タイトル直下に配置）
+   ・page-kv（下層用 KV・中央配置／背景画像型）
+   ・page-anchor-nav（KV直下のアンカーメニュー）
+   ・page-side-nav（左サイド追従ナビ・PC のみ）
+   ・about-section（4 セクションラッパー）
+   ・page-related（関連ページ CTA・テキストリンク型）
+   ============================================================= */
+
+/* ── スクロール時の固定ヘッダー分のオフセット（アンカー遷移時の見切れ防止） ── */
+#about, #philosophy, #message, #values { scroll-margin-top: calc(var(--header-h-pc) + 24px); }
+
+/* =============================================================
+   下層ページ：ヘッダーを最初から表示
+   （トップでは scroll 80px 超で表示するが、下層では常時表示にする）
+   ============================================================= */
+body.is-subpage .site-header {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  height: 68px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+body.is-subpage .site-header__logo,
+body.is-subpage .site-header__nav,
+body.is-subpage .hamburger {
+  opacity: 1;
+  pointer-events: auto;
+}
+body.is-subpage .site-header__nav a { color: var(--color-deep); }
+body.is-subpage .site-header__nav a:hover { color: var(--color-main); }
+
+/* 下層ページ：フッター波線の上半分を contact セクションの下端と同色に揃える
+   （contact 下端 #FAFCFE と site-footer-wave 既定 #EEF5FB の段差を解消） */
+body.is-subpage .site-footer-wave { background: var(--color-bg); }
+
+/* =============================================================
+   Breadcrumb（パンくずリスト）— KV 内・タイトル直下に配置
+   ============================================================= */
+.breadcrumb {
+  position: relative;
+  z-index: 4;
+  margin-top: 18px;
+}
+.breadcrumb__list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--fs-xxs);
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.75);
+}
+.breadcrumb__item { display: inline-flex; align-items: center; }
+.breadcrumb__item:not(:first-child)::before {
+  content: "›";
+  display: inline-block;
+  margin: 0 10px 0 4px;
+  color: rgba(255,255,255,0.45);
+  font-size: 1rem;
+  line-height: 1;
+}
+.breadcrumb__item a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  transition: color 220ms var(--ease), opacity 220ms var(--ease);
+}
+.breadcrumb__item a:hover { color: #fff; opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+.breadcrumb__item--current {
+  color: #fff;
+  font-weight: var(--fw-medium);
+}
+/* KV 外で使う場合のフォールバック（白背景上の通常配色） */
+.breadcrumb:not(.breadcrumb--on-kv) .breadcrumb__list { color: var(--color-sub); }
+.breadcrumb:not(.breadcrumb--on-kv) .breadcrumb__item:not(:first-child)::before { color: var(--color-border); }
+.breadcrumb:not(.breadcrumb--on-kv) .breadcrumb__item a { color: var(--color-sub); }
+.breadcrumb:not(.breadcrumb--on-kv) .breadcrumb__item--current { color: var(--color-deep); }
+@media (max-width: 768px) {
+  .breadcrumb__list { font-size: 0.72rem; }
+}
+
+/* =============================================================
+   Page KV（下層用 KV）— 中央配置／背景画像型
+   ・トップとはレイアウトを変え、画像を全面背景に敷く
+   ・タイトル中央寄せ、パンくずは画像の右下にオーバーレイ
+   ・空・雲のテイストはトップと共通（cloud icon 装飾）
+   ============================================================= */
+.page-kv {
+  position: relative;
+  min-height: clamp(420px, 58vh, 620px);
+  padding: calc(var(--header-h-pc) + clamp(56px, 8vw, 112px)) clamp(20px, 4vw, 48px) clamp(56px, 8vw, 112px);
+  background: linear-gradient(180deg, #4A9EE8 0%, #2E7DD1 100%);
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-kv__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.page-kv__bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+}
+.page-kv__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(27,79,142,0.55) 0%, rgba(46,125,209,0.45) 50%, rgba(27,79,142,0.55) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 100%);
+  mix-blend-mode: normal;
+}
+.page-kv__clouds {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.page-kv__clouds .cloud { position: absolute; will-change: transform; }
+.page-kv__cloud--1 {
+  width: clamp(180px, 20vw, 320px);
+  top: 18%; left: 4%;
+  animation: cloud-drift-right 60s ease-in-out infinite;
+  opacity: 0.55;
+}
+.page-kv__cloud--2 {
+  width: clamp(120px, 14vw, 220px);
+  top: 28%; right: 6%;
+  animation: cloud-drift-left 56s ease-in-out infinite -10s;
+  opacity: 0.4;
+}
+.page-kv__cloud--3 {
+  width: clamp(160px, 18vw, 280px);
+  bottom: 14%; right: 14%;
+  animation: cloud-drift-right 58s ease-in-out infinite -18s;
+  opacity: 0.45;
+}
+.page-kv__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--max-content);
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.page-kv__en {
+  margin-bottom: 14px;
+  opacity: 0;
+  animation: kv-fade-in 1s var(--ease) 200ms forwards;
+}
+.page-kv__en span {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  letter-spacing: 0.32em;
+  color: rgba(255,255,255,0.95);
+  text-transform: uppercase;
+}
+.page-kv__title {
+  font-family: var(--font-jp-serif);
+  font-weight: 600;
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  line-height: 1.4;
+  letter-spacing: 0.16em;
+  color: #fff;
+  margin: 0;
+  text-shadow: 0 2px 24px rgba(27,79,142,0.4);
+  opacity: 0; transform: translateY(20px);
+  animation: kv-fade-in 900ms var(--ease) 320ms forwards;
+}
+/* パンくずは KV の左下にオーバーレイ */
+.page-kv .breadcrumb {
+  position: absolute;
+  left: clamp(20px, 4vw, 56px);
+  bottom: clamp(20px, 3vw, 36px);
+  margin-top: 0;
+  z-index: 4;
+  animation: kv-fade-in 900ms var(--ease) 600ms forwards;
+  opacity: 0;
+}
+@media (max-width: 768px) {
+  .page-kv {
+    min-height: clamp(340px, 50vh, 460px);
+    padding: calc(var(--header-h-sp) + clamp(48px, 9vw, 80px)) clamp(16px, 4vw, 24px) clamp(56px, 9vw, 80px);
+  }
+  .page-kv__title { letter-spacing: 0.12em; }
+  .page-kv .breadcrumb {
+    left: clamp(16px, 4vw, 24px);
+    bottom: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-kv__cloud--1,
+  .page-kv__cloud--2,
+  .page-kv__cloud--3 { animation: none; }
+  .page-kv__en,
+  .page-kv__title { animation: none; opacity: 1; transform: none; }
+  .page-kv .breadcrumb { animation: none; opacity: 1; }
+}
+
+/* =============================================================
+   Page Anchor Nav（KV 直下のアンカーメニュー・4項目グリッド）
+   ============================================================= */
+.page-anchor-nav {
+  position: relative;
+  z-index: 3;
+  padding: clamp(40px, 5vw, 64px) clamp(20px, 4vw, 48px);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+.page-anchor-nav__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: var(--max-content);
+  margin: 0 auto;
+  border-left: 1px solid var(--color-border);
+}
+.page-anchor-nav__item { display: flex; }
+.page-anchor-nav__link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: clamp(20px, 3vw, 32px) 16px;
+  text-align: center;
+  border-right: 1px solid var(--color-border);
+  transition: background 280ms var(--ease), color 280ms var(--ease);
+}
+.page-anchor-nav__link::before {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 2px;
+  background: var(--color-main);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 320ms var(--ease);
+}
+.page-anchor-nav__link:hover {
+  background: var(--color-pale);
+}
+.page-anchor-nav__link:hover::before {
+  transform: scaleX(1);
+}
+.page-anchor-nav__en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 0.82rem;
+  letter-spacing: 0.28em;
+  color: var(--color-main);
+  font-weight: 500;
+}
+.page-anchor-nav__jp {
+  font-family: var(--font-jp-serif);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-base);
+  letter-spacing: 0.1em;
+  color: var(--color-deep);
+  line-height: 1.4;
+}
+.page-anchor-nav__arrow {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: var(--font-en);
+  color: var(--color-main);
+  font-size: 1rem;
+  transition: transform 280ms var(--ease);
+}
+.page-anchor-nav__link:hover .page-anchor-nav__arrow {
+  transform: translateY(4px);
+}
+@media (max-width: 900px) {
+  .page-anchor-nav__list { grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--color-border); }
+  .page-anchor-nav__item:nth-child(-n+2) .page-anchor-nav__link { border-bottom: 1px solid var(--color-border); }
+}
+@media (max-width: 480px) {
+  .page-anchor-nav__list { grid-template-columns: 1fr; }
+  .page-anchor-nav__item .page-anchor-nav__link { border-bottom: 1px solid var(--color-border); }
+  .page-anchor-nav__item:last-child .page-anchor-nav__link { border-bottom: 0; }
+}
+
+/* =============================================================
+   Page Side Nav（左サイド追従ナビ・PC のみ）
+   ・anchor-nav を抜けたら fade in
+   ・page-related に差し掛かったら fade out
+   ・シンプルな縦線型（テキストのみ・ボックス無し）
+   ============================================================= */
+.page-side-nav {
+  position: fixed;
+  top: clamp(140px, 20vh, 200px);
+  left: clamp(96px, 10vw, 180px);
+  z-index: 50;
+  width: 240px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-12px);
+  transition: opacity 500ms var(--ease), transform 500ms var(--ease);
+}
+.page-side-nav.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+.page-side-nav__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-left: 22px;
+  border-left: 1px solid var(--color-border);
+}
+.page-side-nav__link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1.5;
+  color: rgba(34,34,34,0.55);
+  transition: color 280ms var(--ease);
+}
+.page-side-nav__link::before {
+  content: "";
+  position: absolute;
+  left: -23px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--color-main);
+  opacity: 0;
+  transition: opacity 280ms var(--ease);
+}
+.page-side-nav__link:hover { color: var(--color-deep); }
+.page-side-nav__link.is-active { color: var(--color-main); }
+.page-side-nav__link.is-active::before { opacity: 1; }
+.page-side-nav__en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 0.92rem;
+  letter-spacing: 0.24em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.page-side-nav__jp {
+  font-family: var(--font-jp-serif);
+  font-weight: var(--fw-medium);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+}
+@media (max-width: 1100px) {
+  .page-side-nav { display: none; }
+}
+
+/* =============================================================
+   About Section（4セクション共通ラッパー・中身は後日）
+   ============================================================= */
+.about-section {
+  position: relative;
+  padding: var(--section-py-pc) clamp(20px, 4vw, 48px);
+  overflow: hidden;
+}
+.about-section--01 { background: var(--color-bg); }
+.about-section--02 { background: var(--color-paper); }
+.about-section--03 { background: var(--color-bg); }
+.about-section--04 { background: var(--color-pale); }
+.about-section__inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max-content);
+  margin: 0 auto;
+}
+.about-section .section-head { text-align: left; }
+.about-section .section-title { color: var(--color-deep); }
+.about-section .section-lead { max-width: 640px; }
+.about-section__placeholder {
+  margin-top: clamp(24px, 4vw, 48px);
+  padding: clamp(40px, 6vw, 80px) clamp(24px, 4vw, 48px);
+  background: rgba(255,255,255,0.6);
+  border: 1px dashed var(--color-border);
+  border-radius: 12px;
+  text-align: center;
+  color: var(--color-sub);
+  font-size: var(--fs-sm);
+}
+@media (max-width: 768px) {
+  .about-section { padding: var(--section-py-sp) clamp(16px, 4vw, 24px); }
+}
+
+/* PC（≥ 1100px）：side nav と重ならないよう about-section の中身を右に寄せる
+   side nav 左 clamp(96px,10vw,180px) + 幅 240px + gap 60px ≒ 420〜480px 左に確保 */
+@media (min-width: 1100px) {
+  .about-section__inner {
+    margin-left: clamp(420px, calc(240px + 10vw + 60px), 540px);
+    margin-right: clamp(20px, 4vw, 48px);
+    max-width: min(760px, calc(100% - clamp(420px, calc(240px + 10vw + 60px), 540px) - clamp(20px, 4vw, 48px)));
+  }
+}
+
+/* =============================================================
+   Page Related（関連ページ CTA・テキストリンク型）
+   ============================================================= */
+.page-related {
+  padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 48px);
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+}
+.page-related__inner {
+  max-width: var(--max-content);
+  margin: 0 auto;
+}
+.page-related__label {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 0.85rem;
+  letter-spacing: 0.28em;
+  color: var(--color-main);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.page-related__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.page-related__list > li {
+  display: flex;
+  border-right: 1px solid var(--color-border);
+}
+.page-related__list > li:last-child { border-right: 0; }
+.page-related__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  padding: clamp(24px, 3vw, 36px) 16px;
+  transition: background 280ms var(--ease), color 280ms var(--ease);
+}
+.page-related__link:hover {
+  background: var(--color-pale);
+}
+.page-related__en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 0.8rem;
+  letter-spacing: 0.26em;
+  color: var(--color-main);
+}
+.page-related__jp {
+  font-family: var(--font-jp-serif);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-base);
+  letter-spacing: 0.08em;
+  color: var(--color-deep);
+}
+.page-related__arrow {
+  font-family: var(--font-en);
+  color: var(--color-main);
+  margin-left: 6px;
+  transition: transform 240ms var(--ease);
+}
+.page-related__link:hover .page-related__arrow {
+  transform: translateX(6px);
+}
+@media (max-width: 768px) {
+  .page-related__list {
+    grid-template-columns: 1fr;
+  }
+  .page-related__list > li {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-related__list > li:last-child { border-bottom: 0; }
+  .page-related__link { flex-direction: row; gap: 12px; padding: 20px 16px; }
+}
+

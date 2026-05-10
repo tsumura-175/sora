@@ -251,6 +251,122 @@
   }
 
   // -----------------------------------------------------------
+  // 6-C. Page Side Nav（下層ページ・左サイド追従ナビ）
+  //      ・anchor-nav を抜けたら fade in
+  //      ・page-related に差し掛かったら fade out（以降再表示しない）
+  //      ・現在閲覧中のセクションに .is-active を付与
+  // -----------------------------------------------------------
+  const sideNav = document.getElementById('pageSideNav');
+  if (sideNav) {
+    const sideNavLinks = Array.from(sideNav.querySelectorAll('.page-side-nav__link'));
+    const targetIds = sideNavLinks.map(a => a.getAttribute('data-target')).filter(Boolean);
+    const targets = targetIds.map(id => document.getElementById(id)).filter(Boolean);
+
+    const anchorNav = document.querySelector('.page-anchor-nav');
+    const pageRelatedSec = document.querySelector('.page-related');
+
+    // (1) 表示判定：anchor-nav が完全に画面外に出た AND page-related に差し掛かっていない
+    const updateSideNavVisibility = () => {
+      if (!anchorNav) return;
+      const anchorBottom = anchorNav.getBoundingClientRect().bottom;
+      const relatedTop = pageRelatedSec
+        ? pageRelatedSec.getBoundingClientRect().top
+        : Infinity;
+      const show = anchorBottom < 0 && relatedTop > window.innerHeight * 0.85;
+      sideNav.classList.toggle('is-visible', show);
+    };
+
+    let sideNavTicking = false;
+    const onSideNavScroll = () => {
+      if (!sideNavTicking) {
+        window.requestAnimationFrame(() => {
+          updateSideNavVisibility();
+          sideNavTicking = false;
+        });
+        sideNavTicking = true;
+      }
+    };
+    window.addEventListener('scroll', onSideNavScroll, { passive: true });
+    window.addEventListener('resize', onSideNavScroll);
+    updateSideNavVisibility();
+
+    // (2) 現在地ハイライト：4 セクションを観察し、画面中央に最も近いものに .is-active
+    if (targets.length > 0 && 'IntersectionObserver' in window) {
+      const updateActive = () => {
+        const centerY = window.innerHeight * 0.35;
+        let bestId = null;
+        let bestDist = Infinity;
+        targets.forEach((sec) => {
+          const rect = sec.getBoundingClientRect();
+          if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+          const dist = Math.abs(rect.top - centerY);
+          if (dist < bestDist) {
+            bestDist = dist;
+            bestId = sec.id;
+          }
+        });
+        sideNavLinks.forEach((a) => {
+          a.classList.toggle('is-active', a.getAttribute('data-target') === bestId);
+        });
+      };
+
+      const sectionObs = new IntersectionObserver(updateActive, {
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+        rootMargin: '-20% 0px -40% 0px',
+      });
+      targets.forEach((sec) => sectionObs.observe(sec));
+
+      let activeTicking = false;
+      window.addEventListener('scroll', () => {
+        if (!activeTicking) {
+          window.requestAnimationFrame(() => {
+            updateActive();
+            activeTicking = false;
+          });
+          activeTicking = true;
+        }
+      }, { passive: true });
+      updateActive();
+    }
+  }
+
+  // -----------------------------------------------------------
+  // 6-D. Floating CTA：下層ページ用の表示制御
+  //      ・anchor-nav が完全に画面外に出た瞬間に表示
+  //      ・anchor-nav が再表示されたら退避
+  //      ・既存 CSS（body.is-cta-visible で透明化）を流用
+  // -----------------------------------------------------------
+  const anchorNavForCta = document.querySelector('.page-anchor-nav');
+  const pageRelatedForCta = document.querySelector('.page-related');
+  if (anchorNavForCta) {
+    const updateCtaByAnchor = () => {
+      const bottom = anchorNavForCta.getBoundingClientRect().bottom;
+      const relatedTop = pageRelatedForCta
+        ? pageRelatedForCta.getBoundingClientRect().top
+        : Infinity;
+      // anchor-nav 完全に画面外 AND page-related に差し掛かっていない → 表示
+      if (bottom < 0 && relatedTop > window.innerHeight * 0.85) {
+        document.body.classList.remove('is-cta-visible');
+      } else {
+        document.body.classList.add('is-cta-visible');
+      }
+    };
+    let ctaTicking = false;
+    const onCtaScroll = () => {
+      if (!ctaTicking) {
+        window.requestAnimationFrame(() => {
+          updateCtaByAnchor();
+          ctaTicking = false;
+        });
+        ctaTicking = true;
+      }
+    };
+    window.addEventListener('scroll', onCtaScroll, { passive: true });
+    window.addEventListener('resize', onCtaScroll);
+    updateCtaByAnchor();
+  }
+
+  // -----------------------------------------------------------
   // 7. お問い合わせフォーム（honeypot + time-trap + バリデーション + aria-describedby）
   // -----------------------------------------------------------
   const form = document.getElementById('contactForm');
