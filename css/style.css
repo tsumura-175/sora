@@ -2426,10 +2426,36 @@ body.is-subpage .site-footer-wave { background: var(--color-bg); }
   padding: var(--section-py-pc) clamp(20px, 4vw, 48px);
   overflow: hidden;
 }
-.about-section--01 { background: var(--color-bg); }
-.about-section--02 { background: var(--color-paper); }
-.about-section--03 { background: var(--color-bg); }
-.about-section--04 { background: var(--color-pale); }
+/* セクション間でグラデーション接続（境界で色がパッと切れないようにする）
+   各セクションの終了色 = 次セクションの開始色／中央 30〜70% は単色を保持 */
+.about-section--01 {
+  background: linear-gradient(180deg,
+    var(--color-bg)    0%,
+    var(--color-bg)    30%,
+    var(--color-bg)    70%,
+    var(--color-paper) 100%);
+}
+.about-section--02 {
+  background: linear-gradient(180deg,
+    var(--color-paper) 0%,
+    var(--color-paper) 30%,
+    var(--color-paper) 70%,
+    var(--color-bg)    100%);
+}
+.about-section--03 {
+  background: linear-gradient(180deg,
+    var(--color-bg)    0%,
+    var(--color-bg)    30%,
+    var(--color-bg)    70%,
+    var(--color-pale)  100%);
+}
+.about-section--04 {
+  background: linear-gradient(180deg,
+    var(--color-pale)  0%,
+    var(--color-pale)  30%,
+    var(--color-pale)  70%,
+    var(--color-bg)    100%);
+}
 .about-section__inner {
   position: relative;
   z-index: 2;
@@ -2437,7 +2463,32 @@ body.is-subpage .site-footer-wave { background: var(--color-bg); }
   margin: 0 auto;
 }
 .about-section .section-head { text-align: left; }
-.about-section .section-title { color: var(--color-deep); }
+.about-section .section-title {
+  color: var(--color-deep);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: fit-content;
+  max-width: 100%;
+}
+.about-section .section-title::after {
+  content: "";
+  display: inline-block;
+  width: clamp(28px, 2.6vw, 40px);
+  aspect-ratio: 296 / 362.5;
+  background-color: var(--color-accent);
+  -webkit-mask-image: url("../images/bird.svg");
+          mask-image: url("../images/bird.svg");
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  opacity: 0.7;
+  transform: translateY(-4px);
+  flex-shrink: 0;
+}
 .about-section .section-lead { max-width: 640px; }
 .about-section__placeholder {
   margin-top: clamp(24px, 4vw, 48px);
@@ -2454,12 +2505,13 @@ body.is-subpage .site-footer-wave { background: var(--color-bg); }
 }
 
 /* PC（≥ 1100px）：side nav と重ならないよう about-section の中身を右に寄せる
-   side nav 左 clamp(96px,10vw,180px) + 幅 240px + gap 60px ≒ 420〜480px 左に確保 */
+   side nav 左 clamp(96px,10vw,180px) + 幅 240px + gap 60px ≒ 420〜480px 左に確保
+   右端は floating-cta（幅 48px・fixed right:0）との余白を確保 */
 @media (min-width: 1100px) {
   .about-section__inner {
     margin-left: clamp(420px, calc(240px + 10vw + 60px), 540px);
-    margin-right: clamp(20px, 4vw, 48px);
-    max-width: min(760px, calc(100% - clamp(420px, calc(240px + 10vw + 60px), 540px) - clamp(20px, 4vw, 48px)));
+    margin-right: clamp(64px, 6vw, 88px);
+    max-width: min(1040px, calc(100% - clamp(420px, calc(240px + 10vw + 60px), 540px) - clamp(64px, 6vw, 88px)));
   }
 }
 
@@ -2543,5 +2595,139 @@ body.is-subpage .site-footer-wave { background: var(--color-bg); }
   }
   .page-related__list > li:last-child { border-bottom: 0; }
   .page-related__link { flex-direction: row; gap: 12px; padding: 20px 16px; }
+}
+
+/* =============================================================
+   About Page Extensions（about/index.html 4セクション本文用）
+   ============================================================= */
+
+/* #about — 名前の由来：philosophy 風の柔らかい段組 */
+.about-lead {
+  margin-top: clamp(28px, 4vw, 48px);
+  max-width: 640px;
+}
+.about-lead__body {
+  font-family: var(--font-jp-serif);
+  font-size: var(--fs-md);
+  line-height: 2.0;
+  color: var(--color-text);
+  letter-spacing: 0.04em;
+}
+.about-lead__body + .about-lead__body { margin-top: 1.2em; }
+
+/* #about — 3つの特徴：target-card を about-section 内幅に合わせて再構成
+   ※ .target__grid クラスは付けず、段差 transform や clip-path を継承させない */
+.about-features {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin: clamp(36px, 5vw, 64px) 0 0;
+  padding: 0;
+}
+@media (min-width: 720px) {
+  .about-features { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1100px) {
+  .about-features { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+}
+
+/* #philosophy — 中央寄せステートメント（philosophy__body/__note を内包） */
+.about-statement {
+  position: relative;
+  max-width: 640px;
+  margin: clamp(36px, 5vw, 60px) auto 0;
+  text-align: center;
+}
+.about-statement__lead {
+  font-family: var(--font-jp-serif);
+  font-weight: var(--fw-semibold);
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  line-height: 1.7;
+  letter-spacing: 0.1em;
+  color: var(--color-deep);
+  margin-bottom: 8px;
+}
+
+/* #message — 代表写真＋本文 */
+.message-block {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) 1fr;
+  gap: clamp(28px, 4vw, 52px);
+  align-items: start;
+  margin-top: clamp(32px, 4vw, 48px);
+}
+.message-block__photo {
+  margin: 0;
+  text-align: center;
+}
+.message-block__photo img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 16px 32px rgba(27, 79, 142, 0.16);
+  background: var(--color-pale);
+}
+.message-block__caption {
+  margin-top: 14px;
+  font-family: var(--font-jp-serif);
+  font-size: var(--fs-sm);
+  color: var(--color-sub);
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+}
+.message-block__caption strong {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  color: var(--color-deep);
+  letter-spacing: 0.1em;
+}
+.message-block__body {
+  font-size: var(--fs-md);
+  line-height: 2.0;
+  color: var(--color-text);
+}
+.message-block__body p { margin-bottom: 1.2em; }
+.message-block__body p:last-of-type { margin-bottom: 0; }
+.message-block__body .philosophy__sign {
+  display: block;
+  margin-top: 28px;
+  text-align: right;
+  font-size: 1.05rem;
+  color: var(--color-deep);
+}
+@media (max-width: 720px) {
+  .message-block { grid-template-columns: 1fr; gap: 24px; }
+  .message-block__photo { max-width: 240px; margin: 0 auto; }
+}
+
+/* #values — flow を about-section 内幅にフィット */
+.values-flow { margin-top: clamp(36px, 5vw, 64px); }
+.values-flow .flow__step + .flow__step { margin-top: clamp(56px, 7vw, 96px); }
+.values-flow .flow__step-inner {
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(24px, 3vw, 44px);
+  align-items: center;
+}
+.values-flow .flow__step:nth-child(even) .flow__step-inner {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+}
+.values-flow .flow__photo img { height: clamp(220px, 26vw, 320px); border-radius: 18px; }
+.values-flow .flow__deco { width: clamp(140px, 18vw, 220px); }
+.values-flow .flow__heading { padding-top: clamp(60px, 7vw, 100px); margin-bottom: 14px; }
+.values-flow .flow__num { font-size: clamp(44px, 6vw, 72px); }
+.values-flow .flow__title { font-size: clamp(1.3rem, 2.4vw, 1.9rem); }
+@media (max-width: 720px) {
+  .values-flow .flow__step-inner,
+  .values-flow .flow__step:nth-child(even) .flow__step-inner {
+    grid-template-columns: 1fr;
+  }
+  .values-flow .flow__step:nth-child(even) .flow__photo { order: 0; }
+  .values-flow .flow__step:nth-child(even) .flow__body  { order: 0; }
+  .values-flow .flow__deco { display: none; }
 }
 
