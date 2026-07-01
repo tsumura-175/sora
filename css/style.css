@@ -1219,6 +1219,73 @@ section.reveal.is-visible {
 }
 
 /* =============================================================
+   ⑤ Promises
+   ============================================================= */
+.promises {
+  position: relative;
+  padding: var(--section-py-pc) 0;
+  background: linear-gradient(180deg, var(--color-pale) 0%, var(--color-bg) 48%, var(--color-pale) 100%);
+  overflow: hidden;
+}
+.promises__inner {
+  position: relative;
+  z-index: 1;
+  width: var(--max-content);
+  margin: 0 auto;
+}
+.promises__list {
+  max-width: 1040px;
+  margin: clamp(36px, 5vw, 64px) auto 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(46,125,209,0.16);
+}
+.promises__item {
+  display: grid;
+  grid-template-columns: clamp(64px, 8vw, 104px) 1fr;
+  gap: clamp(18px, 3vw, 40px);
+  padding: clamp(24px, 3.6vw, 40px) 0;
+  border-bottom: 1px solid rgba(46,125,209,0.16);
+}
+.promises__num {
+  font-family: var(--font-en);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: rgba(46,125,209,0.32);
+}
+.promises__body {
+  min-width: 0;
+}
+.promises__title {
+  font-family: var(--font-jp-serif);
+  font-weight: var(--fw-semibold);
+  font-size: clamp(1.18rem, 2vw, 1.55rem);
+  line-height: 1.65;
+  letter-spacing: 0.06em;
+  color: var(--color-deep);
+  margin-bottom: 10px;
+}
+.promises__text {
+  font-size: var(--fs-base);
+  line-height: 1.95;
+  color: var(--color-text);
+}
+@media (max-width: 720px) {
+  .promises {
+    padding: var(--section-py-sp) 0;
+  }
+  .promises__item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .promises__num {
+    font-size: 1.25rem;
+  }
+}
+
+/* =============================================================
    ⑥ Services
    ============================================================= */
 .services {
