@@ -301,7 +301,7 @@
     </div>
   </div>
 
-  <!-- ── 4本の帯エリア（白〜淡水色背景） ── -->
+  <!-- ── 主要事業エリア（白〜淡水色背景） ── -->
   <div class="services__bands">
     <div class="bg-decor" aria-hidden="true">
       <svg class="bg-decor__cloud bg-decor__cloud--sm bg-decor__cloud--tl" viewBox="0 0 200 80"><use href="./images/icons.svg#icon-cloud" fill="rgba(74,158,232,0.18)"/></svg>
@@ -313,22 +313,21 @@
       <svg class="bg-decor__cloud bg-decor__cloud--flow5" viewBox="0 0 200 80"><use href="./images/icons.svg#icon-cloud" fill="rgba(74,158,232,0.22)"/></svg>
       </div>
 
-    <svg class="flow__path" viewBox="0 0 1200 2400" preserveAspectRatio="none" aria-hidden="true">
+    <svg class="flow__path" viewBox="0 0 1200 1500" preserveAspectRatio="none" aria-hidden="true">
       <path d="M 200 80
-               C 200 380, 1000 380, 1000 680
-               S 200 1080, 200 1380
-               S 1000 1780, 1000 2080
-               S 200 2300, 200 2380"
+               C 200 350, 1000 350, 1000 640
+               S 220 980, 260 1250
+               C 300 1410, 760 1420, 980 1360"
             fill="none"
             stroke="var(--color-accent)"
             stroke-width="3"
             stroke-dasharray="8 12"
             stroke-linecap="round"
-            opacity="0.4"/>
+            opacity="0.38"/>
     </svg>
 
 
-    <ol class="flow" aria-label="私たちの取り組みの流れ">
+    <ol class="flow" aria-label="私たちの主要な取り組み">
 
       <!-- 01 天国につながるホームそら -->
       <li class="flow__step reveal" data-step="01">
@@ -346,7 +345,6 @@
           </div>
           <div class="flow__body">
             <div class="flow__heading">
-              <span class="flow__num" aria-hidden="true">01</span>
               <div>
                 <p class="flow__phase">看取り</p>
                 <h3 class="flow__title">天国につながるホームそら</h3>
@@ -379,7 +377,6 @@
           </div>
           <div class="flow__body">
             <div class="flow__heading">
-              <span class="flow__num" aria-hidden="true">02</span>
               <div>
                 <p class="flow__phase">在宅支援</p>
                 <h3 class="flow__title">訪問看護ステーションそら</h3>
@@ -396,63 +393,26 @@
         </div>
       </li>
 
-      <!-- 03 みんなのホームそら -->
-      <li class="flow__step reveal" data-step="03">
-        <div class="flow__deco" aria-hidden="true">
-          <svg class="flow__deco-icon" viewBox="0 0 160 160"><use href="./images/icons.svg#icon-flow-01"/></svg>
-        </div>
-        <div class="flow-birds" aria-hidden="true">
-          <span class="flow-bird-cluster flow-bird-cluster--solo flow-bird-cluster--01a" aria-hidden="true">
-            <span class="flow-bird flow-bird--lead" aria-hidden="true"></span>
-          </span>
-        </div>
-        <div class="flow__step-inner">
-          <div class="flow__photo">
-            <img src="./images/service-community.webp" alt="みんなのホームそらの活動風景" width="600" height="400" loading="lazy">
-          </div>
-          <div class="flow__body">
-            <div class="flow__heading">
-              <span class="flow__num" aria-hidden="true">03</span>
-              <div>
-                <p class="flow__phase">出会い・日常</p>
-                <h3 class="flow__title">みんなのホームそら</h3>
-              </div>
-            </div>
-            <p class="flow__desc">地域・多世代が集う開かれた場。健康相談会や季節行事を通じて、人と人がつながります。</p>
-            <p class="flow__links">
-              <a href="services/#community" class="link-arrow">詳しく見る<span aria-hidden="true">→</span></a>
-            </p>
-          </div>
-        </div>
-      </li>
-
-      <!-- 04 ヘルパーステーションそら -->
-      <li class="flow__step reveal" data-step="04">
-        <div class="flow__deco" aria-hidden="true">
-          <svg class="flow__deco-icon" viewBox="0 0 160 160"><use href="./images/icons.svg#icon-flow-03"/></svg>
-        </div>
+      <!-- その他の支援 -->
+      <li class="flow__step flow__step--other reveal">
         <div class="flow-birds" aria-hidden="true">
           <span class="flow-bird-cluster flow-bird-cluster--solo flow-bird-cluster--g34" aria-hidden="true">
             <span class="flow-bird flow-bird--lead" aria-hidden="true"></span>
           </span>
         </div>
-        <div class="flow__step-inner">
-          <div class="flow__photo">
-            <img src="./images/service-hajimari.webp" alt="ヘルパーステーションそらの施設風景" width="600" height="400" loading="lazy">
-          </div>
-          <div class="flow__body">
-            <div class="flow__heading">
-              <span class="flow__num" aria-hidden="true">04</span>
-              <div>
-                <p class="flow__phase">通所介護（デイサービス）</p>
-                <h3 class="flow__title">ヘルパーステーションそら</h3>
-              </div>
-            </div>
-            <p class="flow__desc">日中の通所による介護・機能訓練・交流の場。一人ひとりの暮らしのリズムに寄り添います。</p>
-            <p class="flow__links">
-              <a href="services/#helper" class="link-arrow">詳しく見る<span aria-hidden="true">→</span></a>
-            </p>
-          </div>
+        <div class="flow-other">
+          <p class="flow-other__eyebrow">OTHER SUPPORT</p>
+          <h3 class="flow-other__title">その他にも、こんなご利用に対応しています</h3>
+          <ul class="flow-other__list">
+            <li>短期利用をご希望の方</li>
+            <li>怪我や病気から退院し、在宅復帰前の一時利用をご希望の方</li>
+            <li>リトリートステイをご希望の方</li>
+            <li>地域コミュニティスペースとして利用したい方</li>
+          </ul>
+          <p class="flow-other__text">上記のような方へ向けた事業も提供しております。</p>
+          <p class="flow__links flow-other__links">
+            <a href="services/" class="link-arrow">詳しくはこちらをご覧ください<span aria-hidden="true">→</span></a>
+          </p>
         </div>
       </li>
     </ol>
