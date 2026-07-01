@@ -170,6 +170,12 @@ dl { padding: 0; }
 .site-header.is-scrolled .site-header__nav a { color: var(--color-deep); }
 .site-header.is-scrolled .site-header__nav a:hover { color: var(--color-main); }
 
+@media (max-width: 1199px) {
+  .site-header__nav {
+    display: none;
+  }
+}
+
 .site-header.is-scrolled {
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(8px);
@@ -2736,4 +2742,3 @@ body.is-subpage .site-footer-wave { background: var(--color-bg); }
   .values-flow .flow__step:nth-child(even) .flow__body  { order: 0; }
   .values-flow .flow__deco { display: none; }
 }
-
