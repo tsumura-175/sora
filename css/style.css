@@ -1873,18 +1873,13 @@ section.reveal.is-visible {
   position: relative;
   margin: 0 0 24px;
   padding: 22px 24px 24px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(238,245,251,0.82) 100%);
-  border: 1px solid rgba(46,125,209,0.18);
-  border-radius: 14px;
-  box-shadow: 0 10px 28px rgba(27,79,142,0.06);
+  background: rgba(255,255,255,0.78);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
   overflow: hidden;
 }
 .contact-support::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  background: linear-gradient(180deg, var(--color-light) 0%, var(--color-main) 100%);
+  content: none;
 }
 .contact-support__title {
   font-family: var(--font-jp-serif);
@@ -1902,7 +1897,7 @@ section.reveal.is-visible {
 }
 .contact-support__list li {
   position: relative;
-  padding-left: 24px;
+  padding-left: 22px;
   font-size: var(--fs-sm);
   line-height: 1.75;
   color: var(--color-text);
@@ -1910,24 +1905,16 @@ section.reveal.is-visible {
 .contact-support__list li::before {
   content: "";
   position: absolute;
-  top: 0.58em;
-  left: 0;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--color-main);
-  box-shadow: 0 0 0 4px rgba(46,125,209,0.10);
-}
-.contact-support__list li::after {
-  content: "";
-  position: absolute;
-  top: calc(0.58em + 3px);
-  left: 5px;
-  width: 4px;
-  height: 7px;
-  border: solid #fff;
+  top: 0.55em;
+  left: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid var(--color-main);
   border-width: 0 1.5px 1.5px 0;
   transform: rotate(45deg);
+}
+.contact-support__list li::after {
+  content: none;
 }
 @media (max-width: 720px) {
   .contact__inner { grid-template-columns: 1fr; }
@@ -3022,24 +3009,20 @@ body.is-subpage .site-footer-wave { background: var(--color-bg); }
 }
 .access-request__item {
   display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 18px;
+  grid-template-columns: clamp(64px, 8vw, 104px) 1fr;
+  gap: clamp(18px, 3vw, 40px);
   padding: clamp(20px, 3vw, 28px);
   border: 1px solid var(--color-border);
   border-radius: 8px;
   background: rgba(255,255,255,0.78);
 }
 .access-request__icon {
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--color-main);
-  color: #fff;
   font-family: var(--font-en);
-  font-style: italic;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: rgba(46,125,209,0.32);
 }
 .access-request__title {
   font-family: var(--font-jp-serif);
