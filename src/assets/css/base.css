@@ -1222,7 +1222,6 @@ section.reveal.is-visible {
   font-size: 0.95rem;
   letter-spacing: 0.08em;
   color: var(--color-deep);
-  background: linear-gradient(180deg, rgba(238,245,251,0) 0%, var(--color-pale) 55%, rgba(238,245,251,0) 100%);
   border-radius: 2px;
 }
 .philosophy__note::before,
@@ -2322,4 +2321,3 @@ section.reveal.is-visible {
   .overlay-menu__clouds .cloud--1,
   .overlay-menu__clouds .cloud--2 { animation: none; }
 }
-

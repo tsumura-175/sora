@@ -10,7 +10,7 @@
    ============================================================= */
 
 /* ── スクロール時の固定ヘッダー分のオフセット（アンカー遷移時の見切れ防止） ── */
-#about, #philosophy, #message, #values { scroll-margin-top: calc(var(--header-h-pc) + 24px); }
+#philosophy, #message { scroll-margin-top: calc(var(--header-h-pc) + 24px); }
 
 /* =============================================================
    下層ページ：ヘッダーを最初から表示
@@ -559,4 +559,3 @@ body.is-subpage .site-footer-wave { background: var(--color-bg); }
 /* =============================================================
    About Page Extensions（about/index.html 4セクション本文用）
    ============================================================= */
-
