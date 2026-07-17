@@ -164,9 +164,11 @@ dl { padding: 0; }
   transform: scaleX(0); transform-origin: left;
   transition: transform 280ms var(--ease);
 }
-.site-header__nav a:hover::after { transform: scaleX(1); }
+.site-header__nav a:hover::after,
+.site-header__nav a.is-current::after { transform: scaleX(1); }
 .site-header.is-scrolled .site-header__nav a { color: var(--color-deep); }
-.site-header.is-scrolled .site-header__nav a:hover { color: var(--color-main); }
+.site-header.is-scrolled .site-header__nav a:hover,
+.site-header.is-scrolled .site-header__nav a.is-current { color: var(--color-main); }
 
 @media (max-width: 1199px) {
   .site-header__nav {

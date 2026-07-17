@@ -1,5 +1,5 @@
 import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
-import { dirname, join } from "node:path";
+import { dirname, join, relative } from "node:path";
 
 const projectRoot = process.cwd();
 const sourceRoot = join(projectRoot, "src");
@@ -9,9 +9,13 @@ function siteHref(root, href) {
   return href.startsWith("#") || /^(https?:|mailto:|tel:)/.test(href) ? href : `${root}${href}`;
 }
 
-function renderNavigation(items, root, type) {
+function renderNavigation(items, root, type, activePrimaryHref = null) {
   if (type === "primary") {
-    return `<ul>\n${items.map((item) => `        <li><a href="${siteHref(root, item.href)}">${item.label}</a></li>`).join("\n")}\n      </ul>`;
+    return `<ul>\n${items.map((item) => {
+      const isCurrent = item.href === activePrimaryHref;
+      const currentAttributes = isCurrent ? ' class="is-current" aria-current="page"' : '';
+      return `        <li><a href="${siteHref(root, item.href)}"${currentAttributes}>${item.label}</a></li>`;
+    }).join("\n")}\n      </ul>`;
   }
 
   if (type === "overlay") {
@@ -40,10 +44,33 @@ function render(template, context) {
 }
 
 const site = JSON.parse(await read(join(sourceRoot, "data", "site.json")));
-const pageDirectories = (await readdir(join(sourceRoot, "pages"), { withFileTypes: true }))
-  .filter((entry) => entry.isDirectory())
-  .map((entry) => entry.name)
-  .sort();
+async function findPageDirectories(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const pages = [];
+
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    const childDirectory = join(directory, entry.name);
+    const childEntries = await readdir(childDirectory);
+    if (childEntries.includes("page.json")) pages.push(childDirectory);
+    pages.push(...await findPageDirectories(childDirectory));
+  }
+
+  return pages;
+}
+
+function rootForOutput(output) {
+  const outputDirectory = dirname(join(projectRoot, output));
+  const pathToRoot = relative(outputDirectory, projectRoot).replaceAll("\\", "/");
+  return pathToRoot ? `${pathToRoot}/` : "./";
+}
+
+function primaryHrefForOutput(output) {
+  if (output === "index.html") return null;
+  return `${output.split("/")[0]}/`;
+}
+
+const pageDirectories = (await findPageDirectories(join(sourceRoot, "pages"))).sort();
 
 const templates = await Promise.all([
   read(join(sourceRoot, "layouts", "document-start.html")),
@@ -56,10 +83,9 @@ const templates = await Promise.all([
   read(join(sourceRoot, "components", "scripts.html"))
 ]);
 
-for (const pageId of pageDirectories) {
-  const pageDir = join(sourceRoot, "pages", pageId);
+for (const pageDir of pageDirectories) {
   const config = JSON.parse(await read(join(pageDir, "page.json")));
-  const root = config.output === "index.html" ? "./" : "../";
+  const root = rootForOutput(config.output);
   const [pageMain, pageAfterContact] = await Promise.all([
     read(join(pageDir, "main.html")),
     read(join(pageDir, "after-contact.html"))
@@ -71,7 +97,7 @@ for (const pageId of pageDirectories) {
     description: config.description,
     canonical: config.canonical,
     preload: config.preload ? render(config.preload, { root }) : "",
-    primaryNavigation: renderNavigation(site.primaryNavigation, root, "primary"),
+    primaryNavigation: renderNavigation(site.primaryNavigation, root, "primary", primaryHrefForOutput(config.output)),
     overlayNavigation: renderNavigation(site.overlayNavigation, root, "overlay"),
     footerNavigation: renderNavigation(site.footerNavigation, root, "footer")
   };

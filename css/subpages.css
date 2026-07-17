@@ -30,7 +30,8 @@ body.is-subpage .hamburger {
   pointer-events: auto;
 }
 body.is-subpage .site-header__nav a { color: var(--color-deep); }
-body.is-subpage .site-header__nav a:hover { color: var(--color-main); }
+body.is-subpage .site-header__nav a:hover,
+body.is-subpage .site-header__nav a.is-current { color: var(--color-main); }
 
 /* 下層ページ：フッター波線の上半分を contact セクションの下端と同色に揃える
    （contact 下端 #FAFCFE と site-footer-wave 既定 #EEF5FB の段差を解消） */

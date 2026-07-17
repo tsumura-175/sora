@@ -4,23 +4,23 @@
     { "label": "そらでの暮らし", "href": "services/" },
     { "label": "ご関係別案内", "href": "target/" },
     { "label": "法人情報", "href": "corporate/" },
-    { "label": "スタッフ紹介", "href": "corporate/#staff" },
+    { "label": "スタッフ紹介", "href": "staff/" },
     { "label": "採用情報", "href": "recruit/" },
     { "label": "お知らせ", "href": "news/" }
   ],
   "overlayNavigation": [
     { "number": "01", "en": "ABOUT", "jp": "想い・理念", "href": "about/", "children": [{ "label": "私たちの想い", "href": "about/#philosophy" }, { "label": "代表メッセージ", "href": "about/#message" }] },
-    { "number": "02", "en": "SERVICE", "jp": "そらでの暮らし", "href": "services/", "children": [{ "label": "天国につながるホームそら", "href": "services/#home" }, { "label": "訪問看護ステーションそら", "href": "services/#visiting-nursing" }, { "label": "プライベートナースそら", "href": "services/#private-nurse" }, { "label": "そらのリトリートステイ", "href": "services/#retreat" }, { "label": "地域コミュニティスペース", "href": "services/#community" }, { "label": "料金・ご利用条件", "href": "pricing/" }] },
+    { "number": "02", "en": "SERVICE", "jp": "そらでの暮らし", "href": "services/", "children": [{ "label": "天国につながるホームそら", "href": "services/#home" }, { "label": "訪問看護ステーションそら", "href": "services/#visiting-nursing" }, { "label": "プライベートナースそら", "href": "services/#private-nurse" }, { "label": "そらのリトリートステイ", "href": "services/#retreat" }, { "label": "地域コミュニティスペース", "href": "services/#community" }, { "label": "料金・ご利用条件", "href": "services/pricing/" }] },
     { "number": "03", "en": "FOR YOU", "jp": "ご関係別案内", "href": "target/", "children": [{ "label": "ご本人・ご家族の方へ", "href": "target/" }, { "label": "医療・介護関係者の方へ", "href": "target/#medical" }, { "label": "支援・ご寄付をお考えの方へ", "href": "target/#supporter" }] },
-    { "number": "04", "en": "CORPORATE", "jp": "法人情報", "href": "corporate/", "children": [{ "label": "法人概要", "href": "corporate/" }, { "label": "スタッフ紹介", "href": "corporate/#staff" }, { "label": "事業計画・活動報告", "href": "corporate/#report" }, { "label": "定款・財務情報", "href": "corporate/#disclosure" }] },
+    { "number": "04", "en": "CORPORATE", "jp": "法人情報", "href": "corporate/", "children": [{ "label": "団体概要", "href": "corporate/#overview" }, { "label": "沿革", "href": "corporate/#history" }] },
     { "number": "05", "en": "RECRUIT", "jp": "採用情報", "href": "recruit/", "children": [{ "label": "採用にあたって（理念）", "href": "recruit/" }, { "label": "募集職種", "href": "recruit/#jobs" }, { "label": "スタッフインタビュー", "href": "recruit/#interview" }, { "label": "応募フォーム", "href": "recruit/#apply" }] },
     { "number": "06", "en": "NEWS", "jp": "お知らせ", "href": "news/", "children": [{ "label": "お知らせ一覧", "href": "news/" }] }
   ],
   "footerNavigation": [
     { "label": "想い・理念", "href": "about/", "children": [{ "label": "私たちの想い", "href": "about/#philosophy" }, { "label": "代表メッセージ", "href": "about/#message" }] },
-    { "label": "そらでの暮らし", "href": "services/", "children": [{ "label": "天国につながるホームそら", "href": "services/#home" }, { "label": "訪問看護ステーションそら", "href": "services/#visiting-nursing" }, { "label": "プライベートナースそら", "href": "services/#private-nurse" }, { "label": "そらのリトリートステイ", "href": "services/#retreat" }, { "label": "地域コミュニティスペース", "href": "services/#community" }, { "label": "料金・ご利用条件", "href": "pricing/" }] },
+    { "label": "そらでの暮らし", "href": "services/", "children": [{ "label": "天国につながるホームそら", "href": "services/#home" }, { "label": "訪問看護ステーションそら", "href": "services/#visiting-nursing" }, { "label": "プライベートナースそら", "href": "services/#private-nurse" }, { "label": "そらのリトリートステイ", "href": "services/#retreat" }, { "label": "地域コミュニティスペース", "href": "services/#community" }, { "label": "料金・ご利用条件", "href": "services/pricing/" }] },
     { "label": "ご関係別案内", "href": "target/", "children": [{ "label": "ご本人・ご家族の方へ", "href": "target/" }, { "label": "医療・介護関係者の方へ", "href": "target/#medical" }, { "label": "支援・ご寄付をお考えの方へ", "href": "target/#supporter" }] },
-    { "label": "法人情報", "href": "corporate/", "children": [{ "label": "法人概要", "href": "corporate/" }, { "label": "スタッフ紹介", "href": "corporate/#staff" }, { "label": "事業計画・活動報告", "href": "corporate/#report" }, { "label": "定款・財務情報", "href": "corporate/#disclosure" }] },
+    { "label": "法人情報", "href": "corporate/", "children": [{ "label": "団体概要", "href": "corporate/#overview" }, { "label": "沿革", "href": "corporate/#history" }] },
     { "label": "採用情報", "href": "recruit/", "children": [{ "label": "採用にあたって（理念）", "href": "recruit/" }, { "label": "募集職種", "href": "recruit/#jobs" }, { "label": "スタッフインタビュー", "href": "recruit/#interview" }, { "label": "応募フォーム", "href": "recruit/#apply" }] },
     { "label": "お知らせ", "href": "news/", "children": [{ "label": "お知らせ一覧", "href": "news/" }] }
   ]

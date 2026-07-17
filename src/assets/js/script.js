@@ -56,14 +56,14 @@
       if (first) setTimeout(() => first.focus(), 400);
     };
 
-    const closeMenu = () => {
+    const closeMenu = ({ restoreFocus = true } = {}) => {
       document.body.classList.remove('menu-open');
       overlay.classList.remove('is-open');
       overlay.setAttribute('aria-hidden', 'true');
       hamburger.setAttribute('aria-expanded', 'false');
       hamburger.setAttribute('aria-label', 'メニューを開く');
       document.body.style.overflow = '';
-      if (lastFocused && typeof lastFocused.focus === 'function') {
+      if (restoreFocus && lastFocused && typeof lastFocused.focus === 'function') {
         lastFocused.focus();
       }
     };
@@ -81,11 +81,16 @@
       if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeMenu();
     });
 
-    overlay.querySelectorAll('a[href^="#"]').forEach((a) => {
-      a.addEventListener('click', () => {
-        if (overlay.classList.contains('is-open')) closeMenu();
+    // 同一ページ内アンカーを含め、メガメニューのナビリンクを選んだら必ず閉じる。
+    // リンク操作時はハンバーガーへフォーカスを戻さず、通常の遷移・スクロールを優先する。
+    const overlayNavigation = overlay.querySelector('.overlay-nav');
+    if (overlayNavigation) {
+      overlayNavigation.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href]');
+        if (!link || !overlayNavigation.contains(link) || !overlay.classList.contains('is-open')) return;
+        closeMenu({ restoreFocus: false });
       });
-    });
+    }
 
     // focus trap
     overlay.addEventListener('keydown', (e) => {
