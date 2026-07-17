@@ -1,0 +1,78 @@
+/* =============================================================
+   料金・ご利用条件
+   下層ページ共通のKVと、罫線・余白を軸にした情報ページ
+   ============================================================= */
+.pricing-band { position: relative; padding: var(--section-py-pc) clamp(20px, 4vw, 48px); overflow: hidden; }
+.pricing-band[id] { scroll-margin-top: calc(var(--header-h-pc) + 24px); }
+.pricing-band--home { background: linear-gradient(180deg, var(--color-paper) 0%, var(--color-bg) 100%); }
+.pricing-band--nursing { background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-pale) 100%); }
+.pricing-band--private { background: linear-gradient(180deg, var(--color-pale) 0%, var(--color-bg) 100%); }
+.pricing-band__inner { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; }
+.pricing-band__head { margin-bottom: clamp(40px, 5vw, 64px); text-align: left; }
+.pricing-band__head .section-title { display: flex; align-items: center; gap: 20px; width: fit-content; max-width: 100%; }
+.pricing-band__head .section-title::after {
+  content: ""; display: inline-block; width: clamp(28px, 2.6vw, 40px); aspect-ratio: 296 / 362.5;
+  background-color: var(--color-accent); -webkit-mask: url("../images/bird.svg") center / contain no-repeat; mask: url("../images/bird.svg") center / contain no-repeat;
+  opacity: .7; transform: translateY(-4px); flex-shrink: 0;
+}
+
+.pricing-summary,
+.pricing-detail-list,
+.pricing-private-rate { margin: 0; border-top: 1px solid var(--color-border); }
+.pricing-summary > div,
+.pricing-detail-list > div,
+.pricing-private-rate > div {
+  display: grid; grid-template-columns: minmax(180px, 30%) 1fr; gap: 24px;
+  padding: 18px 24px; border-bottom: 1px solid var(--color-border); background: rgba(255,255,255,.45);
+}
+.pricing-summary dt,
+.pricing-detail-list dt,
+.pricing-private-rate dt { color: var(--color-deep); font-family: var(--font-jp-serif); font-weight: var(--fw-medium); letter-spacing: .08em; }
+.pricing-summary dd,
+.pricing-detail-list dd,
+.pricing-private-rate dd { margin: 0; color: var(--color-text); font-family: var(--font-jp-sans); font-variant-numeric: tabular-nums; }
+.pricing-detail-list dd { display: flex; flex-direction: column; gap: 4px; }
+.pricing-detail-list small { color: var(--color-sub); font-size: var(--fs-sm); }
+
+.pricing-group { margin-top: clamp(52px, 7vw, 80px); }
+.pricing-group__head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 10px; }
+.pricing-group__head p { margin: 0; color: var(--color-main); font-family: var(--font-en); font-size: .84rem; font-style: italic; font-weight: 500; letter-spacing: .24em; }
+.pricing-group__head h3 { margin: 0; color: var(--color-deep); font-family: var(--font-jp-serif); font-size: var(--fs-2xl); font-weight: var(--fw-semibold); letter-spacing: .08em; }
+.pricing-group__caption { margin: 0 0 24px; color: var(--color-sub); font-size: var(--fs-sm); }
+
+.pricing-room-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; width: min(100%, 720px); margin: 0 auto; border: 1px solid var(--color-border); background: var(--color-border); }
+.pricing-room-list li { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 96px; padding: 20px 28px; background: rgba(255,255,255,.82); }
+.pricing-room-list__name { color: var(--color-deep); font-family: var(--font-jp-serif); font-size: var(--fs-base); font-weight: var(--fw-medium); letter-spacing: .1em; }
+.pricing-room-list__price { color: var(--color-deep); font-family: var(--font-jp-sans); font-size: clamp(1.15rem, 2vw, 1.4rem); font-weight: var(--fw-medium); font-variant-numeric: tabular-nums; letter-spacing: .04em; white-space: nowrap; }
+.pricing-room-list__price small { color: var(--color-sub); font-family: var(--font-jp-sans); font-size: var(--fs-sm); font-weight: var(--fw-regular); }
+
+.pricing-caution { margin: 20px 0 0; padding: 15px 20px 15px 24px; border-left: 2px solid var(--color-main); color: var(--color-sub); font-size: var(--fs-sm); line-height: var(--lh-relaxed); }
+
+.pricing-consultation { max-width: 760px; margin: 0 auto; padding: clamp(32px, 5vw, 52px); border: 1px solid var(--color-border); background: rgba(255,255,255,.72); text-align: center; }
+.pricing-consultation__label { margin: 0 0 12px; color: var(--color-main); font-family: var(--font-en); font-size: .85rem; font-style: italic; font-weight: 500; letter-spacing: .28em; }
+.pricing-consultation__title { margin: 0; color: var(--color-deep); font-family: var(--font-jp-serif); font-size: var(--fs-xl); font-weight: var(--fw-semibold); letter-spacing: .08em; }
+.pricing-consultation__title + p { margin: 20px 0 0; color: var(--color-sub); line-height: var(--lh-relaxed); }
+
+.pricing-private-rate { width: min(100%, 720px); margin: 0 auto; border: 1px solid var(--color-border); }
+.pricing-private-rate > div { padding: clamp(24px, 4vw, 32px); background: rgba(255,255,255,.78); }
+.pricing-private-rate dt { font-size: var(--fs-base); }
+.pricing-private-rate dd { display: flex; align-items: baseline; justify-content: flex-end; gap: .65em; color: var(--color-deep); font-weight: var(--fw-medium); letter-spacing: .04em; }
+.pricing-private-rate__term { font-size: var(--fs-base); }
+.pricing-private-rate__amount { font-size: clamp(1.15rem, 2vw, 1.4rem); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+@media (max-width: 768px) {
+  .pricing-band { padding: var(--section-py-sp) clamp(16px, 4vw, 24px); }
+  .pricing-band[id] { scroll-margin-top: calc(var(--header-h-sp) + 16px); }
+  .pricing-band__head { margin-bottom: 36px; }
+  .pricing-band__head .section-title { gap: 14px; }
+  .pricing-summary > div,
+  .pricing-detail-list > div,
+  .pricing-private-rate > div { grid-template-columns: 1fr; gap: 8px; padding: 16px; }
+  .pricing-group { margin-top: 48px; }
+  .pricing-group__head { gap: 12px; }
+  .pricing-group__head h3 { font-size: var(--fs-xl); }
+  .pricing-room-list { grid-template-columns: 1fr; }
+  .pricing-room-list li { min-height: 76px; padding: 16px 20px; }
+  .pricing-consultation { padding: 32px 20px; text-align: left; }
+  .pricing-consultation__title { font-size: var(--fs-lg); }
+}
