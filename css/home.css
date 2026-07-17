@@ -1,0 +1,39 @@
+/* =============================================================
+   Top page specific styles
+   ============================================================= */
+.home-introduction {
+  position: relative;
+  padding: var(--section-py-pc) 0;
+  background: linear-gradient(180deg, var(--color-pale) 0%, var(--color-bg) 50%, var(--color-pale) 100%);
+  overflow: hidden;
+}
+.home-introduction__inner {
+  position: relative;
+  z-index: 1;
+  width: var(--max-content);
+  margin: 0 auto;
+}
+.home-introduction__content {
+  width: min(720px, 100%);
+  margin: clamp(36px, 5vw, 56px) auto 0;
+  padding: clamp(30px, 5vw, 52px);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  text-align: center;
+}
+.home-introduction__quote {
+  color: var(--color-deep);
+  font-family: var(--font-jp-serif);
+  font-size: clamp(1.25rem, 2.5vw, 1.85rem);
+  font-weight: var(--fw-semibold);
+  line-height: 1.8;
+  letter-spacing: 0.08em;
+}
+.home-introduction__body {
+  margin-top: clamp(22px, 3vw, 30px);
+  color: var(--color-text);
+  font-size: var(--fs-md);
+  line-height: 2;
+  letter-spacing: 0.06em;
+}
+.home-introduction__link { margin-top: clamp(24px, 3vw, 32px); }

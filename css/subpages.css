@@ -1,6 +1,5 @@
 /* =============================================================
    ▼ 下層ページ共通パーツ（about.html ほかで使用）
-   ・is-subpage（下層ページ用 body クラス：ヘッダー常時表示）
    ・breadcrumb（KV 内・タイトル直下に配置）
    ・page-kv（下層用 KV・中央配置／背景画像型）
    ・page-anchor-nav（KV直下のアンカーメニュー）
@@ -11,31 +10,6 @@
 
 /* ── スクロール時の固定ヘッダー分のオフセット（アンカー遷移時の見切れ防止） ── */
 #philosophy, #message { scroll-margin-top: calc(var(--header-h-pc) + 24px); }
-
-/* =============================================================
-   下層ページ：ヘッダーを最初から表示
-   （トップでは scroll 80px 超で表示するが、下層では常時表示にする）
-   ============================================================= */
-body.is-subpage .site-header {
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  height: 68px;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-}
-body.is-subpage .site-header__logo,
-body.is-subpage .site-header__nav,
-body.is-subpage .hamburger {
-  opacity: 1;
-  pointer-events: auto;
-}
-body.is-subpage .site-header__nav a { color: var(--color-deep); }
-body.is-subpage .site-header__nav a:hover,
-body.is-subpage .site-header__nav a.is-current { color: var(--color-main); }
-
-/* 下層ページ：フッター波線の上半分を contact セクションの下端と同色に揃える
-   （contact 下端 #FAFCFE と site-footer-wave 既定 #EEF5FB の段差を解消） */
-body.is-subpage .site-footer-wave { background: var(--color-bg); }
 
 /* =============================================================
    Breadcrumb（パンくずリスト）— KV 内・タイトル直下に配置
@@ -450,16 +424,6 @@ body.is-subpage .site-footer-wave { background: var(--color-bg); }
   flex-shrink: 0;
 }
 .about-section .section-lead { max-width: 640px; }
-.about-section__placeholder {
-  margin-top: clamp(24px, 4vw, 48px);
-  padding: clamp(40px, 6vw, 80px) clamp(24px, 4vw, 48px);
-  background: rgba(255,255,255,0.6);
-  border: 1px dashed var(--color-border);
-  border-radius: 12px;
-  text-align: center;
-  color: var(--color-sub);
-  font-size: var(--fs-sm);
-}
 @media (max-width: 768px) {
   .about-section { padding: var(--section-py-sp) clamp(16px, 4vw, 24px); }
 }

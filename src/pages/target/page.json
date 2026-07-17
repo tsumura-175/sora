@@ -2,5 +2,27 @@
   "output": "target/index.html",
   "title": "ご関係別案内 | はじまりの家そら",
   "description": "ご本人・ご家族、医療・介護関係者、支援をご検討の方へ向けたご案内です。",
-  "canonical": "https://hajimarinoie-sora.jp/target/"
+  "canonical": "https://hajimarinoie-sora.jp/target/",
+  "hero": {
+    "en": "FOR YOU",
+    "title": "ご関係別案内",
+    "image": "images/kv-01.webp",
+    "width": 1600,
+    "height": 1066,
+    "sources": [{ "src": "images/kv-01-1024.webp", "width": 1024 }, { "src": "images/kv-01.webp", "width": 1600 }],
+    "sizes": "100vw",
+    "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "ご関係別案内" }]
+  },
+  "anchorNavigation": {
+    "items": [
+      { "id": "family", "en": "FAMILY", "label": "ご本人・ご家族の方へ" },
+      { "id": "medical", "en": "MEDICAL", "label": "医療・介護関係者の方へ" },
+      { "id": "supporter", "en": "SUPPORT", "label": "支援・ご寄付をお考えの方へ" }
+    ]
+  },
+  "related": [
+    { "en": "PRICING", "label": "料金・ご利用条件", "href": "services/pricing/" },
+    { "en": "SERVICE", "label": "そらでの暮らし", "href": "services/" },
+    { "en": "HOME SORA", "label": "ホームそらのご紹介", "href": "home-sora/" }
+  ]
 }

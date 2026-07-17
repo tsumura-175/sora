@@ -2,5 +2,18 @@
   "output": "services/pricing/index.html",
   "title": "料金・ご利用条件 | はじまりの家そら",
   "description": "コミュニティホームはじまりの家そら、訪問看護サービス、自費訪問看護の料金・ご利用条件をご案内します。",
-  "canonical": "https://hajimarinoie-sora.jp/services/pricing/"
+  "canonical": "https://hajimarinoie-sora.jp/services/pricing/",
+  "hero": {
+    "en": "PRICING",
+    "title": "料金・ご利用条件",
+    "image": "images/kv-02.webp",
+    "width": 1600,
+    "height": 1066,
+    "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "そらでの暮らし", "href": "services/" }, { "label": "料金・ご利用条件" }]
+  },
+  "related": [
+    { "en": "SERVICE", "label": "そらでの暮らし", "href": "services/" },
+    { "en": "HOME SORA", "label": "ホームそらのご紹介", "href": "home-sora/" },
+    { "en": "FOR YOU", "label": "ご関係別案内", "href": "target/" }
+  ]
 }

@@ -2,5 +2,26 @@
   "output": "about/index.html",
   "title": "想い・理念 | はじまりの家そら",
   "description": "はじまりの家そらの想い・理念をご紹介します。",
-  "canonical": "https://hajimarinoie-sora.jp/about/"
+  "canonical": "https://hajimarinoie-sora.jp/about/",
+  "hero": {
+    "en": "ABOUT US",
+    "title": "想い・理念",
+    "image": "images/kv-01.webp",
+    "width": 1600,
+    "height": 1066,
+    "sources": [{ "src": "images/kv-01-1024.webp", "width": 1024 }, { "src": "images/kv-01.webp", "width": 1600 }],
+    "sizes": "100vw",
+    "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "想い・理念" }]
+  },
+  "anchorNavigation": {
+    "items": [
+      { "id": "philosophy", "en": "PHILOSOPHY", "label": "私たちの想い" },
+      { "id": "message", "en": "MESSAGE", "label": "代表メッセージ" }
+    ]
+  },
+  "related": [
+    { "en": "SERVICE", "label": "そらでの暮らし", "href": "services/" },
+    { "en": "FOR YOU", "label": "ご関係別案内", "href": "target/" },
+    { "en": "HOME SORA", "label": "ホームそらのご紹介", "href": "home-sora/" }
+  ]
 }

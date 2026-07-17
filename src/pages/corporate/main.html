@@ -1,26 +1,6 @@
 <main id="top">
 
-<section class="page-kv" aria-label="ページキービジュアル">
-  <div class="page-kv__bg" aria-hidden="true">
-    <img src="../images/kv-01.webp" srcset="../images/kv-01-1024.webp 1024w, ../images/kv-01.webp 1600w" sizes="100vw" alt="" class="page-kv__bg-image" width="1600" height="1066" fetchpriority="high">
-    <span class="page-kv__bg-overlay"></span>
-  </div>
-  <div class="page-kv__clouds" aria-hidden="true">
-    <svg class="cloud page-kv__cloud--1" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.7)"/></svg>
-    <svg class="cloud page-kv__cloud--2" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.5)"/></svg>
-    <svg class="cloud page-kv__cloud--3" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.55)"/></svg>
-  </div>
-  <div class="page-kv__inner">
-    <p class="page-kv__en"><span>CORPORATE</span></p>
-    <h1 class="page-kv__title">法人情報</h1>
-  </div>
-  <nav class="breadcrumb breadcrumb--on-kv" aria-label="現在位置">
-    <ol class="breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
-      <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="../" itemprop="item"><span itemprop="name">ホーム</span></a><meta itemprop="position" content="1"></li>
-      <li class="breadcrumb__item breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">法人情報</span><meta itemprop="position" content="2"></li>
-    </ol>
-  </nav>
-</section>
+{{pageHero}}
 
 <section class="corporate-band corporate-band--overview reveal" id="overview" aria-labelledby="overview-title">
   <div class="bg-decor" aria-hidden="true"><svg class="bg-decor__cloud bg-decor__cloud--lg bg-decor__cloud--br" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(91,179,240,0.18)"/></svg></div>
@@ -56,12 +36,4 @@
   </div>
 </section>
 
-<section class="page-related" aria-label="関連ページ">
-  <div class="page-related__inner">
-    <p class="page-related__label">関連ページ</p>
-    <ul class="page-related__list">
-      <li><a href="../about/" class="page-related__link"><span class="page-related__en">ABOUT</span><span class="page-related__jp">想い・理念</span><span class="page-related__arrow" aria-hidden="true">→</span></a></li>
-      <li><a href="../home-sora/" class="page-related__link"><span class="page-related__en">HOME SORA</span><span class="page-related__jp">ホームそらのご紹介</span><span class="page-related__arrow" aria-hidden="true">→</span></a></li>
-    </ul>
-  </div>
-</section>
+{{pageRelated}}

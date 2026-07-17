@@ -6,6 +6,23 @@
   'use strict';
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const supportsIntersectionObserver = 'IntersectionObserver' in window;
+  const createRafHandler = (callback) => {
+    let scheduled = false;
+    return () => {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(() => {
+        callback();
+        scheduled = false;
+      });
+    };
+  };
+  const isBetweenAnchorAndRelated = (anchorNav, pageRelated) => {
+    const anchorBottom = anchorNav.getBoundingClientRect().bottom;
+    const relatedTop = pageRelated ? pageRelated.getBoundingClientRect().top : Infinity;
+    return anchorBottom < 0 && relatedTop > window.innerHeight * 0.85;
+  };
 
   // -----------------------------------------------------------
   // 1. ヘッダー白化（スクロール80px超）
@@ -14,23 +31,18 @@
   if (!header) return;
 
   let lastScroll = 0;
-  let scrollTicking = false;
-
   const updateHeader = () => {
     if (lastScroll > 80) {
       header.classList.add('is-scrolled');
     } else {
       header.classList.remove('is-scrolled');
     }
-    scrollTicking = false;
   };
 
+  const onHeaderScroll = createRafHandler(updateHeader);
   window.addEventListener('scroll', () => {
     lastScroll = window.scrollY;
-    if (!scrollTicking) {
-      window.requestAnimationFrame(updateHeader);
-      scrollTicking = true;
-    }
+    onHeaderScroll();
   }, { passive: true });
   updateHeader();
 
@@ -134,7 +146,7 @@
 
       // KV画面外時はスライダーを停止
       const kvSection = document.querySelector('.kv');
-      if (kvSection && 'IntersectionObserver' in window) {
+      if (kvSection && supportsIntersectionObserver) {
         const kvObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -156,26 +168,19 @@
   // -----------------------------------------------------------
   const kvMedia = document.querySelector('.kv__image-wrap');
   if (!reduceMotion && kvMedia) {
-    let parallaxTicking = false;
     let kvVisible = true;
     const updateParallax = () => {
       if (kvVisible) {
         const offset = Math.min(window.scrollY * 0.15, 120);
         kvMedia.style.transform = `translateY(${-offset}px)`;
       }
-      parallaxTicking = false;
     };
 
-    window.addEventListener('scroll', () => {
-      if (!parallaxTicking) {
-        window.requestAnimationFrame(updateParallax);
-        parallaxTicking = true;
-      }
-    }, { passive: true });
+    window.addEventListener('scroll', createRafHandler(updateParallax), { passive: true });
 
     // KV外ではパララックス計算をスキップ
     const kvSection = document.querySelector('.kv');
-    if (kvSection && 'IntersectionObserver' in window) {
+    if (kvSection && supportsIntersectionObserver) {
       const parallaxObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           kvVisible = entry.isIntersecting;
@@ -188,7 +193,7 @@
   // -----------------------------------------------------------
   // 5. IntersectionObserver（フェードアップ）
   // -----------------------------------------------------------
-  if ('IntersectionObserver' in window) {
+  if (supportsIntersectionObserver) {
     const io = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -204,49 +209,11 @@
   }
 
   // -----------------------------------------------------------
-  // 6. Numbers カウントアップ
-  // -----------------------------------------------------------
-  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-  const animateCount = (el) => {
-    const target = parseInt(el.dataset.count, 10) || 0;
-    if (reduceMotion) { el.textContent = target.toLocaleString(); return; }
-    const duration = 1500;
-    const start = performance.now();
-    const step = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const value = Math.floor(target * easeOutCubic(progress));
-      el.textContent = value.toLocaleString();
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target.toLocaleString();
-    };
-    requestAnimationFrame(step);
-  };
-
-  if ('IntersectionObserver' in window) {
-    const numIo = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.num').forEach((el, i) => {
-            setTimeout(() => animateCount(el), i * 100);
-          });
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.4 });
-    const numbersSection = document.querySelector('.numbers');
-    if (numbersSection) numIo.observe(numbersSection);
-  } else {
-    document.querySelectorAll('.num').forEach((el) => {
-      el.textContent = (parseInt(el.dataset.count, 10) || 0).toLocaleString();
-    });
-  }
-
-  // -----------------------------------------------------------
   // 6-B. Floating CTA：#cta セクションが画面に少しでも入ったらフェードアウト
   //      （body.is-cta-visible を付け外し、表示制御は CSS 側で行う）
   // -----------------------------------------------------------
   const ctaSection = document.getElementById('cta');
-  if (ctaSection && 'IntersectionObserver' in window) {
+  if (ctaSection && supportsIntersectionObserver) {
     const ctaObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         document.body.classList.toggle('is-cta-visible', entry.isIntersecting);
@@ -273,30 +240,16 @@
     // (1) 表示判定：anchor-nav が完全に画面外に出た AND page-related に差し掛かっていない
     const updateSideNavVisibility = () => {
       if (!anchorNav) return;
-      const anchorBottom = anchorNav.getBoundingClientRect().bottom;
-      const relatedTop = pageRelatedSec
-        ? pageRelatedSec.getBoundingClientRect().top
-        : Infinity;
-      const show = anchorBottom < 0 && relatedTop > window.innerHeight * 0.85;
-      sideNav.classList.toggle('is-visible', show);
+      sideNav.classList.toggle('is-visible', isBetweenAnchorAndRelated(anchorNav, pageRelatedSec));
     };
 
-    let sideNavTicking = false;
-    const onSideNavScroll = () => {
-      if (!sideNavTicking) {
-        window.requestAnimationFrame(() => {
-          updateSideNavVisibility();
-          sideNavTicking = false;
-        });
-        sideNavTicking = true;
-      }
-    };
+    const onSideNavScroll = createRafHandler(updateSideNavVisibility);
     window.addEventListener('scroll', onSideNavScroll, { passive: true });
     window.addEventListener('resize', onSideNavScroll);
     updateSideNavVisibility();
 
     // (2) 現在地ハイライト：4 セクションを観察し、画面中央に最も近いものに .is-active
-    if (targets.length > 0 && 'IntersectionObserver' in window) {
+    if (targets.length > 0 && supportsIntersectionObserver) {
       const updateActive = () => {
         const centerY = window.innerHeight * 0.35;
         let bestId = null;
@@ -321,16 +274,7 @@
       });
       targets.forEach((sec) => sectionObs.observe(sec));
 
-      let activeTicking = false;
-      window.addEventListener('scroll', () => {
-        if (!activeTicking) {
-          window.requestAnimationFrame(() => {
-            updateActive();
-            activeTicking = false;
-          });
-          activeTicking = true;
-        }
-      }, { passive: true });
+      window.addEventListener('scroll', createRafHandler(updateActive), { passive: true });
       updateActive();
     }
   }
@@ -345,27 +289,14 @@
   const pageRelatedForCta = document.querySelector('.page-related');
   if (anchorNavForCta) {
     const updateCtaByAnchor = () => {
-      const bottom = anchorNavForCta.getBoundingClientRect().bottom;
-      const relatedTop = pageRelatedForCta
-        ? pageRelatedForCta.getBoundingClientRect().top
-        : Infinity;
       // anchor-nav 完全に画面外 AND page-related に差し掛かっていない → 表示
-      if (bottom < 0 && relatedTop > window.innerHeight * 0.85) {
+      if (isBetweenAnchorAndRelated(anchorNavForCta, pageRelatedForCta)) {
         document.body.classList.remove('is-cta-visible');
       } else {
         document.body.classList.add('is-cta-visible');
       }
     };
-    let ctaTicking = false;
-    const onCtaScroll = () => {
-      if (!ctaTicking) {
-        window.requestAnimationFrame(() => {
-          updateCtaByAnchor();
-          ctaTicking = false;
-        });
-        ctaTicking = true;
-      }
-    };
+    const onCtaScroll = createRafHandler(updateCtaByAnchor);
     window.addEventListener('scroll', onCtaScroll, { passive: true });
     window.addEventListener('resize', onCtaScroll);
     updateCtaByAnchor();

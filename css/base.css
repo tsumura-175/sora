@@ -44,6 +44,7 @@
   --max-narrow: 680px;
   --header-h-pc: 72px;
   --header-h-sp: 60px;
+  --radius-media: 12px;
   --section-py-pc: clamp(48px, 5.5vw, 88px);
   --section-py-sp: clamp(36px, 7vw, 56px);
 
@@ -338,6 +339,9 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
 .overlay-menu.is-open .overlay-nav__item:nth-child(4) { transition-delay: 380ms; }
 .overlay-menu.is-open .overlay-nav__item:nth-child(5) { transition-delay: 440ms; }
 .overlay-menu.is-open .overlay-nav__item:nth-child(6) { transition-delay: 500ms; }
+.overlay-menu.is-open .overlay-nav__item:nth-child(7) { transition-delay: 560ms; }
+.overlay-menu.is-open .overlay-nav__item:nth-child(8) { transition-delay: 620ms; }
+.overlay-menu.is-open .overlay-nav__item:nth-child(9) { transition-delay: 680ms; }
 
 .overlay-nav__en {
   display: block;
@@ -407,6 +411,10 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
 .overlay-menu__utility {
   max-width: 320px;
   padding-top: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 .overlay-menu__utility a {
   display: inline-flex;
@@ -475,6 +483,18 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   transition: background 240ms var(--ease), border-color 240ms var(--ease);
 }
 .overlay-menu__sns ul a:hover { background: var(--color-light); border-color: var(--color-light); }
+
+@media (max-width: 960px) {
+  .overlay-menu__inner { grid-template-columns: 1fr; padding-top: 72px; }
+  .overlay-menu__brand, .overlay-menu__nav, .overlay-menu__side { grid-column: 1; }
+  .overlay-menu__side { padding: 24px 0 0; border-top: 1px solid rgba(255,255,255,0.15); border-left: 0; }
+}
+@media (max-width: 640px) {
+  .overlay-menu__inner { width: min(90vw, 560px); }
+  .overlay-nav { grid-template-columns: 1fr; grid-template-rows: auto; gap: 20px; }
+  .overlay-nav__en { font-size: 1.3rem; }
+  .overlay-menu__side { gap: 18px; }
+}
 
 /* =============================================================
    Footer Wave Divider（CTA → Footer の境界をなめらかに）
@@ -556,6 +576,8 @@ body.menu-open .hamburger__line:nth-child(3) { transform: translateY(-7.5px) rot
   margin-top: 8px;
 }
 .site-footer__address a { color: rgba(255,255,255,0.95); }
+.site-footer__logo-link { display: inline-block; }
+.site-footer__logo-link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 6px; }
 
 .site-footer__social {
   display: flex;
@@ -1401,9 +1423,6 @@ section.reveal.is-visible {
 .services--flow .flow__heading {
   padding-top: 0;
 }
-.services--flow .flow__num {
-  display: none;
-}
 .flow__step:nth-child(even) .flow__step-inner {
   grid-template-columns: 1fr clamp(440px, 46vw, 600px);
 }
@@ -1440,24 +1459,6 @@ section.reveal.is-visible {
   margin-bottom: 20px;
   padding-top: clamp(90px, 10vw, 140px);
 }
-.flow__num {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-family: var(--font-en);
-  font-style: normal;
-  font-weight: 400;
-  font-size: clamp(56px, 7vw, 96px);
-  letter-spacing: 0;
-  color: var(--color-accent);
-  -webkit-text-stroke: 1.5px var(--color-accent);
-  line-height: 1;
-  opacity: 0;
-  z-index: 0;
-  transition: opacity 600ms var(--ease) 300ms;
-}
-.flow__step.is-visible .flow__num { opacity: 0.85; }
-
 .flow__phase {
   font-family: var(--font-en);
   font-size: var(--fs-xxs);
@@ -1618,7 +1619,6 @@ section.reveal.is-visible {
   .flow__step.reveal.is-visible {
     opacity: 1; transform: none; transition: none;
   }
-  .flow__num { opacity: 0.85; transition: none; }
 }
 
 /* Flow 装飾：鳥（事業セクション内のみ・完全静止） */
@@ -1672,46 +1672,6 @@ section.reveal.is-visible {
   left: 80%;
   transform: rotate(-8deg) scaleX(-1);
 }
-
-/* =============================================================
-   ⑦ Home Introduction
-   ============================================================= */
-.home-introduction {
-  position: relative;
-  padding: var(--section-py-pc) 0;
-  background: linear-gradient(180deg, var(--color-pale) 0%, var(--color-bg) 50%, var(--color-pale) 100%);
-  overflow: hidden;
-}
-.home-introduction__inner {
-  position: relative;
-  z-index: 1;
-  width: var(--max-content);
-  margin: 0 auto;
-}
-.home-introduction__content {
-  width: min(720px, 100%);
-  margin: clamp(36px, 5vw, 56px) auto 0;
-  padding: clamp(30px, 5vw, 52px);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-  text-align: center;
-}
-.home-introduction__quote {
-  color: var(--color-deep);
-  font-family: var(--font-jp-serif);
-  font-size: clamp(1.25rem, 2.5vw, 1.85rem);
-  font-weight: var(--fw-semibold);
-  line-height: 1.8;
-  letter-spacing: 0.08em;
-}
-.home-introduction__body {
-  margin-top: clamp(22px, 3vw, 30px);
-  color: var(--color-text);
-  font-size: var(--fs-md);
-  line-height: 2;
-  letter-spacing: 0.06em;
-}
-.home-introduction__link { margin-top: clamp(24px, 3vw, 32px); }
 
 /* =============================================================
    ⑧ Target

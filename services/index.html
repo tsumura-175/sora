@@ -155,6 +155,13 @@
         </li>
         <li class="overlay-nav__item">
           <span class="overlay-nav__num" aria-hidden="true">05</span>
+          <a href="../staff/" class="overlay-nav__link">
+            <span class="overlay-nav__en">STAFF</span>
+            <span class="overlay-nav__jp">スタッフ紹介</span>
+          </a>
+        </li>
+        <li class="overlay-nav__item">
+          <span class="overlay-nav__num" aria-hidden="true">06</span>
           <a href="../corporate/" class="overlay-nav__link">
             <span class="overlay-nav__en">CORPORATE</span>
             <span class="overlay-nav__jp">法人情報</span>
@@ -165,20 +172,20 @@
           </ul>
         </li>
         <li class="overlay-nav__item">
-          <span class="overlay-nav__num" aria-hidden="true">06</span>
+          <span class="overlay-nav__num" aria-hidden="true">07</span>
           <a href="../recruit/" class="overlay-nav__link">
             <span class="overlay-nav__en">RECRUIT</span>
             <span class="overlay-nav__jp">採用情報</span>
           </a>
           <ul class="overlay-nav__sub">
-            <li><a href="../recruit/">採用にあたって（理念）</a></li>
+            <li><a href="../recruit/">採用にあたって</a></li>
             <li><a href="../recruit/#jobs">募集職種</a></li>
             <li><a href="../recruit/#interview">スタッフインタビュー</a></li>
             <li><a href="../recruit/#apply">応募フォーム</a></li>
           </ul>
         </li>
         <li class="overlay-nav__item">
-          <span class="overlay-nav__num" aria-hidden="true">07</span>
+          <span class="overlay-nav__num" aria-hidden="true">08</span>
           <a href="../news/" class="overlay-nav__link">
             <span class="overlay-nav__en">NEWS</span>
             <span class="overlay-nav__jp">お知らせ</span>
@@ -186,6 +193,13 @@
           <ul class="overlay-nav__sub">
             <li><a href="../news/">お知らせ一覧</a></li>
           </ul>
+        </li>
+        <li class="overlay-nav__item">
+          <span class="overlay-nav__num" aria-hidden="true">09</span>
+          <a href="../access/" class="overlay-nav__link">
+            <span class="overlay-nav__en">ACCESS</span>
+            <span class="overlay-nav__jp">アクセス</span>
+          </a>
         </li>
 
     </div>
@@ -195,9 +209,10 @@
         <a href="../contact/" class="btn btn--ghost">見学・ご相談予約</a>
         <a href="../donation/" class="btn btn--ghost">ご寄付のお願い</a>
       </div>
-      <p class="overlay-menu__utility">
-        <a href="../access/">アクセス・所在地を見る <span aria-hidden="true">→</span></a>
-      </p>
+      <div class="overlay-menu__utility">
+        <a href="../privacy/">プライバシーポリシー <span aria-hidden="true">→</span></a>
+        <a href="../sitemap/">サイトマップ <span aria-hidden="true">→</span></a>
+      </div>
       <div class="overlay-menu__info">
         <p class="overlay-menu__info-label">お電話でのお問い合わせ</p>
         <a href="tel:0424035850" class="overlay-menu__info-tel">042-403-5850</a>
@@ -229,24 +244,20 @@
   <div class="page-kv__clouds" aria-hidden="true">
     <svg class="cloud page-kv__cloud--1" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.7)"/></svg>
     <svg class="cloud page-kv__cloud--2" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.5)"/></svg>
+
   </div>
   <div class="page-kv__inner">
     <p class="page-kv__en"><span>LIFE AT SORA</span></p>
     <h1 class="page-kv__title">そらでの暮らし</h1>
   </div>
-  <nav class="breadcrumb breadcrumb--on-kv" aria-label="現在位置">
+  <nav class="breadcrumb breadcrumb--on-kv" aria-label="現在地">
     <ol class="breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
-      <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a href="../" itemprop="item"><span itemprop="name">ホーム</span></a>
-        <meta itemprop="position" content="1">
-      </li>
-      <li class="breadcrumb__item breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <span itemprop="name">そらでの暮らし</span>
-        <meta itemprop="position" content="2">
-      </li>
+      <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="../" itemprop="item"><span itemprop="name">ホーム</span></a><meta itemprop="position" content="1"></li>
+      <li class="breadcrumb__item breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><span itemprop="name">そらでの暮らし</span><meta itemprop="position" content="2"></li>
     </ol>
   </nav>
 </section>
+
 
 <div class="divider divider--brush" aria-hidden="true">
   <svg class="divider__brush" viewBox="0 0 1200 100" preserveAspectRatio="none"><use href="../images/icons.svg#brush-wave-01"/></svg>
@@ -271,6 +282,7 @@
     <li class="page-side-nav__item"><a href="#community" class="page-side-nav__link" data-target="community"><em class="page-side-nav__en">COMMUNITY</em><span class="page-side-nav__jp">地域コミュニティ</span></a></li>
   </ul>
 </aside>
+
 
 <section class="services-page-intro reveal" aria-label="そらでの暮らしについて">
   <div class="services-page-intro__inner">
@@ -349,6 +361,7 @@
   </div>
 </section>
 
+
 <section class="contact reveal" id="contact">
   <div class="contact__inner">
     <div class="contact__intro">
@@ -374,9 +387,9 @@
       </div>
       <div class="contact__alt">
         <p class="contact__alt-label">お電話でのお問い合わせ</p>
-        <a href="tel:0424035850" class="contact__tel" data-tel-mask>
+        <a href="tel:0424035850" class="contact__tel">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><use href="../images/icons.svg#icon-phone" fill="currentColor"/></svg>
-          <span data-tel-display>042-403-5850</span>
+          <span>042-403-5850</span>
         </a>
         <p class="contact__alt-note">受付時間：平日 9:00 – 17:30</p>
       </div>
@@ -479,7 +492,7 @@
   <span class="site-footer__bird" aria-hidden="true"></span>
   <div class="site-footer__inner">
     <div class="site-footer__brand">
-      <img src="../images/logo-on-dark.png" alt="はじまりの家そら" class="site-footer__logo">
+      <a href="../" class="site-footer__logo-link"><img src="../images/logo-on-dark.png" alt="はじまりの家そら ホームへ" class="site-footer__logo"></a>
       <p class="site-footer__corp">NPO法人コミュニティケア・ライフ</p>
       <address class="site-footer__address">
         〒203-0032<br>
@@ -507,51 +520,36 @@
     </div>
     <nav class="site-footer__nav" aria-label="フッターナビゲーション">
       <div class="site-footer__col">
-        <p class="site-footer__col-title"><a href="../about/">想い・理念</a></p>
+        <p class="site-footer__col-title">そらについて</p>
         <ul>
-          <li><a href="../about/#philosophy">私たちの想い</a></li>
-          <li><a href="../about/#message">代表メッセージ</a></li>
+          <li><a href="../">ホーム</a></li>
+          <li><a href="../about/">想い・理念</a></li>
+          <li><a href="../home-sora/">ホームそらのご紹介</a></li>
+          <li><a href="../staff/">スタッフ紹介</a></li>
+          <li><a href="../corporate/">法人情報</a></li>
         </ul>
       </div>
       <div class="site-footer__col">
-        <p class="site-footer__col-title"><a href="../services/">そらでの暮らし</a></p>
+        <p class="site-footer__col-title">ご利用について</p>
         <ul>
+          <li><a href="../services/">そらでの暮らし</a></li>
           <li><a href="../services/#home">天国につながるホームそら</a></li>
           <li><a href="../services/#visiting-nursing">訪問看護ステーションそら</a></li>
           <li><a href="../services/#private-nurse">プライベートナースそら</a></li>
           <li><a href="../services/#retreat">そらのリトリートステイ</a></li>
           <li><a href="../services/#community">地域コミュニティスペース</a></li>
           <li><a href="../services/pricing/">料金・ご利用条件</a></li>
+          <li><a href="../target/">ご関係別案内</a></li>
         </ul>
       </div>
       <div class="site-footer__col">
-        <p class="site-footer__col-title"><a href="../target/">ご関係別案内</a></p>
+        <p class="site-footer__col-title">お知らせ・その他</p>
         <ul>
-          <li><a href="../target/">ご本人・ご家族の方へ</a></li>
-          <li><a href="../target/#medical">医療・介護関係者の方へ</a></li>
-          <li><a href="../target/#supporter">支援・ご寄付をお考えの方へ</a></li>
-        </ul>
-      </div>
-      <div class="site-footer__col">
-        <p class="site-footer__col-title"><a href="../corporate/">法人情報</a></p>
-        <ul>
-          <li><a href="../corporate/#overview">団体概要</a></li>
-          <li><a href="../corporate/#history">沿革</a></li>
-        </ul>
-      </div>
-      <div class="site-footer__col">
-        <p class="site-footer__col-title"><a href="../recruit/">採用情報</a></p>
-        <ul>
-          <li><a href="../recruit/">採用にあたって（理念）</a></li>
-          <li><a href="../recruit/#jobs">募集職種</a></li>
-          <li><a href="../recruit/#interview">スタッフインタビュー</a></li>
-          <li><a href="../recruit/#apply">応募フォーム</a></li>
-        </ul>
-      </div>
-      <div class="site-footer__col">
-        <p class="site-footer__col-title"><a href="../news/">お知らせ</a></p>
-        <ul>
-          <li><a href="../news/">お知らせ一覧</a></li>
+          <li><a href="../access/">アクセス</a></li>
+          <li><a href="../news/">お知らせ</a></li>
+          <li><a href="../recruit/">採用情報</a></li>
+          <li><a href="../contact/">お問い合わせ</a></li>
+          <li><a href="../donation/">ご寄付・支援</a></li>
         </ul>
       </div>
     </nav>

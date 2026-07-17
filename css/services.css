@@ -49,7 +49,7 @@
   margin: clamp(32px, 4vw, 48px) 0 0;
   overflow: hidden;
   border: 1px solid rgba(46,125,209,.14);
-  border-radius: 14px;
+  border-radius: var(--radius-media);
   background: var(--color-pale);
   box-shadow: 0 16px 36px rgba(27,79,142,.1);
 }
@@ -243,7 +243,7 @@
   .service-feature-image {
     width: 100%;
     aspect-ratio: 4 / 3;
-    border-radius: 10px;
+    border-radius: var(--radius-media);
   }
   .service-overview,
   .service-commitment,

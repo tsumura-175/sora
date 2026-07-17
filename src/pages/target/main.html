@@ -1,32 +1,6 @@
 <main id="top">
 
-<section class="page-kv" aria-label="ページキービジュアル">
-  <div class="page-kv__bg" aria-hidden="true">
-    <img src="../images/kv-01.webp" srcset="../images/kv-01-1024.webp 1024w, ../images/kv-01.webp 1600w" sizes="100vw" alt="" class="page-kv__bg-image" width="1600" height="1066" fetchpriority="high">
-    <span class="page-kv__bg-overlay"></span>
-  </div>
-  <div class="page-kv__clouds" aria-hidden="true">
-    <svg class="cloud page-kv__cloud--1" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.7)"/></svg>
-    <svg class="cloud page-kv__cloud--2" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.5)"/></svg>
-    <svg class="cloud page-kv__cloud--3" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.55)"/></svg>
-  </div>
-  <div class="page-kv__inner">
-    <p class="page-kv__en"><span>FOR YOU</span></p>
-    <h1 class="page-kv__title">ご関係別案内</h1>
-  </div>
-  <nav class="breadcrumb breadcrumb--on-kv" aria-label="現在位置">
-    <ol class="breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
-      <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a href="../" itemprop="item"><span itemprop="name">ホーム</span></a>
-        <meta itemprop="position" content="1">
-      </li>
-      <li class="breadcrumb__item breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <span itemprop="name">ご関係別案内</span>
-        <meta itemprop="position" content="2">
-      </li>
-    </ol>
-  </nav>
-</section>
+{{pageHero}}
 
 <div class="divider divider--brush" aria-hidden="true">
   <svg class="divider__brush" viewBox="0 0 1200 100" preserveAspectRatio="none">
@@ -34,54 +8,7 @@
   </svg>
 </div>
 
-<nav class="page-anchor-nav" aria-label="ページ内アンカーメニュー">
-  <ul class="page-anchor-nav__list">
-    <li class="page-anchor-nav__item">
-      <a href="#family" class="page-anchor-nav__link">
-        <em class="page-anchor-nav__en">FAMILY</em>
-        <span class="page-anchor-nav__jp">ご本人・ご家族の方へ</span>
-        <span class="page-anchor-nav__arrow" aria-hidden="true">↓</span>
-      </a>
-    </li>
-    <li class="page-anchor-nav__item">
-      <a href="#medical" class="page-anchor-nav__link">
-        <em class="page-anchor-nav__en">MEDICAL</em>
-        <span class="page-anchor-nav__jp">医療・介護関係者の方へ</span>
-        <span class="page-anchor-nav__arrow" aria-hidden="true">↓</span>
-      </a>
-    </li>
-    <li class="page-anchor-nav__item">
-      <a href="#supporter" class="page-anchor-nav__link">
-        <em class="page-anchor-nav__en">SUPPORT</em>
-        <span class="page-anchor-nav__jp">支援・ご寄付をお考えの方へ</span>
-        <span class="page-anchor-nav__arrow" aria-hidden="true">↓</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<aside class="page-side-nav" id="pageSideNav" aria-label="ページ内ナビゲーション">
-  <ul class="page-side-nav__list">
-    <li class="page-side-nav__item">
-      <a href="#family" class="page-side-nav__link" data-target="family">
-        <em class="page-side-nav__en">FAMILY</em>
-        <span class="page-side-nav__jp">ご本人・ご家族の方へ</span>
-      </a>
-    </li>
-    <li class="page-side-nav__item">
-      <a href="#medical" class="page-side-nav__link" data-target="medical">
-        <em class="page-side-nav__en">MEDICAL</em>
-        <span class="page-side-nav__jp">医療・介護関係者の方へ</span>
-      </a>
-    </li>
-    <li class="page-side-nav__item">
-      <a href="#supporter" class="page-side-nav__link" data-target="supporter">
-        <em class="page-side-nav__en">SUPPORT</em>
-        <span class="page-side-nav__jp">支援・ご寄付をお考えの方へ</span>
-      </a>
-    </li>
-  </ul>
-</aside>
+{{pageAnchors}}
 
 <section class="about-section about-section--01 reveal" id="family">
   <div class="bg-decor" aria-hidden="true">
@@ -303,32 +230,5 @@
   </div>
 </section>
 
-<section class="page-related" aria-label="関連ページ">
-  <div class="page-related__inner">
-    <p class="page-related__label">関連ページ</p>
-    <ul class="page-related__list">
-      <li>
-        <a href="../services/pricing/" class="page-related__link">
-          <span class="page-related__en">PRICING</span>
-          <span class="page-related__jp">料金・ご利用条件</span>
-          <span class="page-related__arrow" aria-hidden="true">→</span>
-        </a>
-      </li>
-      <li>
-        <a href="../services/" class="page-related__link">
-          <span class="page-related__en">SERVICE</span>
-          <span class="page-related__jp">そらでの暮らし</span>
-          <span class="page-related__arrow" aria-hidden="true">→</span>
-        </a>
-      </li>
-      <li>
-        <a href="../home-sora/" class="page-related__link">
-          <span class="page-related__en">HOME SORA</span>
-          <span class="page-related__jp">ホームそらのご紹介</span>
-          <span class="page-related__arrow" aria-hidden="true">→</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
+{{pageRelated}}
 

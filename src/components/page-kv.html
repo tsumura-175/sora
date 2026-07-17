@@ -1,0 +1,16 @@
+<section class="page-kv" aria-label="ページキービジュアル">
+  <div class="page-kv__bg" aria-hidden="true">
+    <img src="{{heroImageSrc}}"{{heroResponsiveAttributes}} alt="" class="page-kv__bg-image" width="{{heroImageWidth}}" height="{{heroImageHeight}}" fetchpriority="high">
+    <span class="page-kv__bg-overlay"></span>
+  </div>
+  <div class="page-kv__clouds" aria-hidden="true">
+    <svg class="cloud page-kv__cloud--1" viewBox="0 0 200 80"><use href="{{root}}images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.7)"/></svg>
+    <svg class="cloud page-kv__cloud--2" viewBox="0 0 200 80"><use href="{{root}}images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.5)"/></svg>
+{{heroCloudThree}}
+  </div>
+  <div class="page-kv__inner">
+    <p class="page-kv__en"><span>{{heroEn}}</span></p>
+    <h1 class="page-kv__title">{{heroTitle}}</h1>
+  </div>
+{{pageBreadcrumbs}}
+</section>

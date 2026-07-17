@@ -19,7 +19,7 @@
 .home-sora-feature__copy p:not(.en-sub) { margin: 0; color: var(--color-text); line-height: 2; letter-spacing: .04em; }
 .home-sora-feature__copy p + p { margin-top: 1em; }
 .home-sora-feature__photos { position: relative; min-height: clamp(330px, 34vw, 480px); }
-.home-sora-feature__photo { position: absolute; overflow: hidden; margin: 0; border: 1px solid rgba(46,125,209,.14); border-radius: 12px; background: var(--color-pale); box-shadow: 0 20px 48px rgba(27,79,142,.13); }
+.home-sora-feature__photo { position: absolute; overflow: hidden; margin: 0; border: 1px solid rgba(46,125,209,.14); border-radius: var(--radius-media); background: var(--color-pale); box-shadow: 0 20px 48px rgba(27,79,142,.13); }
 .home-sora-feature__photo img { width: 100%; height: 100%; object-fit: cover; }
 .home-sora-feature__photo--main { inset: 0 12% 10% 0; }
 .home-sora-feature__photo--sub { right: 0; bottom: 0; width: 44%; aspect-ratio: 1 / 1.08; }
@@ -51,7 +51,7 @@
 .home-sora-gallery__floor h3 { display: flex; align-items: center; gap: 16px; margin: 0 0 28px; color: var(--color-deep); font-family: var(--font-jp-serif); font-size: var(--fs-2xl); font-weight: var(--fw-semibold); letter-spacing: .1em; }
 .home-sora-gallery__floor h3::after { content: ""; flex: 1; height: 1px; background: var(--color-border); }
 .home-sora-gallery__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 2.2vw, 28px); }
-.home-sora-gallery__grid figure { margin: 0; overflow: hidden; border: 1px solid var(--color-border); border-radius: 12px; background: #fff; }
+.home-sora-gallery__grid figure { margin: 0; overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-media); background: #fff; }
 .home-sora-gallery__grid img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform 500ms var(--ease); }
 .home-sora-gallery__grid figure:hover img { transform: scale(1.04); }
 .home-sora-gallery__grid figcaption { padding: 16px 18px 18px; color: var(--color-deep); font-family: var(--font-jp-serif); font-size: var(--fs-md); font-weight: var(--fw-medium); letter-spacing: .07em; }

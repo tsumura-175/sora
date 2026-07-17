@@ -1,33 +1,6 @@
 <main id="top">
 
-<!-- ====================== ③ Page KV（下層用 KV・中央配置／背景画像型） ====================== -->
-<section class="page-kv" aria-label="ページキービジュアル">
-  <div class="page-kv__bg" aria-hidden="true">
-    <img src="../images/kv-01.webp" srcset="../images/kv-01-1024.webp 1024w, ../images/kv-01.webp 1600w" sizes="100vw" alt="" class="page-kv__bg-image" width="1600" height="1066" fetchpriority="high">
-    <span class="page-kv__bg-overlay"></span>
-  </div>
-  <div class="page-kv__clouds" aria-hidden="true">
-    <svg class="cloud page-kv__cloud--1" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.7)"/></svg>
-    <svg class="cloud page-kv__cloud--2" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.5)"/></svg>
-    <svg class="cloud page-kv__cloud--3" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.55)"/></svg>
-  </div>
-  <div class="page-kv__inner">
-    <p class="page-kv__en"><span>ABOUT US</span></p>
-    <h1 class="page-kv__title">想い・理念</h1>
-  </div>
-  <nav class="breadcrumb breadcrumb--on-kv" aria-label="現在位置">
-    <ol class="breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
-      <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a href="../" itemprop="item"><span itemprop="name">ホーム</span></a>
-        <meta itemprop="position" content="1">
-      </li>
-      <li class="breadcrumb__item breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <span itemprop="name">想い・理念</span>
-        <meta itemprop="position" content="2">
-      </li>
-    </ol>
-  </nav>
-</section>
+{{pageHero}}
 
 <!-- ====================== Divider：手書き筆ライン ====================== -->
 <div class="divider divider--brush" aria-hidden="true">
@@ -36,43 +9,7 @@
   </svg>
 </div>
 
-<!-- ====================== ⑤ Page Anchor Nav（KV直下のアンカーメニュー） ====================== -->
-<nav class="page-anchor-nav" aria-label="ページ内アンカーメニュー">
-  <ul class="page-anchor-nav__list">
-    <li class="page-anchor-nav__item">
-      <a href="#philosophy" class="page-anchor-nav__link">
-        <em class="page-anchor-nav__en">PHILOSOPHY</em>
-        <span class="page-anchor-nav__jp">私たちの想い</span>
-        <span class="page-anchor-nav__arrow" aria-hidden="true">↓</span>
-      </a>
-    </li>
-    <li class="page-anchor-nav__item">
-      <a href="#message" class="page-anchor-nav__link">
-        <em class="page-anchor-nav__en">MESSAGE</em>
-        <span class="page-anchor-nav__jp">代表メッセージ</span>
-        <span class="page-anchor-nav__arrow" aria-hidden="true">↓</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<!-- ====================== ⑥ Page Side Nav（左サイド追従ナビ・PC のみ） ====================== -->
-<aside class="page-side-nav" id="pageSideNav" aria-label="ページ内ナビゲーション">
-  <ul class="page-side-nav__list">
-    <li class="page-side-nav__item">
-      <a href="#philosophy" class="page-side-nav__link" data-target="philosophy">
-        <em class="page-side-nav__en">PHILOSOPHY</em>
-        <span class="page-side-nav__jp">私たちの想い</span>
-      </a>
-    </li>
-    <li class="page-side-nav__item">
-      <a href="#message" class="page-side-nav__link" data-target="message">
-        <em class="page-side-nav__en">MESSAGE</em>
-        <span class="page-side-nav__jp">代表メッセージ</span>
-      </a>
-    </li>
-  </ul>
-</aside>
+{{pageAnchors}}
 
 <!-- ====================== ⑧ Section #philosophy（私たちの想い） ====================== -->
 <section class="about-section about-section--01 reveal" id="philosophy">
@@ -156,33 +93,6 @@
 </section>
 
 <!-- ====================== ⑪ Page Related（関連ページ CTA・テキストリンク型） ====================== -->
-<section class="page-related" aria-label="関連ページ">
-  <div class="page-related__inner">
-    <p class="page-related__label">関連ページ</p>
-    <ul class="page-related__list">
-      <li>
-        <a href="../services/" class="page-related__link">
-          <span class="page-related__en">SERVICE</span>
-          <span class="page-related__jp">そらでの暮らし</span>
-          <span class="page-related__arrow" aria-hidden="true">→</span>
-        </a>
-      </li>
-      <li>
-        <a href="../target/" class="page-related__link">
-          <span class="page-related__en">FOR YOU</span>
-          <span class="page-related__jp">ご関係別案内</span>
-          <span class="page-related__arrow" aria-hidden="true">→</span>
-        </a>
-      </li>
-      <li>
-        <a href="../home-sora/" class="page-related__link">
-          <span class="page-related__en">HOME SORA</span>
-          <span class="page-related__jp">ホームそらのご紹介</span>
-          <span class="page-related__arrow" aria-hidden="true">→</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
+{{pageRelated}}
 
 <!-- ====================== ⑫ Contact（トップページ共通・完全コピー） ====================== -->

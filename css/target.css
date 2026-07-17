@@ -218,38 +218,7 @@
   }
 }
 
-/* #about — 名前の由来：philosophy 風の柔らかい段組 */
-.about-lead {
-  margin-top: clamp(28px, 4vw, 48px);
-  max-width: 640px;
-}
-.about-lead__body {
-  font-family: var(--font-jp-serif);
-  font-size: var(--fs-md);
-  line-height: 2.0;
-  color: var(--color-text);
-  letter-spacing: 0.04em;
-}
-.about-lead__body + .about-lead__body { margin-top: 1.2em; }
-
-/* #about — 3つの特徴：target-card を about-section 内幅に合わせて再構成
-   ※ .target__grid クラスは付けず、段差 transform や clip-path を継承させない */
-.about-features {
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-  margin: clamp(36px, 5vw, 64px) 0 0;
-  padding: 0;
-}
-@media (min-width: 720px) {
-  .about-features { grid-template-columns: repeat(2, 1fr); }
-}
-@media (min-width: 1100px) {
-  .about-features { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-}
-
-/* #philosophy — 中央寄せステートメント（philosophy__body/__note を内包） */
+/* #philosophy — 中央寄せステートメント */
 .about-statement {
   position: relative;
   max-width: 640px;
@@ -324,64 +293,4 @@
 @media (max-width: 720px) {
   .message-block { grid-template-columns: 1fr; gap: 24px; }
   .message-block__photo { position: static; max-width: 240px; margin: 0 auto; }
-}
-
-/* #values — flow を about-section 内幅にフィット */
-.values-flow { margin-top: clamp(36px, 5vw, 64px); }
-.values-flow .flow__step + .flow__step { margin-top: clamp(56px, 7vw, 96px); }
-.values-flow .flow__step-inner {
-  width: 100%;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  gap: clamp(24px, 3vw, 44px);
-  align-items: center;
-}
-.values-flow .flow__step:nth-child(even) .flow__step-inner {
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-}
-.values-flow .flow__photo img { height: clamp(220px, 26vw, 320px); border-radius: 18px; }
-.values-flow .flow__deco { width: clamp(140px, 18vw, 220px); }
-.values-flow .flow__heading {
-  display: grid;
-  grid-template-columns: clamp(64px, 8vw, 104px) 1fr;
-  gap: clamp(18px, 3vw, 40px);
-  align-items: start;
-  padding-top: 0;
-  margin-bottom: 14px;
-}
-.values-flow .flow__num {
-  position: static;
-  grid-row: 1 / 3;
-  font-weight: 500;
-  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
-  letter-spacing: 0.04em;
-  color: rgba(46,125,209,0.32);
-  -webkit-text-stroke: 0;
-  opacity: 1;
-  transition: none;
-}
-.values-flow .flow__phase,
-.values-flow .flow__title {
-  grid-column: 2;
-}
-.values-flow .flow__title { font-size: clamp(1.3rem, 2.4vw, 1.9rem); }
-@media (max-width: 720px) {
-  .values-flow .flow__step-inner,
-  .values-flow .flow__step:nth-child(even) .flow__step-inner {
-    grid-template-columns: 1fr;
-  }
-  .values-flow .flow__step:nth-child(even) .flow__photo { order: 0; }
-  .values-flow .flow__step:nth-child(even) .flow__body  { order: 0; }
-  .values-flow .flow__deco { display: none; }
-  .values-flow .flow__heading {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-  .values-flow .flow__num,
-  .values-flow .flow__phase,
-  .values-flow .flow__title {
-    grid-column: 1;
-  }
-  .values-flow .flow__num {
-    font-size: 1.25rem;
-  }
 }

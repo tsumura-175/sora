@@ -23,11 +23,11 @@
       </div>
       <div class="contact__alt">
         <p class="contact__alt-label">お電話でのお問い合わせ</p>
-        <a href="tel:0424035850" class="contact__tel" data-tel-mask>
+        <a href="tel:{{contactTelHref}}" class="contact__tel">
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><use href="{{root}}images/icons.svg#icon-phone" fill="currentColor"/></svg>
-          <span data-tel-display>042-403-5850</span>
+          <span>{{contactTelDisplay}}</span>
         </a>
-        <p class="contact__alt-note">受付時間：平日 9:00 – 17:30</p>
+        <p class="contact__alt-note">受付時間：{{contactHours}}</p>
       </div>
     </div>
     <form class="contact__form" id="contactForm" action="#" method="post" novalidate>

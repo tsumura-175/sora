@@ -2,5 +2,20 @@
   "output": "corporate/index.html",
   "title": "法人情報 | はじまりの家そら",
   "description": "特定非営利活動法人コミュニティケア・ライフの団体概要と沿革をご紹介します。",
-  "canonical": "https://hajimarinoie-sora.jp/corporate/"
+  "canonical": "https://hajimarinoie-sora.jp/corporate/",
+  "hero": {
+    "en": "CORPORATE",
+    "title": "法人情報",
+    "image": "images/kv-01.webp",
+    "width": 1600,
+    "height": 1066,
+    "sources": [{ "src": "images/kv-01-1024.webp", "width": 1024 }, { "src": "images/kv-01.webp", "width": 1600 }],
+    "sizes": "100vw",
+    "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "法人情報" }]
+  },
+  "related": [
+    { "en": "ABOUT", "label": "想い・理念", "href": "about/" },
+    { "en": "HOME SORA", "label": "ホームそらのご紹介", "href": "home-sora/" },
+    { "en": "ACCESS", "label": "アクセス", "href": "access/" }
+  ]
 }

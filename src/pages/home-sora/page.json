@@ -2,5 +2,20 @@
   "output": "home-sora/index.html",
   "title": "ホームそらのご紹介 | はじまりの家そら",
   "description": "天国につながるホームそらの、空気・食事・植物・音・寝具へのこだわりと、ホームの中をご紹介します。",
-  "canonical": "https://hajimarinoie-sora.jp/home-sora/"
+  "canonical": "https://hajimarinoie-sora.jp/home-sora/",
+  "hero": {
+    "en": "HOME SORA",
+    "title": "ホームそらのご紹介",
+    "image": "images/kv-02.webp",
+    "width": 1600,
+    "height": 1066,
+    "sources": [{ "src": "images/kv-02-1024.webp", "width": 1024 }, { "src": "images/kv-02.webp", "width": 1600 }],
+    "sizes": "100vw",
+    "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "ホームそらのご紹介" }]
+  },
+  "related": [
+    { "en": "SERVICE", "label": "そらでの暮らし", "href": "services/" },
+    { "en": "PRICING", "label": "料金・ご利用条件", "href": "services/pricing/" },
+    { "en": "ACCESS", "label": "アクセス", "href": "access/" }
+  ]
 }

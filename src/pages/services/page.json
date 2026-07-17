@@ -2,5 +2,29 @@
   "output": "services/index.html",
   "title": "そらでの暮らし | はじまりの家そら",
   "description": "はじまりの家そらが提供する、ホーム・訪問看護・自費訪問看護・リトリート・地域コミュニティのご案内です。",
-  "canonical": "https://hajimarinoie-sora.jp/services/"
+  "canonical": "https://hajimarinoie-sora.jp/services/",
+  "hero": {
+    "en": "LIFE AT SORA",
+    "title": "そらでの暮らし",
+    "image": "images/kv-03.webp",
+    "width": 1024,
+    "height": 724,
+    "includeThirdCloud": false,
+    "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "そらでの暮らし" }]
+  },
+  "anchorNavigation": {
+    "className": "services-anchor-nav",
+    "items": [
+      { "id": "home", "en": "HOME", "label": "天国につながるホームそら", "sideLabel": "ホームそら" },
+      { "id": "visiting-nursing", "en": "NURSING", "label": "訪問看護ステーションそら", "sideLabel": "訪問看護" },
+      { "id": "private-nurse", "en": "PRIVATE", "label": "プライベートナースそら", "sideLabel": "自費訪問看護" },
+      { "id": "retreat", "en": "RETREAT", "label": "そらのリトリートステイ", "sideLabel": "リトリート" },
+      { "id": "community", "en": "COMMUNITY", "label": "地域コミュニティスペース", "sideLabel": "地域コミュニティ" }
+    ]
+  },
+  "related": [
+    { "en": "HOME SORA", "label": "ホームそらのご紹介", "href": "home-sora/" },
+    { "en": "PRICING", "label": "料金・ご利用条件", "href": "services/pricing/" },
+    { "en": "FOR YOU", "label": "ご関係別案内", "href": "target/" }
+  ]
 }
