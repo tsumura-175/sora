@@ -19,16 +19,20 @@ function renderNavigation(items, root, type, activePrimaryHref = null) {
   }
 
   if (type === "overlay") {
-    return items.map((item) => `        <li class="overlay-nav__item">
+    return items.map((item) => {
+      const children = item.children ?? [];
+      const childNavigation = children.length ? `
+          <ul class="overlay-nav__sub">
+${children.map((child) => `            <li><a href="${siteHref(root, child.href)}">${child.label}</a></li>`).join("\n")}
+          </ul>` : "";
+      return `        <li class="overlay-nav__item">
           <span class="overlay-nav__num" aria-hidden="true">${item.number}</span>
           <a href="${siteHref(root, item.href)}" class="overlay-nav__link">
             <span class="overlay-nav__en">${item.en}</span>
             <span class="overlay-nav__jp">${item.jp}</span>
-          </a>
-          <ul class="overlay-nav__sub">
-${item.children.map((child) => `            <li><a href="${siteHref(root, child.href)}">${child.label}</a></li>`).join("\n")}
-          </ul>
-        </li>`).join("\n");
+          </a>${childNavigation}
+        </li>`;
+    }).join("\n");
   }
 
   return items.map((item) => `      <div class="site-footer__col">
