@@ -64,7 +64,7 @@
 }
 .target-check-list li {
   position: relative;
-  padding-left: 28px;
+  padding-left: 20px;
   color: var(--color-text);
   font-size: var(--fs-md);
   line-height: 1.9;
@@ -74,21 +74,14 @@
   content: "";
   position: absolute;
   top: 0.72em;
-  left: 2px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: rgba(74,158,232,0.16);
-}
-.target-check-list li::after {
-  content: "";
-  position: absolute;
-  top: calc(0.72em + 4px);
-  left: 6px;
-  width: 6px;
-  height: 6px;
+  left: 1px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--color-main);
+}
+.target-check-list li::after {
+  content: none;
 }
 .target-check-list--compact {
   margin-top: 20px;

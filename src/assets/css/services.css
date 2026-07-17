@@ -1,0 +1,255 @@
+/* =============================================================
+   Services Page
+   ============================================================= */
+#home,
+#visiting-nursing,
+#private-nurse,
+#retreat,
+#community { scroll-margin-top: 84px; }
+@media (min-width: 901px) {
+  .services-anchor-nav .page-anchor-nav__item { flex-basis: 20%; }
+  .services-anchor-nav .page-anchor-nav__link {
+    gap: 6px;
+    padding: clamp(20px, 2vw, 28px) 6px;
+  }
+  .services-anchor-nav .page-anchor-nav__jp {
+    white-space: nowrap;
+    font-size: clamp(.75rem, 1.15vw, 1rem);
+    letter-spacing: .04em;
+  }
+}
+.services-page-intro {
+  padding: clamp(48px, 7vw, 88px) 0;
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-pale) 50%, var(--color-bg) 100%);
+}
+.services-page-intro__inner {
+  width: min(760px, var(--max-content));
+  margin: 0 auto;
+  padding: 0 16px;
+  color: var(--color-deep);
+  font-family: var(--font-jp-serif);
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  font-weight: var(--fw-medium);
+  line-height: 2;
+  letter-spacing: 0.07em;
+  text-align: center;
+}
+.services-page-intro__inner::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 1px;
+  margin: 0 auto 24px;
+  background: var(--color-main);
+}
+.service-feature-image {
+  position: relative;
+  width: min(960px, 100%);
+  aspect-ratio: 16 / 7;
+  margin: clamp(32px, 4vw, 48px) 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(46,125,209,.14);
+  border-radius: 14px;
+  background: var(--color-pale);
+  box-shadow: 0 16px 36px rgba(27,79,142,.1);
+}
+.service-feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.service-overview {
+  display: grid;
+  grid-template-columns: minmax(220px, .78fr) minmax(0, 1.22fr);
+  gap: clamp(18px, 3vw, 30px);
+  align-items: start;
+  margin-top: clamp(36px, 5vw, 56px);
+}
+.service-overview__block,
+.service-commitment article,
+.retreat-courses article {
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: rgba(255,255,255,.78);
+}
+.service-overview__block h3,
+.service-commitment h4,
+.retreat-courses h4 {
+  color: var(--color-deep);
+  font-family: var(--font-jp-serif);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  letter-spacing: .07em;
+}
+.service-overview__block > p {
+  margin-top: 16px;
+  color: var(--color-text);
+  font-size: var(--fs-md);
+  line-height: 1.95;
+  letter-spacing: .04em;
+}
+.service-overview__block--audience {
+  align-self: start;
+  padding: 8px 0 8px clamp(18px, 2.5vw, 28px);
+  border: 0;
+  border-left: 2px solid rgba(46,125,209,.42);
+  border-radius: 0;
+  background: transparent;
+}
+.service-overview__block--audience h3 { font-size: var(--fs-md); }
+.service-overview__block--audience > p { margin-top: 10px; }
+.service-overview__note { margin-top: 18px; }
+.service-list {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.service-list li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--color-text);
+  line-height: 1.85;
+  letter-spacing: .03em;
+}
+.service-list li::before {
+  content: "";
+  position: absolute;
+  top: .72em;
+  left: 1px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-main);
+}
+.service-detail { margin-top: clamp(48px, 7vw, 88px); }
+.service-detail__title {
+  margin-bottom: clamp(22px, 3vw, 32px);
+  color: var(--color-deep);
+  font-family: var(--font-jp-serif);
+  font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+  font-weight: var(--fw-semibold);
+  letter-spacing: .08em;
+}
+.service-detail__title span {
+  display: block;
+  margin-top: 8px;
+  color: var(--color-sub);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
+}
+.service-steps {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+.service-steps li {
+  position: relative;
+  display: flex;
+  min-height: 126px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px;
+  border: 0;
+  background: transparent;
+  color: var(--color-deep);
+  font-family: var(--font-jp-serif);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  letter-spacing: .05em;
+  text-align: center;
+}
+.service-steps li::before {
+  counter-increment: step;
+  content: "0" counter(step);
+  display: grid;
+  width: clamp(52px, 5vw, 68px);
+  height: clamp(52px, 5vw, 68px);
+  margin-bottom: 14px;
+  place-items: center;
+  border: 1px solid rgba(46,125,209,.32);
+  border-radius: 50%;
+  background: rgba(255,255,255,.76);
+  box-shadow: 0 8px 20px rgba(46,125,209,.1);
+  color: var(--color-main);
+  font-family: var(--font-en);
+  font-size: clamp(1.1rem, 1.7vw, 1.45rem);
+  letter-spacing: .05em;
+}
+.service-steps li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: clamp(26px, 2.5vw, 34px);
+  left: calc(50% + clamp(38px, 3vw, 48px));
+  width: calc(100% - clamp(76px, 6vw, 96px));
+  height: 1px;
+  background: linear-gradient(90deg, rgba(46,125,209,.35), rgba(46,125,209,.08));
+}
+.service-commitment,
+.retreat-courses {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 3vw, 30px);
+}
+.service-commitment p,
+.retreat-courses p,
+.community-intro p,
+.community-intro__closing {
+  margin-top: 16px;
+  color: var(--color-text);
+  line-height: 2;
+  letter-spacing: .04em;
+}
+.service-commitment p + p,
+.community-intro p + p { margin-top: 1em; }
+.service-pricing-note {
+  margin-top: clamp(36px, 5vw, 52px);
+  color: var(--color-text);
+  line-height: 2;
+  text-align: center;
+}
+.service-pricing-note a {
+  display: inline-flex;
+  margin: 10px 0 0;
+}
+.service-list--columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.community-intro {
+  max-width: 800px;
+  margin: clamp(36px, 5vw, 56px) auto 0;
+  padding: clamp(26px, 4vw, 42px);
+  border-left: 2px solid rgba(46,125,209,.38);
+  background: rgba(255,255,255,.54);
+}
+.community-intro p { margin-top: 0; }
+.community-intro__closing {
+  margin-top: clamp(32px, 5vw, 48px);
+  color: var(--color-deep);
+  font-family: var(--font-jp-serif);
+  font-size: var(--fs-md);
+  text-align: left;
+}
+@media (max-width: 1050px) {
+  .service-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .service-steps li::after { display: none; }
+}
+@media (max-width: 720px) {
+  .service-feature-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 10px;
+  }
+  .service-overview,
+  .service-commitment,
+  .retreat-courses,
+  .service-list--columns { grid-template-columns: 1fr; }
+  .service-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .service-steps li { min-height: 110px; }
+  .service-pricing-note a { display: block; margin: 8px 0 0; }
+}
