@@ -287,14 +287,12 @@
   // -----------------------------------------------------------
   const anchorNavForCta = document.querySelector('.page-anchor-nav');
   const pageRelatedForCta = document.querySelector('.page-related');
-  if (anchorNavForCta) {
+  if (pageRelatedForCta) {
     const updateCtaByAnchor = () => {
-      // anchor-nav 完全に画面外 AND page-related に差し掛かっていない → 表示
-      if (isBetweenAnchorAndRelated(anchorNavForCta, pageRelatedForCta)) {
-        document.body.classList.remove('is-cta-visible');
-      } else {
-        document.body.classList.add('is-cta-visible');
-      }
+      // Keep the CTA visible after the anchor navigation (when present), then hide it before related links.
+      const isPastAnchorNav = !anchorNavForCta || anchorNavForCta.getBoundingClientRect().bottom < 0;
+      const hasReachedRelated = pageRelatedForCta.getBoundingClientRect().top <= window.innerHeight * 0.85;
+      document.body.classList.toggle('is-cta-visible', !isPastAnchorNav || hasReachedRelated);
     };
     const onCtaScroll = createRafHandler(updateCtaByAnchor);
     window.addEventListener('scroll', onCtaScroll, { passive: true });
