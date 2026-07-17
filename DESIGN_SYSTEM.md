@@ -18,7 +18,7 @@
 
 ## デザイントークン
 
-CSS変数は `css/style.css` の `:root` を正とする。
+CSS変数は `src/assets/css/base.css` の `:root` を正とする。`src/assets/css/style.css` は読み込み順だけを管理するエントリーファイルであり、ルート直下の `css/` は確認用サイトの生成物なので直接編集しない。
 
 ### 色
 
@@ -291,7 +291,7 @@ PC追従CTAは問い合わせ・相談予約の2本を基本にする。
    - アクセス系: `access/index.html`
    - トップ導線やセクション構成: `index.html`
 3. 既存classを優先してHTMLを組む。
-4. 新規CSSは `css/style.css` の該当ページ拡張セクションにまとめる。
+4. 新規CSSは `src/assets/css/` の役割別ファイルに追加する。全ページ共通は `base.css`、下層共通は `subpages.css`、アクセス固有は `access.css`、ご関係別案内固有は `target.css` を使う。
 5. `rg` でリンク、ID、旧文言の残りを確認する。
 6. `git diff --check` を実行する。
 7. 可能なら公開前にローカル表示を確認する。

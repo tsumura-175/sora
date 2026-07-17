@@ -1,0 +1,92 @@
+<section class="contact reveal" id="contact">
+  <div class="contact__inner">
+    <div class="contact__intro">
+      <p class="en-sub reveal-sub">ご相談・お問い合わせ</p>
+      <h2 class="section-title">お気軽に<br>ご相談ください。</h2>
+      <p class="contact__lead">
+        サービスのご利用相談、関係機関からのお問い合わせ、採用や支援についてなど、<br>
+        どんなご相談でもお待ちしています。<br>
+        いただいたご連絡には、担当者より3営業日以内にご返信いたします。
+      </p>
+      <div class="contact-support">
+        <p class="contact-support__title">このような方を支えています</p>
+        <ul class="contact-support__list">
+          <li>がんと診断され、これからどう過ごせばいいか悩んでいる方</li>
+          <li>末期がんにより、医療的な支援を必要としている方</li>
+          <li>ご家族が、がんと診断されて、これからどう支えていけばいいかわからない方</li>
+          <li>日中や夜間など、ご本人様のそばにいられない時間に不安を感じる方</li>
+          <li>ご自宅での介護や看護に不安を感じている方</li>
+          <li>介護や看護を一人で抱えることに限界を感じている方</li>
+          <li>ご本人もご家族も安心して過ごせる環境を探している方</li>
+          <li>ホスピスや訪問看護について相談したい方</li>
+        </ul>
+      </div>
+      <div class="contact__alt">
+        <p class="contact__alt-label">お電話でのお問い合わせ</p>
+        <a href="tel:0424035850" class="contact__tel" data-tel-mask>
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><use href="{{root}}images/icons.svg#icon-phone" fill="currentColor"/></svg>
+          <span data-tel-display>042-403-5850</span>
+        </a>
+        <p class="contact__alt-note">受付時間：平日 9:00 – 17:30</p>
+      </div>
+    </div>
+    <form class="contact__form" id="contactForm" action="#" method="post" novalidate>
+      <p class="form-row">
+        <label for="f-type">お問い合わせ種別 <span class="required">必須</span></label>
+        <select id="f-type" name="type" required aria-required="true" aria-describedby="f-type-error">
+          <option value="">選択してください</option>
+          <option>サービス利用相談</option>
+          <option>関係機関として</option>
+          <option>採用について</option>
+          <option>ご寄付・ご支援</option>
+          <option>その他</option>
+        </select>
+        <span class="form-error" id="f-type-error" aria-live="polite"></span>
+      </p>
+      <p class="form-row">
+        <label for="f-name">お名前 <span class="required">必須</span></label>
+        <input type="text" id="f-name" name="name" required aria-required="true" autocomplete="name" aria-describedby="f-name-error">
+        <span class="form-error" id="f-name-error" aria-live="polite"></span>
+      </p>
+      <p class="form-row form-row--split">
+        <span class="form-col">
+          <label for="f-email">メールアドレス <span class="required">必須</span></label>
+          <input type="email" id="f-email" name="email" required aria-required="true" autocomplete="email" aria-describedby="f-email-error">
+          <span class="form-error" id="f-email-error" aria-live="polite"></span>
+        </span>
+        <span class="form-col">
+          <label for="f-tel">電話番号 <span class="optional">任意</span></label>
+          <input type="tel" id="f-tel" name="tel" autocomplete="tel">
+        </span>
+      </p>
+      <p class="form-row">
+        <label for="f-relation">ご関係 <span class="optional">任意</span></label>
+        <select id="f-relation" name="relation">
+          <option value="">選択してください</option>
+          <option>ご本人</option>
+          <option>ご家族</option>
+          <option>支援者</option>
+          <option>医療・福祉関係者</option>
+          <option>その他</option>
+        </select>
+      </p>
+      <p class="form-row">
+        <label for="f-message">お問い合わせ内容 <span class="required">必須</span></label>
+        <textarea id="f-message" name="message" rows="6" required aria-required="true" placeholder="50文字程度を目安に、ご状況やご相談内容をお聞かせください。" aria-describedby="f-message-error"></textarea>
+        <span class="form-error" id="f-message-error" aria-live="polite"></span>
+      </p>
+      <p class="form-row form-row--check">
+        <label>
+          <input type="checkbox" id="f-privacy" name="privacy" required aria-required="true">
+          <a href="{{root}}privacy/" class="form-link">プライバシーポリシー</a>に同意する <span class="required">必須</span>
+        </label>
+      </p>
+      <!-- honeypot（人間には見えない、botのみ入力する罠） -->
+      <p class="hp" aria-hidden="true"><label>このフィールドは入力しないでください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></p>
+      <p class="form-row form-row--submit">
+        <button type="submit" class="btn btn--primary">送信する</button>
+      </p>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>

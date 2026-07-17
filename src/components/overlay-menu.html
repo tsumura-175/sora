@@ -1,0 +1,51 @@
+
+
+<!-- ====================== ② Overlay Menu（トップ共通・流用） ====================== -->
+<nav class="overlay-menu" id="overlayMenu" aria-hidden="true">
+  <button class="overlay-close" id="overlayClose" aria-label="メニューを閉じる">
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path stroke="#fff" stroke-width="1.5" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="overlay-menu__noise" aria-hidden="true"></div>
+  <div class="overlay-menu__clouds" aria-hidden="true">
+    <svg class="cloud cloud--1" viewBox="0 0 200 80" aria-hidden="true"><use href="{{root}}images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.08)"/></svg>
+    <svg class="cloud cloud--2" viewBox="0 0 200 80" aria-hidden="true"><use href="{{root}}images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.06)"/></svg>
+  </div>
+  <div class="overlay-menu__inner">
+    <div class="overlay-menu__brand">
+      <img src="{{root}}images/logo-on-dark.png" alt="はじまりの家そら" class="overlay-menu__brand-icon">
+      <span class="overlay-menu__brand-en">人生の旅立ちを、はじまりに。</span>
+    </div>
+    <div class="overlay-menu__nav">
+      <ul class="overlay-nav">
+{{overlayNavigation}}
+
+    </div>
+    <div class="overlay-menu__side">
+      <div class="overlay-menu__cta">
+        <a href="{{root}}contact/" class="btn btn--white" id="overlayContactBtn">お問い合わせ</a>
+        <a href="{{root}}contact/" class="btn btn--ghost">見学・ご相談予約</a>
+        <a href="{{root}}donation/" class="btn btn--ghost">ご寄付のお願い</a>
+      </div>
+      <p class="overlay-menu__utility">
+        <a href="{{root}}access/">アクセス・所在地を見る <span aria-hidden="true">→</span></a>
+      </p>
+      <div class="overlay-menu__info">
+        <p class="overlay-menu__info-label">お電話でのお問い合わせ</p>
+        <a href="tel:0424035850" class="overlay-menu__info-tel">042-403-5850</a>
+        <p class="overlay-menu__info-note">平日 9:00 – 17:30</p>
+      </div>
+      <div class="overlay-menu__sns">
+        <span class="overlay-menu__sns-label">SNS・最新情報</span>
+        <ul>
+          <li><a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><use href="{{root}}images/icons.svg#icon-instagram" fill="currentColor"/></svg>
+          </a></li>
+          <li><a href="#" aria-label="LINE">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><use href="{{root}}images/icons.svg#icon-line" fill="currentColor"/></svg>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+

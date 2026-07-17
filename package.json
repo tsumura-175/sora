@@ -1,0 +1,11 @@
+{
+  "name": "sora-static-preview",
+  "private": true,
+  "version": "1.0.0",
+  "description": "GitHub Pages preview build for はじまりの家そら",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "verify": "node scripts/verify.mjs",
+    "check": "npm run build && npm run verify"
+  }
+}

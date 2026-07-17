@@ -1,0 +1,7 @@
+{
+  "output": "index.html",
+  "title": "はじまりの家そら | NPO法人コミュニティケア・ライフ",
+  "description": "はじまりの家そら｜NPO法人コミュニティケア・ライフ。看取り住宅・訪問看護・コミュニティ・デイサービスの4事業で、人生の旅立ちを支えます。東京都東久留米市。",
+  "canonical": "https://hajimarinoie-sora.jp/",
+  "preload": "<link rel=\"preload\" as=\"image\" href=\"{{root}}images/kv-01.webp\" type=\"image/webp\" imagesrcset=\"{{root}}images/kv-01-1024.webp 1024w, {{root}}images/kv-01.webp 1600w\" imagesizes=\"(max-width: 768px) 100vw, 60vw\">"
+}

@@ -1,0 +1,188 @@
+/* =============================================================
+   Access Page Extensions（access/index.html）
+   ============================================================= */
+.access-info {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(28px, 5vw, 56px);
+  align-items: stretch;
+  margin-top: clamp(36px, 5vw, 56px);
+}
+.access-info__body {
+  padding: clamp(24px, 3.5vw, 36px);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.78);
+}
+.access-info__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.access-info__row {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.access-info__row:first-child { padding-top: 0; }
+.access-info__row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.access-info__row dt {
+  font-family: var(--font-jp-serif);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-main);
+  letter-spacing: 0.14em;
+}
+.access-info__row dd {
+  color: var(--color-text);
+  line-height: 1.8;
+}
+.access-info__tel {
+  font-family: var(--font-en);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-semibold);
+  color: var(--color-deep);
+  letter-spacing: 0.04em;
+}
+.access-info__map {
+  overflow: hidden;
+  min-height: 420px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-pale);
+}
+.access-info__map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  border: 0;
+}
+.access-route {
+  max-width: 860px;
+  margin-top: clamp(36px, 5vw, 56px);
+}
+.access-steps {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 5vw, 48px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.access-steps__item {
+  display: grid;
+  gap: clamp(14px, 2.4vw, 20px);
+  padding-bottom: clamp(28px, 4vw, 44px);
+  border-bottom: 1px solid rgba(46,125,209,0.16);
+}
+.access-steps__item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.access-steps__photo {
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-pale);
+}
+.access-steps__photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.access-steps__caption {
+  display: grid;
+  grid-template-columns: clamp(64px, 8vw, 104px) 1fr;
+  gap: clamp(18px, 3vw, 40px);
+  align-items: start;
+}
+.access-steps__num {
+  font-family: var(--font-en);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: rgba(46,125,209,0.32);
+}
+.access-steps__text {
+  color: var(--color-text);
+  font-family: var(--font-jp-serif);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  line-height: 1.9;
+  letter-spacing: 0.05em;
+}
+.access-request {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  list-style: none;
+  margin: clamp(36px, 5vw, 56px) 0 0;
+  padding: 0;
+}
+.access-request__item {
+  display: grid;
+  grid-template-columns: clamp(64px, 8vw, 104px) 1fr;
+  gap: clamp(18px, 3vw, 40px);
+  padding: clamp(20px, 3vw, 28px);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.78);
+}
+.access-request__icon {
+  font-family: var(--font-en);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: rgba(46,125,209,0.32);
+}
+.access-request__title {
+  font-family: var(--font-jp-serif);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  color: var(--color-deep);
+  letter-spacing: 0.06em;
+}
+.access-request__text {
+  margin-top: 8px;
+  color: var(--color-text);
+  line-height: 1.9;
+}
+@media (max-width: 900px) {
+  .access-info {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .access-info__body,
+  .access-request__item {
+    padding: 18px;
+  }
+  .access-info__row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .access-request__item {
+    grid-template-columns: 1fr;
+  }
+  .access-steps__caption {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .access-steps__num {
+    font-size: 1.25rem;
+  }
+  .access-info__map,
+  .access-info__map iframe {
+    min-height: 320px;
+  }
+}
+

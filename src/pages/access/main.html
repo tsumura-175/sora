@@ -1,0 +1,312 @@
+<main id="top">
+
+<!-- ====================== ③ Page KV（下層用 KV・中央配置／背景画像型） ====================== -->
+<section class="page-kv" aria-label="ページキービジュアル">
+  <div class="page-kv__bg" aria-hidden="true">
+    <img src="../images/kv-01.webp" srcset="../images/kv-01-1024.webp 1024w, ../images/kv-01.webp 1600w" sizes="100vw" alt="" class="page-kv__bg-image" width="1600" height="1066" fetchpriority="high">
+    <span class="page-kv__bg-overlay"></span>
+  </div>
+  <div class="page-kv__clouds" aria-hidden="true">
+    <svg class="cloud page-kv__cloud--1" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.7)"/></svg>
+    <svg class="cloud page-kv__cloud--2" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.5)"/></svg>
+    <svg class="cloud page-kv__cloud--3" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.55)"/></svg>
+  </div>
+  <div class="page-kv__inner">
+    <p class="page-kv__en"><span>ACCESS</span></p>
+    <h1 class="page-kv__title">アクセス</h1>
+  </div>
+  <nav class="breadcrumb breadcrumb--on-kv" aria-label="現在位置">
+    <ol class="breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li class="breadcrumb__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="../" itemprop="item"><span itemprop="name">ホーム</span></a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li class="breadcrumb__item breadcrumb__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name">アクセス</span>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </nav>
+</section>
+
+<!-- ====================== Divider：手書き筆ライン ====================== -->
+<div class="divider divider--brush" aria-hidden="true">
+  <svg class="divider__brush" viewBox="0 0 1200 100" preserveAspectRatio="none">
+    <use href="../images/icons.svg#brush-wave-01"/>
+  </svg>
+</div>
+
+<!-- ====================== ⑤ Page Anchor Nav（KV直下のアンカーメニュー） ====================== -->
+<nav class="page-anchor-nav" aria-label="ページ内アンカーメニュー">
+  <ul class="page-anchor-nav__list">
+    <li class="page-anchor-nav__item">
+      <a href="#location" class="page-anchor-nav__link">
+        <em class="page-anchor-nav__en">LOCATION</em>
+        <span class="page-anchor-nav__jp">所在地</span>
+        <span class="page-anchor-nav__arrow" aria-hidden="true">↓</span>
+      </a>
+    </li>
+    <li class="page-anchor-nav__item">
+      <a href="#bus" class="page-anchor-nav__link">
+        <em class="page-anchor-nav__en">BY BUS</em>
+        <span class="page-anchor-nav__jp">バスでお越しの方</span>
+        <span class="page-anchor-nav__arrow" aria-hidden="true">↓</span>
+      </a>
+    </li>
+    <li class="page-anchor-nav__item">
+      <a href="#car" class="page-anchor-nav__link">
+        <em class="page-anchor-nav__en">BY CAR</em>
+        <span class="page-anchor-nav__jp">お車でお越しの方</span>
+        <span class="page-anchor-nav__arrow" aria-hidden="true">↓</span>
+      </a>
+    </li>
+    <li class="page-anchor-nav__item">
+      <a href="#visit-note" class="page-anchor-nav__link">
+        <em class="page-anchor-nav__en">VISIT NOTE</em>
+        <span class="page-anchor-nav__jp">ご来訪前のお願い</span>
+        <span class="page-anchor-nav__arrow" aria-hidden="true">↓</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<!-- ====================== ⑥ Page Side Nav（左サイド追従ナビ・PC のみ） ====================== -->
+<aside class="page-side-nav" id="pageSideNav" aria-label="ページ内ナビゲーション">
+  <ul class="page-side-nav__list">
+    <li class="page-side-nav__item">
+      <a href="#location" class="page-side-nav__link" data-target="location">
+        <em class="page-side-nav__en">LOCATION</em>
+        <span class="page-side-nav__jp">所在地</span>
+      </a>
+    </li>
+    <li class="page-side-nav__item">
+      <a href="#bus" class="page-side-nav__link" data-target="bus">
+        <em class="page-side-nav__en">BY BUS</em>
+        <span class="page-side-nav__jp">バスでお越しの方</span>
+      </a>
+    </li>
+    <li class="page-side-nav__item">
+      <a href="#car" class="page-side-nav__link" data-target="car">
+        <em class="page-side-nav__en">BY CAR</em>
+        <span class="page-side-nav__jp">お車でお越しの方</span>
+      </a>
+    </li>
+    <li class="page-side-nav__item">
+      <a href="#visit-note" class="page-side-nav__link" data-target="visit-note">
+        <em class="page-side-nav__en">VISIT NOTE</em>
+        <span class="page-side-nav__jp">ご来訪前のお願い</span>
+      </a>
+    </li>
+  </ul>
+</aside>
+
+<!-- ====================== ⑦ Section #location（所在地） ====================== -->
+<section class="about-section about-section--01 reveal" id="location">
+  <div class="bg-decor" aria-hidden="true">
+    <svg class="bg-decor__cloud bg-decor__cloud--lg bg-decor__cloud--tl" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(74,158,232,0.18)"/></svg>
+    <svg class="bg-decor__cloud bg-decor__cloud--sm bg-decor__cloud--br" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(91,179,240,0.14)"/></svg>
+  </div>
+  <div class="about-section__inner">
+    <header class="section-head">
+      <p class="en-sub reveal-sub">LOCATION</p>
+      <h2 class="section-title">所在地・周辺情報</h2>
+      <p class="section-lead">ご見学やご相談でお越しの際は、事前に日時をご予約のうえお越しください。</p>
+    </header>
+
+    <div class="access-info">
+      <div class="access-info__body">
+        <dl class="access-info__list">
+          <div class="access-info__row">
+            <dt>施設名</dt>
+            <dd>はじまりの家そら</dd>
+          </div>
+          <div class="access-info__row">
+            <dt>所在地</dt>
+            <dd>〒203-0032<br>東京都東久留米市前沢5-5-11</dd>
+          </div>
+          <div class="access-info__row">
+            <dt>電話番号</dt>
+            <dd><a href="tel:0424035850" class="access-info__tel">042-403-5850</a></dd>
+          </div>
+          <div class="access-info__row">
+            <dt>受付時間</dt>
+            <dd>平日 9:00 – 17:30</dd>
+          </div>
+          <div class="access-info__row">
+            <dt>最寄り</dt>
+            <dd>西武新宿線 花小金井駅よりバス利用（ダミー）</dd>
+          </div>
+          <div class="access-info__row">
+            <dt>駐車場</dt>
+            <dd>来客用駐車スペースあり。台数に限りがあるため、ご来訪前にお問い合わせください。</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="access-info__map" aria-label="はじまりの家そら周辺地図">
+        <iframe src="https://www.google.com/maps?q=%E3%80%92203-0032%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%9D%B1%E4%B9%85%E7%95%99%E7%B1%B3%E5%B8%82%E5%89%8D%E6%B2%A25-5-11&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="はじまりの家そら 周辺地図"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ⑧ Section #bus（バスでお越しの方） ====================== -->
+<section class="about-section about-section--02 reveal" id="bus">
+  <div class="bg-decor" aria-hidden="true">
+    <svg class="bg-decor__cloud bg-decor__cloud--lg bg-decor__cloud--br" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(91,179,240,0.18)"/></svg>
+  </div>
+  <div class="about-section__inner">
+    <header class="section-head">
+      <p class="en-sub reveal-sub">BY BUS</p>
+      <h2 class="section-title">公共交通機関でのアクセス</h2>
+      <p class="section-lead">駅からバスをご利用いただく場合のルートです。停留所名や時刻は、正式情報の確認後に差し替えます。</p>
+    </header>
+
+    <div class="access-route access-route--bus">
+      <ol class="access-steps" aria-label="バスでお越しの場合の流れ">
+        <li class="access-steps__item">
+          <figure class="access-steps__photo">
+            <img src="../images/kv-03.webp" alt="最寄り駅からの道のりのイメージ" width="1024" height="724" loading="lazy">
+          </figure>
+          <div class="access-steps__caption">
+            <span class="access-steps__num" aria-hidden="true">01</span>
+            <p class="access-steps__text">西武新宿線「花小金井駅」北口のバス乗り場へお進みください。（ダミー）</p>
+          </div>
+        </li>
+        <li class="access-steps__item">
+          <figure class="access-steps__photo">
+            <img src="../images/service-community.webp" alt="バス停周辺の道のりのイメージ" width="600" height="400" loading="lazy">
+          </figure>
+          <div class="access-steps__caption">
+            <span class="access-steps__num" aria-hidden="true">02</span>
+            <p class="access-steps__text">前沢方面行きのバスに乗車し、「前沢住宅」または近隣停留所で下車します。（ダミー）</p>
+          </div>
+        </li>
+        <li class="access-steps__item">
+          <figure class="access-steps__photo">
+            <img src="../images/service-hajimari.webp" alt="施設へ向かう道のりのイメージ" width="600" height="400" loading="lazy">
+          </figure>
+          <div class="access-steps__caption">
+            <span class="access-steps__num" aria-hidden="true">03</span>
+            <p class="access-steps__text">停留所から住宅街を抜け、徒歩約5分で到着します。道に迷われた際はお電話ください。</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ⑨ Section #car（お車でお越しの方） ====================== -->
+<section class="about-section about-section--03 reveal" id="car">
+  <div class="bg-decor" aria-hidden="true">
+    <svg class="bg-decor__cloud bg-decor__cloud--sm bg-decor__cloud--tl" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(74,158,232,0.14)"/></svg>
+  </div>
+  <div class="about-section__inner">
+    <header class="section-head">
+      <p class="en-sub reveal-sub">BY CAR</p>
+      <h2 class="section-title">お車でのアクセス</h2>
+      <p class="section-lead">住宅街にある小さなホームです。近隣の方のご迷惑にならないよう、駐車場所は事前にご確認ください。</p>
+    </header>
+
+    <div class="access-route access-route--car">
+      <ol class="access-steps" aria-label="お車でお越しの場合の流れ">
+        <li class="access-steps__item">
+          <figure class="access-steps__photo">
+            <img src="../images/kv-01.webp" alt="車で向かう道のりのイメージ" width="1600" height="1066" loading="lazy">
+          </figure>
+          <div class="access-steps__caption">
+            <span class="access-steps__num" aria-hidden="true">01</span>
+            <p class="access-steps__text">新青梅街道方面から前沢エリアへ入り、住宅街の通りへお進みください。（ダミー）</p>
+          </div>
+        </li>
+        <li class="access-steps__item">
+          <figure class="access-steps__photo">
+            <img src="../images/kv-02.webp" alt="住宅街の道のりのイメージ" width="1600" height="1066" loading="lazy">
+          </figure>
+          <div class="access-steps__caption">
+            <span class="access-steps__num" aria-hidden="true">02</span>
+            <p class="access-steps__text">施設周辺は生活道路です。歩行者や自転車にご注意のうえ、ゆっくりお進みください。</p>
+          </div>
+        </li>
+        <li class="access-steps__item">
+          <figure class="access-steps__photo">
+            <img src="../images/service-hajimari.webp" alt="施設外観のイメージ" width="600" height="400" loading="lazy">
+          </figure>
+          <div class="access-steps__caption">
+            <span class="access-steps__num" aria-hidden="true">03</span>
+            <p class="access-steps__text">到着後はスタッフが駐車スペースをご案内します。満車の場合は近隣駐車場をご利用いただく場合があります。</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ⑩ Section #visit-note（ご来訪前のお願い） ====================== -->
+<section class="about-section about-section--04 reveal" id="visit-note">
+  <div class="bg-decor" aria-hidden="true">
+    <svg class="bg-decor__cloud bg-decor__cloud--lg bg-decor__cloud--tl" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(74,158,232,0.16)"/></svg>
+    <svg class="bg-decor__cloud bg-decor__cloud--sm bg-decor__cloud--br" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(91,179,240,0.18)"/></svg>
+  </div>
+  <div class="about-section__inner">
+    <header class="section-head">
+      <p class="en-sub reveal-sub">VISIT NOTE</p>
+      <h2 class="section-title">安心してお越しいただくために</h2>
+      <p class="section-lead">ご本人様やご家族様が穏やかに過ごされている場所のため、見学・ご相談は予約制で承っています。</p>
+    </header>
+
+    <ul class="access-request" aria-label="ご来訪前のお願い">
+      <li class="access-request__item">
+        <span class="access-request__icon" aria-hidden="true">01</span>
+        <div>
+          <h3 class="access-request__title">事前予約をお願いします</h3>
+          <p class="access-request__text">見学やご相談をご希望の方は、お問い合わせフォームまたはお電話よりご希望日時をお知らせください。</p>
+        </div>
+      </li>
+      <li class="access-request__item">
+        <span class="access-request__icon" aria-hidden="true">02</span>
+        <div>
+          <h3 class="access-request__title">駐車場利用は事前にご確認ください</h3>
+          <p class="access-request__text">駐車スペースには限りがあります。お車でお越しの場合は、予約時に駐車場利用の有無をお伝えください。</p>
+        </div>
+      </li>
+      <li class="access-request__item">
+        <span class="access-request__icon" aria-hidden="true">03</span>
+        <div>
+          <h3 class="access-request__title">道に迷われたらお電話ください</h3>
+          <p class="access-request__text">周辺は住宅街のため、分かりにくい場合があります。到着が難しい場合は、無理をせずお電話ください。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+<!-- ====================== ⑪ Page Related（関連ページ CTA・テキストリンク型） ====================== -->
+<section class="page-related" aria-label="関連ページ">
+  <div class="page-related__inner">
+    <p class="page-related__label">関連ページ</p>
+    <ul class="page-related__list">
+      <li>
+        <a href="../services/" class="page-related__link">
+          <span class="page-related__en">SERVICE</span>
+          <span class="page-related__jp">事業案内</span>
+          <span class="page-related__arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="../target/" class="page-related__link">
+          <span class="page-related__en">FOR YOU</span>
+          <span class="page-related__jp">ご関係別案内</span>
+          <span class="page-related__arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="../corporate/" class="page-related__link">
+          <span class="page-related__en">CORPORATE</span>
+          <span class="page-related__jp">法人情報</span>
+          <span class="page-related__arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ====================== ⑫ Contact（トップページ共通・完全コピー） ====================== -->
