@@ -15,14 +15,14 @@
   ],
   "overlayNavigation": [
     { "number": "01", "en": "ABOUT", "jp": "想い・理念", "href": "about/", "children": [{ "label": "私たちの想い", "href": "about/#philosophy" }, { "label": "代表メッセージ", "href": "about/#message" }] },
-    { "number": "02", "en": "SERVICE", "jp": "そらでの暮らし", "href": "services/", "children": [{ "label": "天国につながるホームそら", "href": "services/#home" }, { "label": "訪問看護ステーションそら", "href": "services/#visiting-nursing" }, { "label": "プライベートナースそら", "href": "services/#private-nurse" }, { "label": "そらのリトリートステイ", "href": "services/#retreat" }, { "label": "地域コミュニティスペース", "href": "services/#community" }, { "label": "料金・ご利用条件", "href": "services/pricing/" }] },
+    { "number": "02", "defaultOpen": true, "en": "SERVICE", "jp": "そらでの暮らし", "href": "services/", "children": [{ "label": "天国につながるホームそら", "href": "services/#home" }, { "label": "訪問看護ステーションそら", "href": "services/#visiting-nursing" }, { "label": "プライベートナースそら", "href": "services/#private-nurse" }, { "label": "そらのリトリートステイ", "href": "services/#retreat" }, { "label": "地域コミュニティスペース", "href": "services/#community" }, { "label": "料金・ご利用条件", "href": "services/pricing/" }] },
     { "number": "03", "en": "FOR YOU", "jp": "ご関係別案内", "href": "target/", "children": [{ "label": "ご本人・ご家族の方へ", "href": "target/" }, { "label": "医療・介護関係者の方へ", "href": "target/#medical" }, { "label": "支援・ご寄付をお考えの方へ", "href": "target/#supporter" }] },
-    { "number": "04", "en": "HOME SORA", "jp": "ホームそらのご紹介", "href": "home-sora/", "children": [] },
+    { "number": "04", "en": "HOME SORA", "jp": "ホームそらのご紹介", "href": "home-sora/", "children": [{ "label": "空気の質を高める内装", "href": "home-sora/#air" }, { "label": "身体にやさしい手づくりの食事", "href": "home-sora/#food" }, { "label": "いつでも四季を感じられる植物", "href": "home-sora/#plants" }, { "label": "癒しを与える心地よい音", "href": "home-sora/#sound" }, { "label": "ずっと触れたくなる寝具", "href": "home-sora/#bedding" }, { "label": "ホームの中をご紹介", "href": "home-sora/#gallery" }] },
     { "number": "05", "en": "STAFF", "jp": "スタッフ紹介", "href": "staff/", "children": [] },
     { "number": "06", "en": "CORPORATE", "jp": "法人情報", "href": "corporate/", "children": [{ "label": "団体概要", "href": "corporate/#overview" }, { "label": "沿革", "href": "corporate/#history" }] },
     { "number": "07", "en": "RECRUIT", "jp": "採用情報", "href": "recruit/", "children": [{ "label": "採用にあたって", "href": "recruit/" }, { "label": "募集職種", "href": "recruit/#jobs" }, { "label": "スタッフインタビュー", "href": "recruit/#interview" }, { "label": "応募フォーム", "href": "recruit/#apply" }] },
     { "number": "08", "en": "NEWS", "jp": "お知らせ", "href": "news/", "children": [{ "label": "お知らせ一覧", "href": "news/" }] },
-    { "number": "09", "en": "ACCESS", "jp": "アクセス", "href": "access/", "children": [] }
+    { "number": "09", "en": "ACCESS", "jp": "アクセス", "href": "access/", "children": [{ "label": "所在地", "href": "access/#location" }, { "label": "バスでおこしの方", "href": "access/#bus" }, { "label": "お車でおこしの方", "href": "access/#car" }, { "label": "ご来訪前のお願い", "href": "access/#visit-note" }] }
   ],
   "footerNavigation": [
     { "label": "そらについて", "children": [{ "label": "ホーム", "href": "" }, { "label": "想い・理念", "href": "about/" }, { "label": "ホームそらのご紹介", "href": "home-sora/" }, { "label": "スタッフ紹介", "href": "staff/" }, { "label": "法人情報", "href": "corporate/" }] },

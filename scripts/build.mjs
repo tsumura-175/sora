@@ -26,6 +26,44 @@ function siteHref(root, href) {
   return href.startsWith("#") || /^(https?:|mailto:|tel:)/.test(href) ? href : `${root}${href}`;
 }
 
+function renderOverlayNavigation(items, root) {
+  const renderLinks = (item) => {
+    const children = item.children ?? [];
+    return [
+      `<a href="${siteHref(root, item.href)}" class="overlay-nav__detail-parent">トップを見る <span aria-hidden="true">→</span></a>`,
+      ...children.map((child) => `<a href="${siteHref(root, child.href)}">${escapeHtml(child.label)} <span aria-hidden="true">→</span></a>`)
+    ].join("\n              ");
+  };
+
+  const cards = items.map((item) => {
+    const panelId = `overlay-nav-detail-${item.number}`;
+    const isDefault = item.defaultOpen === true;
+    return `        <li class="overlay-nav__item${isDefault ? " is-active" : ""}">
+          <button type="button" class="overlay-nav__trigger" data-overlay-nav-trigger aria-controls="${panelId}" aria-expanded="${isDefault}">
+            <span class="overlay-nav__num" aria-hidden="true">${escapeHtml(item.number)}</span>
+            <span class="overlay-nav__en">${escapeHtml(item.en)}</span>
+            <span class="overlay-nav__jp">${escapeHtml(item.jp)}</span>
+            <span class="overlay-nav__trigger-arrow" aria-hidden="true">+</span>
+          </button>
+        </li>`;
+  }).join("\n");
+
+  const details = items.map((item) => {
+    const isDefault = item.defaultOpen === true;
+    return `        <section class="overlay-nav__detail-panel" id="overlay-nav-detail-${item.number}"${isDefault ? "" : " hidden"}>
+          <div class="overlay-nav__detail-heading">
+            <span class="overlay-nav__detail-en">${escapeHtml(item.en)}</span>
+            <span class="overlay-nav__detail-jp">${escapeHtml(item.jp)}</span>
+          </div>
+          <div class="overlay-nav__detail-links">
+              ${renderLinks(item)}
+          </div>
+        </section>`;
+  }).join("\n");
+
+  return { cards, details };
+}
+
 function renderNavigation(items, root, type, activePrimaryHref = null) {
   if (type === "primary") {
     return `<ul>\n${items.map((item) => {
@@ -36,20 +74,7 @@ function renderNavigation(items, root, type, activePrimaryHref = null) {
   }
 
   if (type === "overlay") {
-    return items.map((item) => {
-      const children = item.children ?? [];
-      const childNavigation = children.length ? `
-          <ul class="overlay-nav__sub">
-${children.map((child) => `            <li><a href="${siteHref(root, child.href)}">${escapeHtml(child.label)}</a></li>`).join("\n")}
-          </ul>` : "";
-      return `        <li class="overlay-nav__item">
-          <span class="overlay-nav__num" aria-hidden="true">${escapeHtml(item.number)}</span>
-          <a href="${siteHref(root, item.href)}" class="overlay-nav__link">
-            <span class="overlay-nav__en">${escapeHtml(item.en)}</span>
-            <span class="overlay-nav__jp">${escapeHtml(item.jp)}</span>
-          </a>${childNavigation}
-        </li>`;
-    }).join("\n");
+    return renderOverlayNavigation(items, root).cards;
   }
 
   return items.map((item) => `      <div class="site-footer__col">
@@ -116,6 +141,24 @@ function renderPageAnchors(template, anchorNavigation) {
   });
 }
 
+function addHomeSoraSectionAnchors(markup, output) {
+  if (output !== "home-sora/index.html") return markup;
+
+  const sections = [
+    ["home-sora-feature home-sora-feature--air reveal", "air"],
+    ["home-sora-feature home-sora-feature--food reveal", "food"],
+    ["home-sora-feature home-sora-feature--plants reveal", "plants"],
+    ["home-sora-feature home-sora-feature--sound reveal", "sound"],
+    ["home-sora-feature home-sora-feature--bedding reveal", "bedding"],
+    ["home-sora-gallery reveal", "gallery"]
+  ];
+
+  return sections.reduce(
+    (html, [className, id]) => html.replace(`class="${className}"`, `class="${className}" id="${id}"`),
+    markup
+  );
+}
+
 function rootForOutput(output) {
   const outputDirectory = dirname(join(projectRoot, output));
   const pathToRoot = relative(outputDirectory, projectRoot).replaceAll("\\", "/");
@@ -145,10 +188,12 @@ const templates = Object.fromEntries(await Promise.all([
 
 for (const { directory: pageDirectory, config } of pages) {
   const root = rootForOutput(config.output);
-  const [pageMain, pageAfterContact] = await Promise.all([
+  const overlayNavigation = renderOverlayNavigation(site.overlayNavigation, root);
+  const [pageMainSource, pageAfterContact] = await Promise.all([
     read(join(pageDirectory, "main.html")),
     readOptional(join(pageDirectory, "after-contact.html"))
   ]);
+  const pageMain = addHomeSoraSectionAnchors(pageMainSource, config.output);
   const context = {
     root,
     title: config.title,
@@ -159,7 +204,8 @@ for (const { directory: pageDirectory, config } of pages) {
     contactTelDisplay: site.contact.telDisplay,
     contactHours: site.contact.hours,
     primaryNavigation: renderNavigation(site.primaryNavigation, root, "primary", primaryHrefForOutput(config.output)),
-    overlayNavigation: renderNavigation(site.overlayNavigation, root, "overlay"),
+    overlayNavigation: overlayNavigation.cards,
+    overlayNavigationDetails: overlayNavigation.details,
     footerNavigation: renderNavigation(site.footerNavigation, root, "footer"),
     pageHero: config.hero ? renderPageHero(templates["page-kv"], config.hero, root) : "",
     pageAnchors: config.anchorNavigation ? renderPageAnchors(templates["page-anchors"], config.anchorNavigation) : "",

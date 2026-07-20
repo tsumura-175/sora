@@ -95,7 +95,7 @@
 
     // 同一ページ内アンカーを含め、メガメニューのナビリンクを選んだら必ず閉じる。
     // リンク操作時はハンバーガーへフォーカスを戻さず、通常の遷移・スクロールを優先する。
-    const overlayNavigation = overlay.querySelector('.overlay-nav');
+    const overlayNavigation = overlay.querySelector('.overlay-menu__nav');
     if (overlayNavigation) {
       overlayNavigation.addEventListener('click', (e) => {
         const link = e.target.closest('a[href]');
@@ -103,6 +103,28 @@
         closeMenu({ restoreFocus: false });
       });
     }
+
+    const overlayNavTriggers = Array.from(overlay.querySelectorAll('[data-overlay-nav-trigger]'));
+    const activateOverlayNavItem = (trigger) => {
+      const item = trigger.closest('.overlay-nav__item');
+      if (!item) return;
+
+      overlayNavTriggers.forEach((candidate) => {
+        const candidateItem = candidate.closest('.overlay-nav__item');
+        const panelId = candidate.getAttribute('aria-controls');
+        const panel = panelId ? document.getElementById(panelId) : null;
+        const isActive = candidate === trigger;
+        candidate.setAttribute('aria-expanded', String(isActive));
+        candidateItem?.classList.toggle('is-active', isActive);
+        if (panel) panel.hidden = !isActive;
+      });
+    };
+
+    overlayNavTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => activateOverlayNavItem(trigger));
+      trigger.addEventListener('focus', () => activateOverlayNavItem(trigger));
+      trigger.addEventListener('mouseenter', () => activateOverlayNavItem(trigger));
+    });
 
     // focus trap
     overlay.addEventListener('keydown', (e) => {
