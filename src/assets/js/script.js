@@ -330,6 +330,14 @@
   let formLoadedAt = Date.now();
 
   if (form && formStatus) {
+    const inquiry = new URLSearchParams(window.location.search).get('inquiry');
+    if (inquiry === 'recruit') {
+      const inquiryType = document.getElementById('f-type');
+      const relation = document.getElementById('f-relation');
+      if (inquiryType) inquiryType.value = '採用について';
+      if (relation) relation.value = '採用応募者';
+    }
+
     // バリデーションエラー表示ヘルパー
     const showFieldError = (fieldId, message) => {
       const errorEl = document.getElementById(fieldId + '-error');
