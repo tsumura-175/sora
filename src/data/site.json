@@ -20,7 +20,7 @@
     { "number": "04", "en": "HOME SORA", "jp": "ホームそらのご紹介", "href": "home-sora/", "children": [{ "label": "空気の質を高める内装", "href": "home-sora/#air" }, { "label": "身体にやさしい手づくりの食事", "href": "home-sora/#food" }, { "label": "いつでも四季を感じられる植物", "href": "home-sora/#plants" }, { "label": "癒しを与える心地よい音", "href": "home-sora/#sound" }, { "label": "ずっと触れたくなる寝具", "href": "home-sora/#bedding" }, { "label": "ホームの中をご紹介", "href": "home-sora/#gallery" }] },
     { "number": "05", "en": "STAFF", "jp": "スタッフ紹介", "href": "staff/", "children": [] },
     { "number": "06", "en": "CORPORATE", "jp": "法人情報", "href": "corporate/", "children": [{ "label": "団体概要", "href": "corporate/#overview" }, { "label": "沿革", "href": "corporate/#history" }] },
-    { "number": "07", "en": "RECRUIT", "jp": "採用情報", "href": "recruit/", "children": [{ "label": "採用にあたって", "href": "recruit/" }, { "label": "募集職種", "href": "recruit/#jobs" }, { "label": "スタッフインタビュー", "href": "recruit/#interview" }, { "label": "応募フォーム", "href": "recruit/#apply" }] },
+    { "number": "07", "en": "RECRUIT", "jp": "採用情報", "href": "recruit/", "children": [{ "label": "募集案内", "href": "recruit/#message" }, { "label": "募集条件", "href": "recruit/#jobs" }, { "label": "そらの看護", "href": "recruit/#care" }, { "label": "よくある質問", "href": "recruit/#faq" }, { "label": "採用相談", "href": "recruit/#apply" }] },
     { "number": "08", "en": "NEWS", "jp": "お知らせ", "href": "news/", "children": [{ "label": "お知らせ一覧", "href": "news/" }] },
     { "number": "09", "en": "ACCESS", "jp": "アクセス", "href": "access/", "children": [{ "label": "所在地", "href": "access/#location" }, { "label": "バスでおこしの方", "href": "access/#bus" }, { "label": "お車でおこしの方", "href": "access/#car" }, { "label": "ご来訪前のお願い", "href": "access/#visit-note" }] }
   ],
