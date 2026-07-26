@@ -92,8 +92,14 @@ body.is-cta-visible .floating-cta.floating-cta {
 }
 
 .floating-cta__btn:focus-visible {
-  outline: 2px solid var(--color-light);
+  outline: 2px solid #ffffff;
   outline-offset: -3px;
+  box-shadow: inset 0 0 0 4px var(--color-deep);
+}
+.floating-cta__btn:active { transform: translateY(1px); }
+.floating-cta__btn[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 /* ---------- アイコン（上段） ---------- */
@@ -126,7 +132,7 @@ body.is-cta-visible .floating-cta.floating-cta {
 }
 /* ホバー時に重ねるオーバーレイ色（単色 → opacity フェード） */
 .floating-cta__btn--primary::before {
-  background: var(--color-main);
+  background: var(--color-main-ink);
 }
 .floating-cta__btn--primary:hover,
 .floating-cta__btn--primary:focus-visible {
@@ -136,7 +142,7 @@ body.is-cta-visible .floating-cta.floating-cta {
 /* ---------- バリアント：② 見学・ご相談予約（セカンダリ） ---------- */
 .floating-cta__btn--secondary {
   background: #ffffff;
-  color: var(--color-main);
+  color: var(--color-main-ink);
 }
 .floating-cta__btn--secondary::before {
   background: var(--color-pale);
@@ -144,4 +150,8 @@ body.is-cta-visible .floating-cta.floating-cta {
 .floating-cta__btn--secondary:hover,
 .floating-cta__btn--secondary:focus-visible {
   color: var(--color-deep);
+}
+
+@media (max-width: 48rem) {
+  .floating-cta { display: none; }
 }

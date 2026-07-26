@@ -248,7 +248,7 @@
   font-style: italic;
   font-size: 0.82rem;
   letter-spacing: 0.28em;
-  color: var(--color-main);
+  color: var(--color-main-ink);
   font-weight: 500;
 }
 .page-anchor-nav__jp {
@@ -263,13 +263,20 @@
   display: inline-block;
   margin-top: 6px;
   font-family: var(--font-en);
-  color: var(--color-main);
+  color: var(--color-main-ink);
   font-size: 1rem;
   transition: transform 280ms var(--ease);
 }
 .page-anchor-nav__link:hover .page-anchor-nav__arrow {
   transform: translateY(4px);
 }
+.page-anchor-nav__link:focus-visible {
+  background: var(--color-pale);
+  outline: 2px solid var(--color-deep);
+  outline-offset: 2px;
+}
+.page-anchor-nav__link:focus-visible::before { transform: scaleX(1); }
+.page-anchor-nav__link:active { background: var(--color-mid); }
 @media (max-width: 900px) {
   .page-anchor-nav__list { border-top: 1px solid var(--color-border); }
   .page-anchor-nav__item { flex-basis: 50%; }
@@ -332,7 +339,13 @@
   transition: opacity 280ms var(--ease);
 }
 .page-side-nav__link:hover { color: var(--color-deep); }
-.page-side-nav__link.is-active { color: var(--color-main); }
+.page-side-nav__link.is-active { color: var(--color-main-ink); }
+.page-side-nav__link:focus-visible {
+  color: var(--color-deep);
+  outline: 2px solid var(--color-deep);
+  outline-offset: 4px;
+}
+.page-side-nav__link:active { transform: translateY(1px); }
 .page-side-nav__link.is-active::before { opacity: 1; }
 .page-side-nav__en {
   font-family: var(--font-en);
@@ -456,7 +469,7 @@
   font-style: italic;
   font-size: 0.85rem;
   letter-spacing: 0.28em;
-  color: var(--color-main);
+  color: var(--color-main-ink);
   text-transform: uppercase;
   margin-bottom: 24px;
   text-align: center;
@@ -486,12 +499,18 @@
 .page-related__link:hover {
   background: var(--color-pale);
 }
+.page-related__link:focus-visible {
+  background: var(--color-pale);
+  outline: 2px solid var(--color-deep);
+  outline-offset: 2px;
+}
+.page-related__link:active { background: var(--color-mid); }
 .page-related__en {
   font-family: var(--font-en);
   font-style: italic;
   font-size: 0.8rem;
   letter-spacing: 0.26em;
-  color: var(--color-main);
+  color: var(--color-main-ink);
 }
 .page-related__jp {
   font-family: var(--font-jp-serif);
@@ -502,7 +521,7 @@
 }
 .page-related__arrow {
   font-family: var(--font-en);
-  color: var(--color-main);
+  color: var(--color-main-ink);
   margin-left: 6px;
   transition: transform 240ms var(--ease);
 }

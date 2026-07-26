@@ -1,0 +1,30 @@
+{
+  "output": "staff/index.html",
+  "title": "スタッフ紹介 | はじまりの家そら",
+  "description": "はじまりの家そらに関わる看護・ケア・調理スタッフをご紹介します。",
+  "canonical": "https://hajimarinoie-sora.jp/staff/",
+  "hero": {
+    "en": "STAFF",
+    "title": "スタッフ紹介",
+    "image": "images/kv-03.webp",
+    "width": 1024,
+    "height": 683,
+    "sizes": "100vw",
+    "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "スタッフ紹介" }]
+  },
+  "anchorNavigation": {
+    "className": "page-anchor-nav--staff",
+    "items": [
+      { "id": "tomizawa", "en": "TOMIZAWA", "label": "冨澤 文絵" },
+      { "id": "kagaya", "en": "KAGAYA", "label": "加賀谷 瑠里" },
+      { "id": "cabral", "en": "CABRAL", "label": "カブラル サエ" },
+      { "id": "taniai", "en": "TANIAI", "label": "谷合 美樹" },
+      { "id": "kanda", "en": "KANDA", "label": "神田 由佳" }
+    ]
+  },
+  "related": [
+    { "en": "ABOUT", "label": "想い・理念", "href": "about/" },
+    { "en": "HOME SORA", "label": "ホームそらのご紹介", "href": "home-sora/" },
+    { "en": "CORPORATE", "label": "法人情報", "href": "corporate/" }
+  ]
+}

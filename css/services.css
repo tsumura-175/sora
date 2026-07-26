@@ -178,7 +178,7 @@
   border-radius: 50%;
   background: rgba(255,255,255,.76);
   box-shadow: 0 8px 20px rgba(46,125,209,.1);
-  color: var(--color-main);
+  color: var(--color-main-ink);
   font-family: var(--font-en);
   font-size: clamp(1.1rem, 1.7vw, 1.45rem);
   letter-spacing: .05em;
