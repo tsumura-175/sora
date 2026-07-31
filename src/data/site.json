@@ -27,6 +27,6 @@
   "footerNavigation": [
     { "label": "そらについて", "children": [{ "label": "ホーム", "href": "" }, { "label": "想い・理念", "href": "about/" }, { "label": "ホームそらのご紹介", "href": "home-sora/" }, { "label": "スタッフ紹介", "href": "staff/" }, { "label": "法人情報", "href": "corporate/" }] },
     { "label": "ご利用について", "children": [{ "label": "そらでの暮らし", "href": "services/" }, { "label": "天国につながるホームそら", "href": "services/#home" }, { "label": "訪問看護ステーションそら", "href": "services/#visiting-nursing" }, { "label": "プライベートナースそら", "href": "services/#private-nurse" }, { "label": "そらのリトリートステイ", "href": "services/#retreat" }, { "label": "地域コミュニティスペース", "href": "services/#community" }, { "label": "料金・ご利用条件", "href": "services/pricing/" }, { "label": "ご関係別案内", "href": "target/" }] },
-    { "label": "お知らせ・その他", "children": [{ "label": "アクセス", "href": "access/" }, { "label": "お知らせ", "href": "news/" }, { "label": "採用情報", "href": "recruit/" }, { "label": "お問い合わせ", "href": "contact/" }, { "label": "ご寄付・支援", "href": "donation/" }] }
+    { "label": "お知らせ・その他", "children": [{ "label": "アクセス", "href": "access/" }, { "label": "お知らせ", "href": "news/" }, { "label": "採用情報", "href": "recruit/" }, { "label": "お問い合わせ", "href": "#contact" }, { "label": "ご寄付・支援", "href": "donation/" }] }
   ]
 }

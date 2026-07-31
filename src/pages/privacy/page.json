@@ -1,0 +1,16 @@
+{
+  "output": "privacy/index.html",
+  "title": "プライバシーポリシー | はじまりの家そら",
+  "description": "はじまりの家そらを運営するNPO法人コミュニティケア・ライフの個人情報保護方針です。",
+  "canonical": "https://hajimarinoie-sora.jp/privacy/",
+  "hero": {
+    "en": "PRIVACY POLICY",
+    "title": "プライバシーポリシー",
+    "image": "images/kv-02.webp",
+    "width": 1600,
+    "height": 1066,
+    "sources": [{ "src": "images/kv-02-1024.webp", "width": 1024 }, { "src": "images/kv-02.webp", "width": 1600 }],
+    "sizes": "100vw",
+    "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "プライバシーポリシー" }]
+  }
+}

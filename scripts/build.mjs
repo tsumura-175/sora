@@ -23,7 +23,7 @@ const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (character) => (
 }[character]));
 
 function siteHref(root, href) {
-  return href.startsWith("#") || /^(https?:|mailto:|tel:)/.test(href) ? href : `${root}${href}`;
+  return /^(https?:|mailto:|tel:)/.test(href) ? href : `${root}${href}`;
 }
 
 function renderOverlayNavigation(items, root) {

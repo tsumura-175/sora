@@ -1,0 +1,16 @@
+{
+  "output": "news/daily-life/index.html",
+  "title": "穏やかな日々の過ごし方をご紹介します | はじまりの家そら",
+  "description": "はじまりの家そらでの穏やかな日々の過ごし方をご紹介します。",
+  "canonical": "https://hajimarinoie-sora.jp/news/daily-life/",
+  "hero": {
+    "en": "NEWS",
+    "title": "お知らせ",
+    "image": "images/kv-01.webp",
+    "width": 1600,
+    "height": 1066,
+    "sources": [{ "src": "images/kv-01-1024.webp", "width": 1024 }, { "src": "images/kv-01.webp", "width": 1600 }],
+    "sizes": "100vw",
+    "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "お知らせ", "href": "news/" }, { "label": "穏やかな日々の過ごし方をご紹介します" }]
+  }
+}

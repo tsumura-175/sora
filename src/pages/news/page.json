@@ -1,0 +1,21 @@
+{
+  "output": "news/index.html",
+  "title": "お知らせ | はじまりの家そら",
+  "description": "はじまりの家そらからのお知らせや活動のご報告をご案内します。",
+  "canonical": "https://hajimarinoie-sora.jp/news/",
+  "hero": {
+    "en": "NEWS",
+    "title": "お知らせ",
+    "image": "images/kv-01.webp",
+    "width": 1600,
+    "height": 1066,
+    "sources": [{ "src": "images/kv-01-1024.webp", "width": 1024 }, { "src": "images/kv-01.webp", "width": 1600 }],
+    "sizes": "100vw",
+    "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "お知らせ" }]
+  },
+  "related": [
+    { "en": "ABOUT", "label": "想い・理念", "href": "about/" },
+    { "en": "SERVICE", "label": "そらでの暮らし", "href": "services/" },
+    { "en": "ACCESS", "label": "アクセス", "href": "access/" }
+  ]
+}

@@ -23,6 +23,27 @@
     const relatedTop = pageRelated ? pageRelated.getBoundingClientRect().top : Infinity;
     return anchorBottom < 0 && relatedTop > window.innerHeight * 0.85;
   };
+  const inquiryPresets = {
+    recruit: {
+      type: '採用について',
+      relation: '採用応募者',
+    },
+    visit: {
+      type: '見学・ご相談予約',
+    },
+    donation: {
+      type: 'ご寄付・ご支援',
+    },
+  };
+  const applyInquiryPreset = (inquiry) => {
+    const preset = inquiryPresets[inquiry];
+    if (!preset) return;
+
+    const inquiryType = document.getElementById('f-type');
+    const relation = document.getElementById('f-relation');
+    if (inquiryType && preset.type) inquiryType.value = preset.type;
+    if (relation && preset.relation) relation.value = preset.relation;
+  };
 
   // -----------------------------------------------------------
   // 1. ヘッダー白化（スクロール80px超）
@@ -93,16 +114,35 @@
       if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeMenu();
     });
 
-    // 同一ページ内アンカーを含め、メガメニューのナビリンクを選んだら必ず閉じる。
-    // リンク操作時はハンバーガーへフォーカスを戻さず、通常の遷移・スクロールを優先する。
-    const overlayNavigation = overlay.querySelector('.overlay-menu__nav');
-    if (overlayNavigation) {
-      overlayNavigation.addEventListener('click', (e) => {
-        const link = e.target.closest('a[href]');
-        if (!link || !overlayNavigation.contains(link) || !overlay.classList.contains('is-open')) return;
-        closeMenu({ restoreFocus: false });
+    // 同一ページ内アンカーやサイドCTAを含め、メガメニュー内のリンクを選んだら必ず閉じる。
+    // トップページ内のお問い合わせ導線は、メニューを閉じてからフォームへスクロールする。
+    overlay.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href]');
+      if (!link || !overlay.contains(link) || !overlay.classList.contains('is-open')) return;
+
+      const destination = new URL(link.href, window.location.href);
+      const isSamePageContact = (
+        destination.origin === window.location.origin
+        && destination.pathname === window.location.pathname
+        && destination.hash === '#contact'
+      );
+
+      closeMenu({ restoreFocus: false });
+      if (!isSamePageContact) return;
+
+      const contactSection = document.getElementById('contact');
+      if (!contactSection) return;
+
+      e.preventDefault();
+      applyInquiryPreset(destination.searchParams.get('inquiry'));
+      window.history.pushState(null, '', `${destination.pathname}${destination.search}${destination.hash}`);
+      window.requestAnimationFrame(() => {
+        contactSection.scrollIntoView({
+          behavior: reduceMotion ? 'auto' : 'smooth',
+          block: 'start',
+        });
       });
-    }
+    });
 
     const overlayNavTriggers = Array.from(overlay.querySelectorAll('[data-overlay-nav-trigger]'));
     const activateOverlayNavItem = (trigger) => {
@@ -331,12 +371,7 @@
 
   if (form && formStatus) {
     const inquiry = new URLSearchParams(window.location.search).get('inquiry');
-    if (inquiry === 'recruit') {
-      const inquiryType = document.getElementById('f-type');
-      const relation = document.getElementById('f-relation');
-      if (inquiryType) inquiryType.value = '採用について';
-      if (relation) relation.value = '採用応募者';
-    }
+    applyInquiryPreset(inquiry);
 
     // バリデーションエラー表示ヘルパー
     const showFieldError = (fieldId, message) => {

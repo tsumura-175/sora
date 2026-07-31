@@ -1,0 +1,14 @@
+{
+  "output": "sitemap/index.html",
+  "title": "サイトマップ | はじまりの家そら",
+  "description": "はじまりの家そらウェブサイトのページ一覧です。",
+  "canonical": "https://hajimarinoie-sora.jp/sitemap/",
+  "hero": {
+    "en": "SITEMAP",
+    "title": "サイトマップ",
+    "image": "images/kv-03.webp",
+    "width": 1024,
+    "height": 724,
+    "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "サイトマップ" }]
+  }
+}

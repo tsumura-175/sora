@@ -1,0 +1,16 @@
+{
+  "output": "news/donation-guide/index.html",
+  "title": "ご寄付・ご支援についてのご案内 | はじまりの家そら",
+  "description": "はじまりの家そらへのご寄付・ご支援についてご案内します。",
+  "canonical": "https://hajimarinoie-sora.jp/news/donation-guide/",
+  "hero": {
+    "en": "NEWS",
+    "title": "お知らせ",
+    "image": "images/kv-01.webp",
+    "width": 1600,
+    "height": 1066,
+    "sources": [{ "src": "images/kv-01-1024.webp", "width": 1024 }, { "src": "images/kv-01.webp", "width": 1600 }],
+    "sizes": "100vw",
+    "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "お知らせ", "href": "news/" }, { "label": "ご寄付・ご支援についてのご案内" }]
+  }
+}
