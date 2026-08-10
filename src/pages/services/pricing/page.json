@@ -6,9 +6,13 @@
   "hero": {
     "en": "PRICING",
     "title": "料金・ご利用条件",
-    "image": "images/kv-02.webp",
+    "image": "images/selected/web/services-pricing/pricing-kv.webp",
     "width": 1600,
-    "height": 1066,
+    "height": 1067,
+    "sources": [{ "src": "images/selected/web/services-pricing/pricing-kv-1024.webp", "width": 1024 }, { "src": "images/selected/web/services-pricing/pricing-kv.webp", "width": 1600 }],
+    "sizes": "100vw",
+    "objectPosition": "center 50%",
+    "mobileObjectPosition": "left 50%",
     "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "そらでの暮らし", "href": "services/" }, { "label": "料金・ご利用条件" }]
   },
   "related": [

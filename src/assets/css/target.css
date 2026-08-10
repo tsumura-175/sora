@@ -252,13 +252,20 @@
 }
 /* sticky を有効にするため、#message セクションの overflow:hidden を解除 */
 #message.about-section { overflow: visible; }
-.message-block__photo img {
+.message-block__photo img,
+.message-block__photo-placeholder {
+  display: block;
   width: 100%;
   aspect-ratio: 4 / 5;
-  object-fit: cover;
   border-radius: 16px;
   box-shadow: 0 16px 32px rgba(27, 79, 142, 0.16);
   background: var(--color-pale);
+}
+.message-block__photo img { object-fit: cover; }
+.message-block__photo-placeholder {
+  border: 1px solid var(--color-border);
+  box-shadow: none;
+  background: linear-gradient(145deg, #fff 0%, var(--color-pale) 100%);
 }
 .message-block__caption {
   margin-top: 14px;

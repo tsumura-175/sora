@@ -6,9 +6,13 @@
   "hero": {
     "en": "LIFE AT SORA",
     "title": "そらでの暮らし",
-    "image": "images/kv-03.webp",
-    "width": 1024,
-    "height": 724,
+    "image": "images/selected/web/services/services-kv.webp",
+    "width": 1600,
+    "height": 1067,
+    "sources": [{ "src": "images/selected/web/services/services-kv-1024.webp", "width": 1024 }, { "src": "images/selected/web/services/services-kv.webp", "width": 1600 }],
+    "sizes": "100vw",
+    "objectPosition": "center center",
+    "mobileObjectPosition": "center center",
     "includeThirdCloud": false,
     "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "そらでの暮らし" }]
   },

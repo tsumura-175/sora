@@ -141,7 +141,8 @@ dl { padding: 0; }
 }
 .site-header__inner {
   width: 100%;
-  padding: 0 clamp(20px, 4vw, 48px);
+  padding-left: max(clamp(20px, 4vw, 48px), env(safe-area-inset-left));
+  padding-right: max(clamp(20px, 4vw, 48px), env(safe-area-inset-right));
   display: flex; align-items: center; justify-content: space-between;
 }
 .site-header__logo {
@@ -1303,7 +1304,7 @@ section.reveal.is-visible {
 }
 .kv__image-blur {
   position: absolute; inset: 0;
-  background-image: url("../images/kv-01.webp");
+  background-image: url("../images/selected/web/home/home-kv-01.webp");
   background-size: cover; background-position: center;
   filter: blur(40px) brightness(1.05);
   transform: scale(1.2);
@@ -1320,6 +1321,7 @@ section.reveal.is-visible {
   will-change: opacity;
 }
 .kv__img.is-active { opacity: 1; }
+.kv__img--01 { object-position: center 55%; }
 .kv__overlay {
   position: absolute; inset: 0;
   background: var(--gradient-kv-overlay);
@@ -1351,7 +1353,7 @@ section.reveal.is-visible {
 .kv__indicator-bar {
   display: block;
   width: 80px; height: 4px;
-  background: var(--gradient-cta);
+  background: rgba(255,255,255,0.72);
   border-radius: 2px;
   position: relative;
   overflow: hidden;
@@ -1359,9 +1361,10 @@ section.reveal.is-visible {
 .kv__indicator-bar::after {
   content: "";
   position: absolute; top: 0; left: 0;
-  width: 40%; height: 100%;
-  background: rgba(255,255,255,0.6);
-  animation: kv-indicator 12s linear infinite;
+  width: calc(var(--kv-progress, 1) * 33.333333%); height: 100%;
+  background: var(--gradient-cta);
+  border-radius: inherit;
+  transition: width 700ms var(--ease);
 }
 .kv__indicator-label {
   font-family: var(--font-en);
@@ -1402,10 +1405,59 @@ section.reveal.is-visible {
   .kv__cloud--3 { animation: none; }
 }
 
-@keyframes kv-indicator {
-  0%, 48%   { left: 0; }
-  50%, 98%  { left: 60%; }
-  100%      { left: 0; }
+@media (max-width: 720px) {
+  .kv {
+    height: min(100svh, 820px);
+    min-height: 700px;
+    padding-top: var(--header-h-sp);
+  }
+  .kv__inner {
+    display: block;
+    min-height: 100%;
+  }
+  .kv__text {
+    width: 100%;
+    min-width: 0;
+    padding: clamp(58px, 9svh, 86px) max(20px, env(safe-area-inset-right)) 0 max(20px, env(safe-area-inset-left));
+  }
+  .kv__en { margin-bottom: 16px; }
+  .kv__title {
+    max-width: 100%;
+    margin-bottom: 18px;
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 1.42;
+    letter-spacing: 0.06em;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .kv__lead {
+    max-width: min(100%, 30rem);
+    font-size: clamp(0.95rem, 4.2vw, 1.1rem);
+    line-height: 1.8;
+  }
+  .kv__bigword {
+    top: 11%;
+    width: min(92vw, 440px);
+  }
+  .kv__media {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 46%;
+  }
+  .kv__image-wrap { clip-path: none; }
+  .kv__img { object-position: center 43%; }
+  .kv__img--01 { object-position: center 55%; }
+  .kv__edge-grad {
+    background: linear-gradient(180deg, #eef5fb 0%, rgba(238, 245, 251, 0.8) 18%, transparent 52%);
+  }
+  .kv__cloud--3 { bottom: 32%; }
+  .kv__scroll { display: none; }
+  .kv__indicator {
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
 }
 
 /* 雲の横流れ（共通） */
@@ -1838,7 +1890,7 @@ section.reveal.is-visible {
   }
   .services--flow .flow__step-inner,
   .services--flow .flow__step:nth-child(even) .flow__step-inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 24px;
     width: min(680px, 88vw);
   }

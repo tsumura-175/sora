@@ -110,6 +110,8 @@ function renderPageHero(template, hero, root) {
   const responsive = hero.sources?.length
     ? ` srcset="${hero.sources.map(({ src, width }) => `${root}${src} ${width}w`).join(", ")}" sizes="${escapeHtml(hero.sizes)}"`
     : "";
+  const objectPosition = hero.objectPosition ?? "center 40%";
+  const mobileObjectPosition = hero.mobileObjectPosition ?? objectPosition;
 
   return render(template, {
     root,
@@ -117,6 +119,7 @@ function renderPageHero(template, hero, root) {
     heroResponsiveAttributes: responsive,
     heroImageWidth: hero.width,
     heroImageHeight: hero.height,
+    heroImageStyle: ` style="--page-kv-object-position: ${escapeHtml(objectPosition)}; --page-kv-object-position-mobile: ${escapeHtml(mobileObjectPosition)};"`,
     heroEn: escapeHtml(hero.en),
     heroTitle: escapeHtml(hero.title),
     heroCloudThree: hero.includeThirdCloud === false ? "" : `    <svg class="cloud page-kv__cloud--3" viewBox="0 0 200 80"><use href="${root}images/icons.svg#icon-cloud" fill="rgba(255,255,255,0.55)"/></svg>`,
@@ -238,5 +241,8 @@ await rm(join(projectRoot, "images"), { recursive: true, force: true });
 await cp(join(sourceRoot, "assets", "css"), join(projectRoot, "css"), { recursive: true });
 await cp(join(sourceRoot, "assets", "js"), join(projectRoot, "js"), { recursive: true });
 await cp(join(sourceRoot, "assets", "images"), join(projectRoot, "images"), { recursive: true });
+await rm(join(projectRoot, "images", "selected", "originals"), { recursive: true, force: true });
+await rm(join(projectRoot, "images", "selected", "README.md"), { force: true });
+await rm(join(projectRoot, "images", "selected", "selection-map.csv"), { force: true });
 
 console.log(`Built ${pages.length} GitHub Pages preview pages from src/.`);

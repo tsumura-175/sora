@@ -25,25 +25,21 @@
 .home-sora-feature__photo--sub { right: 0; bottom: 0; width: 44%; aspect-ratio: 1 / 1.08; }
 .home-sora-feature__inner--reverse .home-sora-feature__photo--main { inset: 0 0 10% 12%; }
 .home-sora-feature__inner--reverse .home-sora-feature__photo--sub { right: auto; left: 0; }
-.home-sora-feature__photos--air { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(130px, .78fr); grid-template-rows: repeat(2, 1fr); gap: 16px; min-height: clamp(360px, 34vw, 470px); }
-.home-sora-feature__photos--air .home-sora-feature__photo { position: relative; inset: auto; width: auto; aspect-ratio: auto; }
-.home-sora-feature__photos--air .home-sora-feature__photo--main { grid-row: span 2; }
-.home-sora-feature__photos--air .home-sora-feature__photo--sub { grid-column: 2; grid-row: 1; }
-.home-sora-feature__photos--air .home-sora-feature__photo--detail { grid-column: 2; grid-row: 2; }
-.home-sora-feature__photos--food { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; min-height: 0; }
-.home-sora-feature__photos--food .home-sora-feature__photo { position: relative; inset: auto; width: auto; aspect-ratio: 4 / 5; }
-.home-sora-feature__photos--food .home-sora-feature__photo--sub { margin-top: clamp(38px, 5vw, 72px); }
-.home-sora-feature__photos--plants { min-height: clamp(360px, 34vw, 470px); }
-.home-sora-feature__photos--plants .home-sora-feature__photo--main { inset: 0 0 0 8%; }
-.home-sora-feature__photos--plants .home-sora-feature__photo--sub { top: 16%; right: auto; bottom: auto; left: 0; width: 39%; aspect-ratio: 4 / 5; }
+.home-sora-feature__photos--air,
+.home-sora-feature__photos--food { min-height: clamp(360px, 34vw, 440px); }
+.home-sora-feature__photos--air .home-sora-feature__photo,
+.home-sora-feature__photos--food .home-sora-feature__photo { width: 62%; aspect-ratio: 3 / 2; }
+.home-sora-feature__photos--air .home-sora-feature__photo--main,
+.home-sora-feature__photos--food .home-sora-feature__photo--main { inset: auto 0 0 auto; }
+.home-sora-feature__photos--air .home-sora-feature__photo--sub,
+.home-sora-feature__photos--food .home-sora-feature__photo--sub { inset: 0 auto auto 0; margin-top: 0; }
+.home-sora-feature__photos--plants { min-height: 0; }
+.home-sora-feature__photos--plants .home-sora-feature__photo--main { position: relative; inset: auto; width: 100%; aspect-ratio: 3 / 2; }
 .home-sora-feature__photos--sound { min-height: clamp(350px, 32vw, 440px); }
 .home-sora-feature__photos--sound .home-sora-feature__photo--main { inset: 0 0 22% 5%; }
 .home-sora-feature__photos--sound .home-sora-feature__photo--sub { right: auto; bottom: 0; left: 0; width: 56%; aspect-ratio: 16 / 7; }
-.home-sora-feature__photos--bedding { display: grid; grid-template-columns: minmax(0, 1.16fr) minmax(130px, .84fr); grid-template-rows: repeat(2, 1fr); gap: 16px; min-height: clamp(360px, 34vw, 470px); }
-.home-sora-feature__photos--bedding .home-sora-feature__photo { position: relative; inset: auto; width: auto; aspect-ratio: auto; }
-.home-sora-feature__photos--bedding .home-sora-feature__photo--main { grid-row: span 2; }
-.home-sora-feature__photos--bedding .home-sora-feature__photo--sub { grid-column: 2; grid-row: 1; }
-.home-sora-feature__photos--bedding .home-sora-feature__photo--detail { grid-column: 2; grid-row: 2; }
+.home-sora-feature__photos--bedding { min-height: 0; }
+.home-sora-feature__photos--bedding .home-sora-feature__photo--main { position: relative; inset: auto; width: 100%; aspect-ratio: 3 / 2; }
 
 .home-sora-gallery { padding: var(--section-py-pc) clamp(20px, 4vw, 48px); background: var(--color-bg); }
 .home-sora-gallery__inner { max-width: 1120px; margin: 0 auto; }
@@ -63,21 +59,28 @@
   .home-sora-intro__quote { font-size: var(--fs-lg); }
   .home-sora-intro__quote::after { margin-left: 0; }
   .home-sora-feature { padding: var(--section-py-sp) clamp(16px, 4vw, 24px); }
-  .home-sora-feature__inner { grid-template-columns: 1fr; gap: 38px; }
+  .home-sora-feature__inner { grid-template-columns: minmax(0, 1fr); gap: 38px; }
   .home-sora-feature__inner--reverse .home-sora-feature__copy, .home-sora-feature__inner--reverse .home-sora-feature__photos { order: initial; }
   .home-sora-feature__photos { min-height: 300px; }
-  .home-sora-feature__photos--air, .home-sora-feature__photos--food, .home-sora-feature__photos--bedding { min-height: 300px; }
-  .home-sora-feature__photos--air { grid-template-columns: minmax(0, 1.25fr) minmax(100px, .75fr); gap: 10px; }
-  .home-sora-feature__photos--food { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .home-sora-feature__photos--air, .home-sora-feature__photos--food, .home-sora-feature__photos--bedding { min-height: 0; }
+  .home-sora-feature__photos--air, .home-sora-feature__photos--food { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .home-sora-feature__photos--air .home-sora-feature__photo,
+  .home-sora-feature__photos--food .home-sora-feature__photo { position: relative; inset: auto; width: auto; }
+  .home-sora-feature__photos--air .home-sora-feature__photo--main,
+  .home-sora-feature__photos--food .home-sora-feature__photo--main { order: 2; }
+  .home-sora-feature__photos--air .home-sora-feature__photo--sub,
+  .home-sora-feature__photos--food .home-sora-feature__photo--sub { order: 1; }
+  .home-sora-feature__photos--food .home-sora-feature__photo { aspect-ratio: 3 / 2; }
   .home-sora-feature__photos--food .home-sora-feature__photo--sub { margin-top: 28px; }
-  .home-sora-feature__photos--plants { min-height: 330px; }
-  .home-sora-feature__photos--plants .home-sora-feature__photo--main { inset: 0 0 0 7%; }
-  .home-sora-feature__photos--plants .home-sora-feature__photo--sub { width: 42%; }
   .home-sora-feature__photos--sound { min-height: 300px; }
   .home-sora-feature__photos--sound .home-sora-feature__photo--main { inset: 0 0 22% 5%; }
-  .home-sora-feature__photos--bedding { grid-template-columns: minmax(0, 1.12fr) minmax(96px, .88fr); gap: 10px; }
   .home-sora-gallery { padding: var(--section-py-sp) clamp(16px, 4vw, 24px); }
   .home-sora-gallery__grid, .home-sora-gallery__grid--three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .home-sora-gallery__grid figcaption { padding: 12px; font-size: var(--fs-sm); }
 }
-@media (max-width: 480px) { .home-sora-gallery__grid, .home-sora-gallery__grid--three { grid-template-columns: 1fr; } }
+@media (max-width: 480px) {
+  .home-sora-feature__photos--air,
+  .home-sora-feature__photos--food { grid-template-columns: minmax(0, 1fr); }
+  .home-sora-feature__photos--food .home-sora-feature__photo--sub { margin-top: 0; }
+  .home-sora-gallery__grid, .home-sora-gallery__grid--three { grid-template-columns: minmax(0, 1fr); }
+}

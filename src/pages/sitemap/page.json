@@ -6,9 +6,13 @@
   "hero": {
     "en": "SITEMAP",
     "title": "サイトマップ",
-    "image": "images/kv-03.webp",
-    "width": 1024,
-    "height": 724,
+    "image": "images/selected/web/sitemap/sitemap-kv.webp",
+    "width": 1600,
+    "height": 1067,
+    "sources": [{ "src": "images/selected/web/sitemap/sitemap-kv-1024.webp", "width": 1024 }, { "src": "images/selected/web/sitemap/sitemap-kv.webp", "width": 1600 }],
+    "sizes": "100vw",
+    "objectPosition": "center center",
+    "mobileObjectPosition": "center center",
     "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "サイトマップ" }]
   }
 }

@@ -6,11 +6,13 @@
   "hero": {
     "en": "CORPORATE",
     "title": "法人情報",
-    "image": "images/kv-01.webp",
+    "image": "images/selected/web/corporate/corporate-kv.webp",
     "width": 1600,
-    "height": 1066,
-    "sources": [{ "src": "images/kv-01-1024.webp", "width": 1024 }, { "src": "images/kv-01.webp", "width": 1600 }],
+    "height": 1067,
+    "sources": [{ "src": "images/selected/web/corporate/corporate-kv-1024.webp", "width": 1024 }, { "src": "images/selected/web/corporate/corporate-kv.webp", "width": 1600 }],
     "sizes": "100vw",
+    "objectPosition": "center center",
+    "mobileObjectPosition": "center center",
     "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "法人情報" }]
   },
   "related": [

@@ -31,10 +31,11 @@ for (const output of outputs) {
 const stylesheet = join(root, "css", "style.css");
 const stylesheetSource = await readFile(stylesheet, "utf8");
 for (const match of stylesheetSource.matchAll(/@import url\("([^"\)]+)"\);/g)) {
+  const reference = match[1].split(/[?#]/, 1)[0];
   try {
-    await access(join(dirname(stylesheet), match[1]));
+    await access(join(dirname(stylesheet), reference));
   } catch {
-    errors.push(`css/style.css: missing imported stylesheet ${match[1]}`);
+    errors.push(`css/style.css: missing imported stylesheet ${reference}`);
   }
 }
 

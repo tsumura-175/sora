@@ -6,11 +6,13 @@
   "hero": {
     "en": "ABOUT US",
     "title": "想い・理念",
-    "image": "images/kv-01.webp",
+    "image": "images/selected/web/about/about-kv.webp",
     "width": 1600,
-    "height": 1066,
-    "sources": [{ "src": "images/kv-01-1024.webp", "width": 1024 }, { "src": "images/kv-01.webp", "width": 1600 }],
+    "height": 1067,
+    "sources": [{ "src": "images/selected/web/about/about-kv-1024.webp", "width": 1024 }, { "src": "images/selected/web/about/about-kv.webp", "width": 1600 }],
     "sizes": "100vw",
+    "objectPosition": "center 28%",
+    "mobileObjectPosition": "42% 28%",
     "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "想い・理念" }]
   },
   "anchorNavigation": {

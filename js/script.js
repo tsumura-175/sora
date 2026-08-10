@@ -191,12 +191,22 @@
     const slides = Array.from(slider.querySelectorAll('.kv__img'));
     if (slides.length > 1) {
       let index = 0;
+      const indicatorLabel = slider.closest('.kv__image-wrap')?.querySelector('.kv__indicator-label');
+      const indicatorBar = slider.closest('.kv__image-wrap')?.querySelector('.kv__indicator-bar');
+      const updateIndicator = () => {
+        if (indicatorLabel) {
+          indicatorLabel.textContent = `${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+        }
+        indicatorBar?.style.setProperty('--kv-progress', String(index + 1));
+      };
+      updateIndicator();
       const startSlider = () => {
         if (kvInterval) return;
         kvInterval = setInterval(() => {
           slides[index].classList.remove('is-active');
           index = (index + 1) % slides.length;
           slides[index].classList.add('is-active');
+          updateIndicator();
         }, 6000);
       };
       const stopSlider = () => {
@@ -271,20 +281,6 @@
   }
 
   // -----------------------------------------------------------
-  // 6-B. Floating CTA：#cta セクションが画面に少しでも入ったらフェードアウト
-  //      （body.is-cta-visible を付け外し、表示制御は CSS 側で行う）
-  // -----------------------------------------------------------
-  const ctaSection = document.getElementById('cta');
-  if (ctaSection && supportsIntersectionObserver) {
-    const ctaObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        document.body.classList.toggle('is-cta-visible', entry.isIntersecting);
-      });
-    }, { threshold: 0 });
-    ctaObserver.observe(ctaSection);
-  }
-
-  // -----------------------------------------------------------
   // 6-C. Page Side Nav（下層ページ・左サイド追従ナビ）
   //      ・anchor-nav を抜けたら fade in
   //      ・page-related に差し掛かったら fade out（以降再表示しない）
@@ -342,24 +338,26 @@
   }
 
   // -----------------------------------------------------------
-  // 6-D. Floating CTA：下層ページ用の表示制御
-  //      ・anchor-nav が完全に画面外に出た瞬間に表示
-  //      ・anchor-nav が再表示されたら退避
+  // 6-D. Floating CTA：全ページ共通の表示制御
+  //      ・anchor-nav があるページは、完全に画面外へ出た後に表示
+  //      ・終端セクションへ到達したら退避し、通過後も再表示しない
+  //      ・終端は「関連ページ」→「トップ下部CTA」→「お問い合わせ」の順で選択
   //      ・既存 CSS（body.is-cta-visible で透明化）を流用
   // -----------------------------------------------------------
   const anchorNavForCta = document.querySelector('.page-anchor-nav');
-  const pageRelatedForCta = document.querySelector('.page-related');
-  if (pageRelatedForCta) {
-    const updateCtaByAnchor = () => {
-      // Keep the CTA visible after the anchor navigation (when present), then hide it before related links.
+  const ctaEndBoundary = document.querySelector('.page-related')
+    || document.getElementById('cta')
+    || document.getElementById('contact');
+  if (ctaEndBoundary) {
+    const updateFloatingCtaVisibility = () => {
       const isPastAnchorNav = !anchorNavForCta || anchorNavForCta.getBoundingClientRect().bottom < 0;
-      const hasReachedRelated = pageRelatedForCta.getBoundingClientRect().top <= window.innerHeight * 0.85;
-      document.body.classList.toggle('is-cta-visible', !isPastAnchorNav || hasReachedRelated);
+      const hasReachedEndBoundary = ctaEndBoundary.getBoundingClientRect().top <= window.innerHeight * 0.85;
+      document.body.classList.toggle('is-cta-visible', !isPastAnchorNav || hasReachedEndBoundary);
     };
-    const onCtaScroll = createRafHandler(updateCtaByAnchor);
+    const onCtaScroll = createRafHandler(updateFloatingCtaVisibility);
     window.addEventListener('scroll', onCtaScroll, { passive: true });
     window.addEventListener('resize', onCtaScroll);
-    updateCtaByAnchor();
+    updateFloatingCtaVisibility();
   }
 
   // -----------------------------------------------------------

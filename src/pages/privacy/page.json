@@ -6,11 +6,13 @@
   "hero": {
     "en": "PRIVACY POLICY",
     "title": "プライバシーポリシー",
-    "image": "images/kv-02.webp",
+    "image": "images/selected/web/privacy/privacy-kv.webp",
     "width": 1600,
-    "height": 1066,
-    "sources": [{ "src": "images/kv-02-1024.webp", "width": 1024 }, { "src": "images/kv-02.webp", "width": 1600 }],
+    "height": 1067,
+    "sources": [{ "src": "images/selected/web/privacy/privacy-kv-1024.webp", "width": 1024 }, { "src": "images/selected/web/privacy/privacy-kv.webp", "width": 1600 }],
     "sizes": "100vw",
+    "objectPosition": "center center",
+    "mobileObjectPosition": "center center",
     "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "プライバシーポリシー" }]
   }
 }

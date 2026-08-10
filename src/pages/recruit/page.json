@@ -6,14 +6,16 @@
   "hero": {
     "en": "RECRUIT",
     "title": "採用情報",
-    "image": "images/recruit-kv.webp",
-    "width": 1536,
-    "height": 1024,
+    "image": "images/selected/web/recruit/recruit-kv.webp",
+    "width": 1600,
+    "height": 1067,
     "sources": [
-      { "src": "images/recruit-kv-1024.webp", "width": 1024 },
-      { "src": "images/recruit-kv.webp", "width": 1536 }
+      { "src": "images/selected/web/recruit/recruit-kv-1024.webp", "width": 1024 },
+      { "src": "images/selected/web/recruit/recruit-kv.webp", "width": 1600 }
     ],
     "sizes": "100vw",
+    "objectPosition": "center 25%",
+    "mobileObjectPosition": "center 25%",
     "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "採用情報" }]
   },
   "anchorNavigation": {

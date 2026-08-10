@@ -6,9 +6,13 @@
   "hero": {
     "en": "DONATION",
     "title": "ご寄付・ご支援",
-    "image": "images/target-medical.webp",
-    "width": 768,
-    "height": 480,
+    "image": "images/selected/web/donation/donation-kv.webp",
+    "width": 1600,
+    "height": 1067,
+    "sources": [{ "src": "images/selected/web/donation/donation-kv-1024.webp", "width": 1024 }, { "src": "images/selected/web/donation/donation-kv.webp", "width": 1600 }],
+    "sizes": "100vw",
+    "objectPosition": "center center",
+    "mobileObjectPosition": "center center",
     "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "ご寄付・ご支援" }]
   },
   "anchorNavigation": {
