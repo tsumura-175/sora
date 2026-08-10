@@ -6,18 +6,19 @@
   "hero": {
     "en": "ACCESS",
     "title": "アクセス",
-    "image": "images/kv-01.webp",
+    "image": "images/selected/web/access/access-kv.webp",
     "width": 1600,
-    "height": 1066,
-    "sources": [{ "src": "images/kv-01-1024.webp", "width": 1024 }, { "src": "images/kv-01.webp", "width": 1600 }],
+    "height": 1067,
+    "sources": [{ "src": "images/selected/web/access/access-kv-1024.webp", "width": 1024 }, { "src": "images/selected/web/access/access-kv.webp", "width": 1600 }],
     "sizes": "100vw",
+    "objectPosition": "center 50%",
+    "mobileObjectPosition": "45% 50%",
     "breadcrumbs": [{ "label": "ホーム", "href": "" }, { "label": "アクセス" }]
   },
   "anchorNavigation": {
     "items": [
       { "id": "location", "en": "LOCATION", "label": "所在地" },
-      { "id": "bus", "en": "BY BUS", "label": "バスでお越しの方" },
-      { "id": "car", "en": "BY CAR", "label": "お車でお越しの方" },
+      { "id": "route", "en": "ROUTE", "label": "交通アクセス" },
       { "id": "visit-note", "en": "VISIT NOTE", "label": "ご来訪前のお願い" }
     ]
   },

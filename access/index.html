@@ -289,8 +289,7 @@
           <div class="overlay-nav__detail-links">
               <a href="../access/" class="overlay-nav__detail-parent">トップを見る <span aria-hidden="true">→</span></a>
               <a href="../access/#location">所在地 <span aria-hidden="true">→</span></a>
-              <a href="../access/#bus">バスでおこしの方 <span aria-hidden="true">→</span></a>
-              <a href="../access/#car">お車でおこしの方 <span aria-hidden="true">→</span></a>
+              <a href="../access/#route">交通アクセス <span aria-hidden="true">→</span></a>
               <a href="../access/#visit-note">ご来訪前のお願い <span aria-hidden="true">→</span></a>
           </div>
         </section>
@@ -331,7 +330,7 @@
 
 <section class="page-kv" aria-label="ページキービジュアル">
   <div class="page-kv__bg" aria-hidden="true">
-    <img src="../images/kv-01.webp" srcset="../images/kv-01-1024.webp 1024w, ../images/kv-01.webp 1600w" sizes="100vw" style="--page-kv-object-position: center 40%; --page-kv-object-position-mobile: center 40%;" alt="" class="page-kv__bg-image" width="1600" height="1066" fetchpriority="high">
+    <img src="../images/selected/web/access/access-kv.webp" srcset="../images/selected/web/access/access-kv-1024.webp 1024w, ../images/selected/web/access/access-kv.webp 1600w" sizes="100vw" style="--page-kv-object-position: center 50%; --page-kv-object-position-mobile: 45% 50%;" alt="" class="page-kv__bg-image" width="1600" height="1067" fetchpriority="high">
     <span class="page-kv__bg-overlay"></span>
   </div>
   <div class="page-kv__clouds" aria-hidden="true">
@@ -362,8 +361,7 @@
 <nav class="page-anchor-nav" aria-label="ページ内アンカーメニュー">
   <ul class="page-anchor-nav__list">
     <li class="page-anchor-nav__item"><a href="#location" class="page-anchor-nav__link"><em class="page-anchor-nav__en">LOCATION</em><span class="page-anchor-nav__jp">所在地</span><span class="page-anchor-nav__arrow" aria-hidden="true">↓</span></a></li>
-    <li class="page-anchor-nav__item"><a href="#bus" class="page-anchor-nav__link"><em class="page-anchor-nav__en">BY BUS</em><span class="page-anchor-nav__jp">バスでお越しの方</span><span class="page-anchor-nav__arrow" aria-hidden="true">↓</span></a></li>
-    <li class="page-anchor-nav__item"><a href="#car" class="page-anchor-nav__link"><em class="page-anchor-nav__en">BY CAR</em><span class="page-anchor-nav__jp">お車でお越しの方</span><span class="page-anchor-nav__arrow" aria-hidden="true">↓</span></a></li>
+    <li class="page-anchor-nav__item"><a href="#route" class="page-anchor-nav__link"><em class="page-anchor-nav__en">ROUTE</em><span class="page-anchor-nav__jp">交通アクセス</span><span class="page-anchor-nav__arrow" aria-hidden="true">↓</span></a></li>
     <li class="page-anchor-nav__item"><a href="#visit-note" class="page-anchor-nav__link"><em class="page-anchor-nav__en">VISIT NOTE</em><span class="page-anchor-nav__jp">ご来訪前のお願い</span><span class="page-anchor-nav__arrow" aria-hidden="true">↓</span></a></li>
   </ul>
 </nav>
@@ -371,8 +369,7 @@
 <aside class="page-side-nav" id="pageSideNav" aria-label="ページ内ナビゲーション">
   <ul class="page-side-nav__list">
     <li class="page-side-nav__item"><a href="#location" class="page-side-nav__link" data-target="location"><em class="page-side-nav__en">LOCATION</em><span class="page-side-nav__jp">所在地</span></a></li>
-    <li class="page-side-nav__item"><a href="#bus" class="page-side-nav__link" data-target="bus"><em class="page-side-nav__en">BY BUS</em><span class="page-side-nav__jp">バスでお越しの方</span></a></li>
-    <li class="page-side-nav__item"><a href="#car" class="page-side-nav__link" data-target="car"><em class="page-side-nav__en">BY CAR</em><span class="page-side-nav__jp">お車でお越しの方</span></a></li>
+    <li class="page-side-nav__item"><a href="#route" class="page-side-nav__link" data-target="route"><em class="page-side-nav__en">ROUTE</em><span class="page-side-nav__jp">交通アクセス</span></a></li>
     <li class="page-side-nav__item"><a href="#visit-note" class="page-side-nav__link" data-target="visit-note"><em class="page-side-nav__en">VISIT NOTE</em><span class="page-side-nav__jp">ご来訪前のお願い</span></a></li>
   </ul>
 </aside>
@@ -412,109 +409,179 @@
           </div>
           <div class="access-info__row">
             <dt>最寄り</dt>
-            <dd>西武新宿線 花小金井駅よりバス利用（ダミー）</dd>
+            <dd>西武バス「グローブライド本社入口」バス停より徒歩約2分</dd>
           </div>
           <div class="access-info__row">
             <dt>駐車場</dt>
-            <dd>来客用駐車スペースあり。台数に限りがあるため、ご来訪前にお問い合わせください。</dd>
+            <dd>お客様専用駐車場1台あり。空き状況を確認するため、事前にご連絡ください。</dd>
           </div>
         </dl>
       </div>
       <div class="access-info__map" aria-label="はじまりの家そら周辺地図">
-        <iframe src="https://www.google.com/maps?q=%E3%80%92203-0032%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%9D%B1%E4%B9%85%E7%95%99%E7%B1%B3%E5%B8%82%E5%89%8D%E6%B2%A25-5-11&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="はじまりの家そら 周辺地図"></iframe>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.5!2d139.5121076!3d35.7408175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018e7fa11abb513%3A0x8c69bba982acd781!2z44Gv44GY44G-44KK44Gu5a6244Gd44KJ!5e0!3m2!1sja!2sjp!4v1713456000000!5m2!1sja!2sjp"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          title="はじまりの家そら 地図"></iframe>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ====================== ⑧ Section #bus（バスでお越しの方） ====================== -->
-<section class="about-section about-section--02 reveal" id="bus">
+<!-- ====================== ⑧ Section #route（交通アクセス） ====================== -->
+<section class="about-section about-section--02 reveal" id="route">
   <div class="bg-decor" aria-hidden="true">
     <svg class="bg-decor__cloud bg-decor__cloud--lg bg-decor__cloud--br" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(91,179,240,0.18)"/></svg>
   </div>
   <div class="about-section__inner">
     <header class="section-head">
-      <p class="en-sub reveal-sub">BY BUS</p>
-      <h2 class="section-title">公共交通機関でのアクセス</h2>
-      <p class="section-lead">駅からバスをご利用いただく場合のルートをご案内します。</p>
+      <p class="en-sub reveal-sub">ROUTE</p>
+      <h2 class="section-title">バス・お車でお越しの方</h2>
+      <p class="section-lead">最寄りのバス停から施設までの道順と、お車でお越しの際のご案内です。</p>
     </header>
 
-    <div class="access-route access-route--bus">
-      <ol class="access-steps" aria-label="バスでお越しの場合の流れ">
+    <div class="access-route access-route--combined">
+      <section class="access-transport" aria-labelledby="access-bus-title">
+        <header class="access-subsection-head">
+          <p class="access-subsection-head__en">BY BUS</p>
+          <h3 class="access-subsection-title" id="access-bus-title">バスでお越しの方</h3>
+          <p class="access-subsection-lead">西武バス「グローブライド本社入口」バス停で下車し、徒歩約2分です。</p>
+        </header>
+
+        <div class="access-station-grid">
+          <article class="access-station-card">
+            <p class="access-station-card__line">西武新宿線</p>
+            <h4 class="access-station-card__title">花小金井駅 北口から</h4>
+            <dl class="access-station-card__meta">
+              <div><dt>乗車時間</dt><dd>約10分</dd></div>
+              <div><dt>乗り場</dt><dd>3番</dd></div>
+            </dl>
+            <p class="access-station-card__label">ご利用いただけるバス</p>
+            <ul class="access-station-card__routes">
+              <li><span>花01</span>久留米西団地行き</li>
+              <li><span>花02</span>滝山営業所行き</li>
+              <li><span>清03</span>清瀬駅南口行き</li>
+              <li><span>清03-1</span>清瀬駅南口行き</li>
+            </ul>
+          </article>
+
+          <article class="access-station-card">
+            <p class="access-station-card__line">JR中央線</p>
+            <h4 class="access-station-card__title">武蔵小金井駅 北口から</h4>
+            <p class="access-station-card__time">乗車時間：約25分</p>
+            <div class="access-station-card__platform">
+              <p><strong>2番乗り場</strong></p>
+              <ul class="access-station-card__routes">
+                <li><span>武12</span>東久留米駅西口行き</li>
+                <li><span>武13</span>清瀬駅南口行き</li>
+              </ul>
+            </div>
+            <div class="access-station-card__platform">
+              <p><strong>3番乗り場</strong></p>
+              <ul class="access-station-card__routes">
+                <li><span>武15</span>滝山営業所行き</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <aside class="access-alert" aria-label="バス利用時の注意事項">
+          <p>いずれも「グローブライド本社入口」で下車してください。乗車時間は道路状況により変動します。</p>
+          <p>「錦城高校経由」の〈武21〉〈武21-1〉は「グローブライド本社入口」を通りませんので、ご注意ください。</p>
+          <p>西武池袋線「東久留米駅」からもバスが出ています。詳しくはお問い合わせください。</p>
+        </aside>
+      </section>
+
+      <section class="access-car-guide" aria-labelledby="access-car-title">
+        <header class="access-subsection-head">
+          <p class="access-subsection-head__en">BY CAR</p>
+          <h3 class="access-subsection-title" id="access-car-title">お車でお越しの方</h3>
+        </header>
+        <div class="access-car-guide__body">
+          <p>お客様専用駐車場を1台分ご用意しています。空き状況を確認いたしますので、お車でお越しの際は事前にご連絡ください。</p>
+          <p>カーナビには、下記住所をご入力いただくとスムーズです。</p>
+          <address class="access-car-guide__address">〒203-0032<br>東京都東久留米市前沢5-5-11</address>
+          <p>道に迷われたら、お気軽にお問い合わせください。</p>
+        </div>
+      </section>
+
+      <section class="access-walk-route" aria-labelledby="access-walk-title">
+        <header class="access-subsection-head">
+          <p class="access-subsection-head__en">FROM BUS STOP</p>
+          <h3 class="access-subsection-title" id="access-walk-title">バス停付近から施設までの道順</h3>
+          <p class="access-subsection-lead">徒歩の方はもちろん、お車でお越しの際も施設付近の目印としてご確認ください。</p>
+        </header>
+
+        <ol class="access-steps access-steps--shared-route" aria-label="グローブライド本社入口から施設までの道順">
         <li class="access-steps__item">
           <figure class="access-steps__photo">
-            <img src="../images/kv-03.webp" alt="最寄り駅からの道のりのイメージ" width="1024" height="724" loading="lazy">
+            <img src="../images/selected/web/access/access-route-01.webp" srcset="../images/selected/web/access/access-route-01-640.webp 640w, ../images/selected/web/access/access-route-01.webp 900w" sizes="(max-width: 600px) 100vw, 33vw" alt="西武バスのグローブライド本社入口バス停" width="900" height="1599" loading="lazy">
+            <svg class="access-route-arrow access-route-arrow--01" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <defs>
+                <marker id="access-arrowhead-01" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L9,4.5 L0,9 Z" class="access-route-arrow__head"/>
+                </marker>
+              </defs>
+              <circle class="access-route-arrow__start" cx="42" cy="78" r="2.2"/>
+              <path class="access-route-arrow__outline" d="M42 78 C44 70 48 62 52 55"/>
+              <path class="access-route-arrow__line" d="M42 78 C44 70 48 62 52 55" marker-end="url(#access-arrowhead-01)"/>
+            </svg>
           </figure>
           <div class="access-steps__caption">
             <span class="access-steps__num" aria-hidden="true">01</span>
-            <p class="access-steps__text">西武新宿線「花小金井駅」北口のバス乗り場へお進みください。（ダミー）</p>
+            <p class="access-steps__text">「グローブライド本社入口」で下車後、右手に進んでください。</p>
           </div>
         </li>
         <li class="access-steps__item">
           <figure class="access-steps__photo">
-            <img src="../images/service-community.webp" alt="バス停周辺の道のりのイメージ" width="600" height="400" loading="lazy">
+            <img src="../images/selected/web/access/access-route-02.webp" srcset="../images/selected/web/access/access-route-02-640.webp 640w, ../images/selected/web/access/access-route-02.webp 900w" sizes="(max-width: 600px) 100vw, 33vw" alt="バス停の先にある左折地点" width="900" height="1599" loading="lazy">
+            <svg class="access-route-arrow access-route-arrow--02" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <defs>
+                <marker id="access-arrowhead-02" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L9,4.5 L0,9 Z" class="access-route-arrow__head"/>
+                </marker>
+              </defs>
+              <circle class="access-route-arrow__start" cx="70" cy="84" r="2.2"/>
+              <path class="access-route-arrow__outline" d="M70 84 C70 73 67 65 59 61 C51 57 43 58 34 58"/>
+              <path class="access-route-arrow__line" d="M70 84 C70 73 67 65 59 61 C51 57 43 58 34 58" marker-end="url(#access-arrowhead-02)"/>
+            </svg>
           </figure>
           <div class="access-steps__caption">
             <span class="access-steps__num" aria-hidden="true">02</span>
-            <p class="access-steps__text">前沢方面行きのバスに乗車し、「前沢住宅」または近隣停留所で下車します。（ダミー）</p>
+            <p class="access-steps__text">次の角を左手に曲がってください。</p>
           </div>
         </li>
         <li class="access-steps__item">
           <figure class="access-steps__photo">
-            <img src="../images/service-hajimari.webp" alt="施設へ向かう道のりのイメージ" width="600" height="400" loading="lazy">
+            <img src="../images/selected/web/access/access-route-03.webp" srcset="../images/selected/web/access/access-route-03-640.webp 640w, ../images/selected/web/access/access-route-03.webp 900w" sizes="(max-width: 600px) 100vw, 33vw" alt="施設へ続く住宅街の直進路" width="900" height="1599" loading="lazy">
+            <svg class="access-route-arrow access-route-arrow--03" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <defs>
+                <marker id="access-arrowhead-03" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L9,4.5 L0,9 Z" class="access-route-arrow__head"/>
+                </marker>
+              </defs>
+              <circle class="access-route-arrow__start" cx="51" cy="78" r="2.2"/>
+              <path class="access-route-arrow__outline" d="M51 78 C51 70 51 62 50 55"/>
+              <path class="access-route-arrow__line" d="M51 78 C51 70 51 62 50 55" marker-end="url(#access-arrowhead-03)"/>
+            </svg>
           </figure>
           <div class="access-steps__caption">
             <span class="access-steps__num" aria-hidden="true">03</span>
-            <p class="access-steps__text">停留所から住宅街を抜け、徒歩約5分で到着します。道に迷われた際はお電話ください。</p>
+            <p class="access-steps__text">そのまま道なりに直進してください。</p>
+          </div>
+        </li>
+        <li class="access-steps__item">
+          <figure class="access-steps__photo">
+            <img src="../images/selected/web/access/access-route-04.webp" srcset="../images/selected/web/access/access-route-04-1024.webp 1024w, ../images/selected/web/access/access-route-04.webp 1600w" sizes="(max-width: 600px) 100vw, 860px" alt="はじまりの家そらの建物外観" width="1600" height="987" loading="lazy">
+          </figure>
+          <div class="access-steps__caption">
+            <span class="access-steps__num" aria-hidden="true">04</span>
+            <p class="access-steps__text">左手に見える白い建物が「はじまりの家そら」です。</p>
           </div>
         </li>
       </ol>
-    </div>
-  </div>
-</section>
-
-<!-- ====================== ⑨ Section #car（お車でお越しの方） ====================== -->
-<section class="about-section about-section--03 reveal" id="car">
-  <div class="bg-decor" aria-hidden="true">
-    <svg class="bg-decor__cloud bg-decor__cloud--sm bg-decor__cloud--tl" viewBox="0 0 200 80"><use href="../images/icons.svg#icon-cloud" fill="rgba(74,158,232,0.14)"/></svg>
-  </div>
-  <div class="about-section__inner">
-    <header class="section-head">
-      <p class="en-sub reveal-sub">BY CAR</p>
-      <h2 class="section-title">お車でのアクセス</h2>
-      <p class="section-lead">住宅街にある小さなホームです。近隣の方のご迷惑にならないよう、駐車場所は事前にご確認ください。</p>
-    </header>
-
-    <div class="access-route access-route--car">
-      <ol class="access-steps" aria-label="お車でお越しの場合の流れ">
-        <li class="access-steps__item">
-          <figure class="access-steps__photo">
-            <img src="../images/kv-01.webp" alt="車で向かう道のりのイメージ" width="1600" height="1066" loading="lazy">
-          </figure>
-          <div class="access-steps__caption">
-            <span class="access-steps__num" aria-hidden="true">01</span>
-            <p class="access-steps__text">新青梅街道方面から前沢エリアへ入り、住宅街の通りへお進みください。（ダミー）</p>
-          </div>
-        </li>
-        <li class="access-steps__item">
-          <figure class="access-steps__photo">
-            <img src="../images/kv-02.webp" alt="住宅街の道のりのイメージ" width="1600" height="1066" loading="lazy">
-          </figure>
-          <div class="access-steps__caption">
-            <span class="access-steps__num" aria-hidden="true">02</span>
-            <p class="access-steps__text">施設周辺は生活道路です。歩行者や自転車にご注意のうえ、ゆっくりお進みください。</p>
-          </div>
-        </li>
-        <li class="access-steps__item">
-          <figure class="access-steps__photo">
-            <img src="../images/service-hajimari.webp" alt="施設外観のイメージ" width="600" height="400" loading="lazy">
-          </figure>
-          <div class="access-steps__caption">
-            <span class="access-steps__num" aria-hidden="true">03</span>
-            <p class="access-steps__text">到着後はスタッフが駐車スペースをご案内します。満車の場合は近隣駐車場をご利用いただく場合があります。</p>
-          </div>
-        </li>
-      </ol>
+      </section>
     </div>
   </div>
 </section>
@@ -544,7 +611,7 @@
         <span class="access-request__icon" aria-hidden="true">02</span>
         <div>
           <h3 class="access-request__title">駐車場利用は事前にご確認ください</h3>
-          <p class="access-request__text">駐車スペースには限りがあります。お車でお越しの場合は、予約時に駐車場利用の有無をお伝えください。</p>
+          <p class="access-request__text">お客様専用駐車場は1台分です。お車でお越しの場合は、予約時に駐車場利用の有無をお伝えください。</p>
         </div>
       </li>
       <li class="access-request__item">
