@@ -2020,8 +2020,6 @@ section.reveal.is-visible {
   animation: ken-burns 22s ease-in-out infinite alternate;
   will-change: transform;
 }
-.target__grid > .target-card:nth-child(2) .target-card__media img { clip-path: url(#target-mask-2); }
-.target__grid > .target-card:nth-child(3) .target-card__media img { clip-path: url(#target-mask-3); }
 .target-card:hover .target-card__media img {
   transform: scale(1.03);
   animation-play-state: paused;
