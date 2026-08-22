@@ -6,6 +6,14 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "verify": "node scripts/verify.mjs",
-    "check": "npm run build && npm run verify"
+    "check": "npm run build && npm run verify",
+    "test": "playwright test",
+    "test:update": "playwright test --update-snapshots",
+    "test:structure": "playwright test tests/site-structure.spec.mjs",
+    "test:behavior": "playwright test tests/behavior.spec.mjs",
+    "test:responsive": "playwright test tests/responsive.spec.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
   }
 }
