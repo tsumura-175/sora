@@ -57,14 +57,11 @@
 }
 
 .recruit-message {
-  display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(240px, 0.72fr);
-  align-items: start;
-  gap: clamp(36px, 6vw, 76px);
+  display: block;
 }
 
 .recruit-message__body {
-  max-width: 720px;
+  max-width: 960px;
   color: var(--color-text);
   line-height: 2;
 }
@@ -82,6 +79,11 @@
 }
 
 .recruit-contact-card {
+  display: grid;
+  grid-template-columns: minmax(100px, 0.5fr) minmax(220px, 1fr) minmax(250px, auto);
+  align-items: center;
+  gap: clamp(20px, 4vw, 48px);
+  margin-top: clamp(32px, 5vw, 52px);
   padding: clamp(24px, 3vw, 32px);
   border-top: 1px solid var(--color-main);
   border-bottom: 1px solid var(--color-border);
@@ -99,7 +101,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-top: 12px;
+  margin-top: 0;
   color: var(--color-deep);
   font-family: var(--font-jp-serif);
   font-size: var(--fs-xl);
@@ -119,7 +121,7 @@
   flex-direction: column;
   gap: 4px;
   min-height: 52px;
-  margin-top: 24px;
+  margin-top: 0;
   color: var(--color-deep);
   font-variant-numeric: tabular-nums;
   text-decoration: none;
@@ -261,17 +263,16 @@
 
 .recruit-duty-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 clamp(28px, 5vw, 60px);
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  max-width: 880px;
   margin-top: 28px;
-  border-top: 1px solid var(--color-border);
 }
 
 .recruit-duty-list li {
   position: relative;
   min-width: 0;
-  padding: 16px 0 16px 24px;
-  border-bottom: 1px solid var(--color-border);
+  padding: 2px 0 2px 24px;
   color: var(--color-text);
   line-height: var(--lh-relaxed);
 }
@@ -279,7 +280,7 @@
 .recruit-duty-list li::before {
   content: "";
   position: absolute;
-  inset-block-start: 1.55em;
+  inset-block-start: 0.75em;
   inset-inline-start: 4px;
   width: 7px;
   height: 7px;
@@ -344,8 +345,8 @@
 
 .recruit-condition {
   display: grid;
-  grid-template-columns: minmax(180px, 27%) minmax(0, 1fr);
-  gap: clamp(28px, 5vw, 56px);
+  grid-template-columns: minmax(150px, 22%) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 36px);
   padding: clamp(30px, 5vw, 52px) 0;
   border-bottom: 1px solid var(--color-border);
 }
@@ -792,7 +793,13 @@
   }
 
   .recruit-contact-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
     max-width: 460px;
+  }
+
+  .recruit-contact-card__tel {
+    margin-top: 4px;
   }
 
   .recruit-role-list {
