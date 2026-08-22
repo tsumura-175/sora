@@ -1,6 +1,7 @@
-import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { findPageConfigs } from "./pages.mjs";
+import { copyGeneratedAssets } from "./lib/assets.mjs";
 import { render } from "./lib/html.mjs";
 import { applyPageTransforms } from "./lib/page-transforms.mjs";
 import { primaryHrefForOutput, rootForOutput } from "./lib/paths.mjs";
@@ -86,14 +87,6 @@ for (const { directory: pageDirectory, config } of pages) {
   await writeFile(output, html, "utf8");
 }
 
-await rm(join(projectRoot, "css"), { recursive: true, force: true });
-await rm(join(projectRoot, "js"), { recursive: true, force: true });
-await rm(join(projectRoot, "images"), { recursive: true, force: true });
-await cp(join(sourceRoot, "assets", "css"), join(projectRoot, "css"), { recursive: true });
-await cp(join(sourceRoot, "assets", "js"), join(projectRoot, "js"), { recursive: true });
-await cp(join(sourceRoot, "assets", "images"), join(projectRoot, "images"), { recursive: true });
-await rm(join(projectRoot, "images", "selected", "originals"), { recursive: true, force: true });
-await rm(join(projectRoot, "images", "selected", "README.md"), { force: true });
-await rm(join(projectRoot, "images", "selected", "selection-map.csv"), { force: true });
+await copyGeneratedAssets(sourceRoot, projectRoot);
 
 console.log(`Built ${pages.length} GitHub Pages preview pages from src/.`);
