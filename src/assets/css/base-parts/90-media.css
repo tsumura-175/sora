@@ -1,0 +1,28 @@
+/* =============================================================
+   Print & Reduced Motion
+   ============================================================= */
+@media print {
+  .site-header, .overlay-menu, .hamburger, .cta, .marquee, .access__map,
+  .kv__scroll, .kv__overlay, .bg-decor, .cloud,
+  .kv__indicator { display: none; }
+  body { color: #000; background: #fff; font-size: 12pt; }
+  .kv { height: auto; min-height: 0; padding: 24pt 0; }
+  .kv__inner { display: block; }
+  .kv__media { display: none; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #555; }
+  a[href^="#"]::after, a[href^="tel:"]::after { content: none; }
+  .section-title { color: #000; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .target-card__media img { animation: none; }
+  .cta__stars { animation: none; }
+  .cta .cloud--cta1,
+  .cta .cloud--cta2,
+  .cta .cloud--cta3,
+  .cta .cloud--cta4,
+  .cta .cloud--cta5 { animation: none; }
+  .overlay-menu__clouds .cloud--1,
+  .overlay-menu__clouds .cloud--2 { animation: none; }
+}
+

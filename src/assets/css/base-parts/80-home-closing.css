@@ -1,0 +1,257 @@
+/* =============================================================
+   ⑩ Access
+   ============================================================= */
+.access {
+  position: relative;
+  padding: var(--section-py-pc) 0 calc(var(--section-py-pc) - 24px);
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-pale) 100%);
+  overflow: hidden;
+}
+.access__inner {
+  position: relative;
+  width: var(--max-content); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: stretch;
+  z-index: 1;
+}
+.access__text .section-title { text-align: left; }
+.access__list { margin-top: 32px; display: flex; flex-direction: column; gap: 18px; }
+.access__row {
+  display: grid; grid-template-columns: 96px 1fr;
+  gap: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--color-border);
+}
+.access__row dt {
+  font-family: var(--font-jp-serif);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-main-ink);
+  letter-spacing: 0.18em;
+  padding-top: 4px;
+}
+.access__row dd {
+  font-size: var(--fs-base);
+  color: var(--color-text);
+  line-height: 1.8;
+}
+.access__tel {
+  font-family: var(--font-en);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-2xl);
+  color: var(--color-deep);
+  letter-spacing: 0.04em;
+}
+.access__map {
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 360px;
+  border: 1px solid var(--color-border);
+  background: var(--color-pale);
+}
+.access__map iframe { display: block; width: 100%; height: 100%; min-height: 360px; }
+.access__more {
+  margin-top: 28px;
+}
+
+/* =============================================================
+   Divider — 手書き筆ラインの抽象アクセント（1セクション1本）
+   ============================================================= */
+.divider {
+  width: 100%;
+  position: relative;
+  pointer-events: none;
+}
+.divider--brush {
+  background: transparent;
+  padding: clamp(14px, 2.8vw, 28px) 0;
+  overflow: hidden;
+}
+.divider--brush .divider__brush {
+  display: block;
+  width: min(1280px, 94vw);
+  height: clamp(36px, 4vw, 60px);
+  margin: 0 auto;
+  color: var(--color-main);
+  opacity: 0.82;
+}
+.divider--brush .divider__brush path {
+  stroke: var(--color-main);
+  stroke-width: 2.2;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 2400;
+  stroke-dashoffset: 2400;
+  transition: stroke-dashoffset 1800ms var(--ease) 200ms;
+}
+.divider--brush.is-visible .divider__brush path {
+  stroke-dashoffset: 0;
+}
+.divider--brush:not(.is-visible) .divider__brush path {
+  animation: brushDraw 1800ms var(--ease) 400ms forwards;
+}
+@keyframes brushDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .divider--brush .divider__brush path,
+  .divider--brush:not(.is-visible) .divider__brush path {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    animation: none;
+    transition: none;
+  }
+}
+
+/* on-dark バリアント（CTA 上端用） */
+.divider--brush--on-dark .divider__brush {
+  color: rgba(255, 255, 255, 0.92);
+  opacity: 1;
+}
+.divider--brush--on-dark .divider__brush path {
+  stroke: rgba(255, 255, 255, 0.92);
+}
+
+/* =============================================================
+   ⑪ Marquee（流れる帯）
+   ============================================================= */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-pale);
+  padding: clamp(20px, 3vw, 40px) 0;
+  transform: rotate(-3deg);
+  margin: 40px -20px;
+}
+.marquee__track {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  animation: marquee-scroll 45s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee__track > span {
+  display: inline-block;
+  flex-shrink: 0;
+  font-family: var(--font-en);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(3rem, 7vw, 7.5rem);
+  line-height: 1;
+  letter-spacing: 0.05em;
+  -webkit-text-stroke: 1.5px var(--color-main);
+  color: transparent;
+  padding-right: 24px;
+}
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-25%); }
+}
+
+/* =============================================================
+   ⑫ CTA
+   ============================================================= */
+.cta {
+  position: relative;
+  padding: clamp(80px, 10vw, 140px) 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(91,179,240,0.18), transparent 70%),
+    var(--gradient-cta);
+  color: #fff;
+  overflow: hidden;
+  text-align: center;
+}
+.cta__bg {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.cta .cloud {
+  position: absolute;
+  height: auto;
+}
+.cta .cloud--cta1 { top: 12%; left: -4%; width: 36vw; opacity: 0.9; animation: cta-float 14s ease-in-out infinite; }
+.cta .cloud--cta2 { bottom: 8%; right: -2%; width: 28vw; opacity: 0.7; animation: cta-float 18s ease-in-out infinite reverse 1s; }
+.cta .cloud--cta3 { top: 38%; left: 28%; width: 22vw; opacity: 0.5; animation: cta-float 16s ease-in-out infinite 0.5s; }
+.cta .cloud--cta4 { top: 62%; left: 6%; width: 18vw; opacity: 0.45; animation: cta-float 12s ease-in-out infinite reverse; }
+.cta .cloud--cta5 { top: 22%; right: 18%; width: 16vw; opacity: 0.4; animation: cta-float 20s ease-in-out infinite 2s; }
+
+@keyframes cta-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -12px, 0); }
+}
+
+.cta__stars {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 18%, rgba(255,255,255,0.55), transparent 60%),
+    radial-gradient(1px 1px at 28% 42%, rgba(255,255,255,0.45), transparent 60%),
+    radial-gradient(1.5px 1.5px at 48% 12%, rgba(255,255,255,0.7), transparent 60%),
+    radial-gradient(1px 1px at 62% 58%, rgba(255,255,255,0.5), transparent 60%),
+    radial-gradient(1.5px 1.5px at 74% 28%, rgba(255,255,255,0.6), transparent 60%),
+    radial-gradient(1px 1px at 88% 68%, rgba(255,255,255,0.45), transparent 60%),
+    radial-gradient(1px 1px at 18% 72%, rgba(255,255,255,0.4), transparent 60%),
+    radial-gradient(1.5px 1.5px at 36% 88%, rgba(255,255,255,0.55), transparent 60%),
+    radial-gradient(1px 1px at 58% 82%, rgba(255,255,255,0.4), transparent 60%),
+    radial-gradient(1.5px 1.5px at 82% 14%, rgba(255,255,255,0.6), transparent 60%),
+    radial-gradient(1px 1px at 94% 44%, rgba(255,255,255,0.45), transparent 60%),
+    radial-gradient(1px 1px at 8% 52%, rgba(255,255,255,0.4), transparent 60%);
+  animation: cta-twinkle 6s ease-in-out infinite;
+  z-index: 0;
+}
+@keyframes cta-twinkle {
+  0%, 100% { opacity: 0.9; }
+  50%      { opacity: 0.55; }
+}
+
+.cta__bigword {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-en);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(5rem, 14vw, 16rem);
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.05);
+  -webkit-text-stroke: 1px rgba(255,255,255,0.08);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  white-space: nowrap;
+}
+.cta__inner {
+  position: relative;
+  width: var(--max-narrow);
+  max-width: 92vw;
+  margin: 0 auto;
+  z-index: 1;
+}
+.cta__title {
+  font-family: var(--font-jp-serif);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-4xl);
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  color: #fff;
+  margin: 18px 0 24px;
+}
+.cta__lead {
+  font-size: var(--fs-lg);
+  line-height: var(--lh-relaxed);
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 36px;
+}
+.cta__btns {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+.cta__btns .btn--white { min-width: 180px; }
+.cta__btns .btn--ghost { min-width: 180px; }
+

@@ -1,0 +1,292 @@
+/* =============================================================
+   Common Components
+   ============================================================= */
+.en-sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-jp-serif);
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--fs-xs);
+  letter-spacing: 0.22em;
+  color: var(--color-main-ink);
+  margin-bottom: 1.2em;
+  line-height: 1;
+}
+.en-sub::before {
+  content: "";
+  display: inline-block;
+  width: 32px; height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 600ms var(--ease) 200ms;
+}
+.section-head .en-sub::after {
+  content: "";
+  display: inline-block;
+  width: 32px; height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 600ms var(--ease) 200ms;
+}
+.is-visible .en-sub::before,
+.is-visible .en-sub::after { transform: scaleX(1); }
+.en-sub.is-visible::before,
+.en-sub.is-visible::after { transform: scaleX(1); }
+.cta .en-sub::before,
+.cta .en-sub::after { transform: scaleX(1); }
+.en-sub--white { color: rgba(255,255,255,0.7); }
+.en-sub--white::before,
+.en-sub--white::after { background: rgba(255,255,255,0.7); }
+
+.section-head { text-align: center; margin-bottom: clamp(28px, 3.5vw, 44px); }
+.section-title {
+  font-family: var(--font-jp-serif);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-4xl);
+  line-height: var(--lh-tight);
+  letter-spacing: 0.08em;
+  color: var(--color-deep);
+}
+.section-lead {
+  margin-top: 0.9em;
+  color: var(--color-sub);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-relaxed);
+}
+.availability-note {
+  margin-top: clamp(22px, 3vw, 30px);
+  padding: 16px clamp(18px, 2.5vw, 24px);
+  border: 1px solid rgba(46,125,209,0.2);
+  border-left: 3px solid var(--color-main);
+  border-radius: 4px;
+  background: rgba(238,245,251,0.86);
+  color: var(--color-deep);
+}
+.availability-note p {
+  margin: 0;
+  font-family: var(--font-jp-serif);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+.availability-note p + p { margin-top: 2px; }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  min-height: 44px;
+  font-family: var(--font-en);
+  font-size: var(--fs-base);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  color: var(--color-main-ink);
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 240ms var(--ease), transform 160ms var(--ease);
+}
+.link-arrow span { transition: transform 240ms var(--ease); display: inline-block; }
+.link-arrow::after {
+  content: "";
+  position: absolute; left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 280ms var(--ease);
+}
+.link-arrow:focus-visible {
+  color: var(--color-deep);
+  outline: 2px solid var(--color-deep);
+  outline-offset: 4px;
+}
+.link-arrow:focus-visible::after { transform: scaleX(1); }
+.link-arrow:active { transform: translateY(1px); }
+.link-arrow[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+@media (hover: hover) and (pointer: fine) {
+  .link-arrow:hover { color: var(--color-deep); }
+  .link-arrow:hover span { transform: translateX(4px); }
+  .link-arrow:hover::after { transform: scaleX(1); }
+}
+@media (max-width: 45rem) {
+  .link-arrow {
+    font-size: var(--fs-sm);
+    letter-spacing: 0.04em;
+  }
+}
+
+.link-arrow--double {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.25;
+  gap: 2px;
+}
+.link-arrow--double em {
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  color: var(--color-main-ink);
+}
+.link-arrow--double .link-arrow__jp {
+  font-family: var(--font-jp-sans);
+  font-size: var(--fs-xxs);
+  letter-spacing: 0.14em;
+  color: var(--color-sub);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.link-arrow--double .link-arrow__arrow {
+  font-family: var(--font-en);
+  color: var(--color-main-ink);
+  transition: transform 240ms var(--ease);
+  display: inline-block;
+}
+.target-card:hover .link-arrow--double .link-arrow__arrow { transform: translateX(4px); }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 56px;
+  padding: 0 36px;
+  font-family: var(--font-jp-sans);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-base);
+  letter-spacing: 0.08em;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background-color 280ms var(--ease), color 280ms var(--ease),
+    transform 280ms var(--ease), box-shadow 280ms var(--ease);
+  cursor: pointer;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.12) 50%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: width 360ms var(--ease), height 360ms var(--ease), opacity 360ms var(--ease);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+.btn:focus-visible::before {
+  width: 220%;
+  height: 220%;
+  opacity: 1;
+}
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-deep);
+}
+.btn:active { transform: translateY(1px); }
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn[aria-busy="true"] { cursor: progress; }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover::before {
+    width: 220%;
+    height: 220%;
+    opacity: 1;
+  }
+}
+.btn--primary {
+  background: var(--gradient-cta);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(46,125,209,0.25);
+}
+.btn--white {
+  background: #fff;
+  color: var(--color-main-ink);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.btn--ghost {
+  background: transparent; color: #fff;
+  border: 1px solid rgba(255,255,255,0.7);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(46,125,209,0.35); }
+  .btn--white:hover {
+    background: var(--color-main-ink); color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+  }
+  .btn--ghost:hover {
+    background: #fff; color: var(--color-main-ink);
+    transform: translateY(-2px);
+  }
+}
+
+/* Background Decor Layer（雲 + 光） */
+.bg-decor {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.bg-decor__cloud {
+  position: absolute;
+  opacity: 0.22;
+  will-change: transform;
+}
+.bg-decor__cloud--lg { width: clamp(280px, 32vw, 520px); }
+.bg-decor__cloud--sm { width: clamp(160px, 18vw, 300px); opacity: 0.14; }
+.bg-decor__cloud--tl { top: 6%; left: -4%; animation: cloud-drift-right 54s ease-in-out infinite; will-change: transform; }
+.bg-decor__cloud--br { bottom: 12%; right: 2%; animation: cloud-drift-left 52s ease-in-out infinite -8s; will-change: transform; }
+.bg-decor__glow {
+  position: absolute;
+  width: 60%; height: 60%;
+  left: 50%; top: 40%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, rgba(91,179,240,0.18) 0%, transparent 70%);
+  filter: blur(40px);
+}
+.bg-decor__glow--top { top: 0; }
+
+/* Reveal animation */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 800ms var(--ease), transform 800ms var(--ease); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal-sub { opacity: 0; transform: translateX(-30px); transition: opacity 600ms var(--ease) 100ms, transform 600ms var(--ease) 100ms; }
+.is-visible .reveal-sub { opacity: 1; transform: translateX(0); }
+
+/* セクション全体に付いた .reveal は背景装飾（.bg-decor 等）も巻き込んで上昇してしまうため、
+   外側セクションのフェードアップ演出のみ無効化。内部の .reveal-sub / .flow__step.reveal は
+   維持され、文字側の動きはそのまま。is-visible は引き続き付与される。 */
+section.reveal,
+section.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* services__header は linear-gradient 背景を持つコンテナのため、
+   .reveal の translateY で背景ごと上昇していた。背景演出のみ無効化し、
+   内部 .reveal-sub（en-sub）は親の .is-visible を介して従来通り動作する。 */
+.services__header.reveal,
+.services__header.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+

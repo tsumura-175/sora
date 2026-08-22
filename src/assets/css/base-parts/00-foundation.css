@@ -1,0 +1,130 @@
+/* =============================================================
+   外部パーシャル読み込み（@import は他ルールより前に置く必要あり）
+   ============================================================= */
+/* =============================================================
+   Design Tokens（CSS Variables）
+   ============================================================= */
+:root {
+  /* Color Palette */
+  --color-main:   #2E7DD1;
+  --color-main-ink: #2368AE;
+  --color-light:  #4A9EE8;
+  --color-deep:   #1B4F8E;
+  --color-accent: #5BB3F0;
+  --color-bg:     #FAFCFE;
+  --color-pale:   #EEF5FB;
+  --color-paper:  #F4F8FC;
+  --color-mid:    #E7F0F9;
+  --color-mist:   #DCE8F4;
+  --color-text:   #222222;
+  --color-sub:    #6B7280;
+  --color-border: #E2E8F0;
+  --color-error:  #A12C24;
+  --color-success: #176C4A;
+
+  /* === フッター・メガメニュー用：#4085CF を上端に置いた落ち着きのあるブルーグラデ === */
+  --color-footer-1: #356FAE;  /* 上端：白文字とのコントラストを確保 */
+  --color-footer-2: #2C66A8;  /* 下端：上端を一段沈めた色（自然なグラデ用） */
+  --gradient-footer: linear-gradient(180deg,
+      var(--color-footer-1) 0%,
+      var(--color-footer-2) 100%);
+
+
+  /* Typography */
+  --font-jp-serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-jp-sans:  "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-en:       "Cormorant Garamond", Georgia, serif;
+
+  /* Gradients */
+  --gradient-cta: linear-gradient(135deg, var(--color-main-ink) 0%, var(--color-deep) 100%);
+  --gradient-kv-overlay: linear-gradient(135deg,
+      rgba(91,179,240,0.15) 0%,
+      rgba(46,125,209,0.05) 50%,
+      rgba(27,79,142,0.20) 100%);
+
+  /* Layout */
+  --max-content: min(1200px, 86vw);
+  --max-narrow: 680px;
+  --header-h-pc: 72px;
+  --header-h-sp: 60px;
+  --radius-media: 12px;
+  --section-py-pc: clamp(48px, 5.5vw, 88px);
+  --section-py-sp: clamp(36px, 7vw, 56px);
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* Font sizes */
+  --fs-xxs:  0.78125rem;
+  --fs-xs:   0.875rem;
+  --fs-sm:   0.9375rem;
+  --fs-base: 1rem;
+  --fs-md:   1.0625rem;
+  --fs-lg:   1rem;
+  --fs-xl:   1.15rem;
+  --fs-2xl:  1.375rem;
+  --fs-4xl:  clamp(1.7rem, 3.2vw, 2.5rem);
+  --fs-5xl:  clamp(2.2rem, 4.6vw, 3.8rem);
+
+  /* Font weights */
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  /* Line heights */
+  --lh-tight:   1.4;
+  --lh-normal:  1.65;
+  --lh-relaxed: 1.75;
+}
+
+/* =============================================================
+   Reset & Base
+   ============================================================= */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-deep);
+  color: #fff;
+  padding: 12px 16px;
+  z-index: 9999;
+  font-size: var(--fs-sm);
+  text-decoration: none;
+}
+.skip-link:focus { left: 16px; top: 16px; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { overflow-x: clip; }
+body {
+  margin: 0;
+  font-family: var(--font-jp-sans);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  line-height: 1.8;
+  color: var(--color-text);
+  background: var(--color-bg);
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;       /* fallback for older browsers */
+  overflow-x: clip;         /* sticky を破壊しない切り抜き（modern） */
+}
+img, svg { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; background: none; border: 0; padding: 0; }
+ul, ol { list-style: none; padding: 0; margin: 0; }
+h1, h2, h3, h4, p, dl, dd, figure { margin: 0; }
+dl { padding: 0; }
+

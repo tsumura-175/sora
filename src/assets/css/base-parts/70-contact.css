@@ -1,0 +1,226 @@
+/* =============================================================
+   ⑩-2 Contact
+   ============================================================= */
+.contact {
+  position: relative;
+  padding: var(--section-py-pc) 0;
+  background: linear-gradient(180deg, var(--color-paper) 0%, var(--color-bg) 100%);
+  overflow: hidden;
+}
+.contact__inner {
+  position: relative;
+  width: var(--max-content); margin: 0 auto;
+  display: grid; grid-template-columns: 45% 55%;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+  z-index: 1;
+}
+.contact__intro .section-title { text-align: left; }
+.contact__lead {
+  margin: 0.9em 0 28px;
+  font-size: var(--fs-base);
+  line-height: 1.85;
+  color: var(--color-text);
+}
+.contact__lead p { margin: 0; }
+.contact__intro > .availability-note { margin: -6px 0 28px; }
+.contact-support {
+  position: relative;
+  margin: 0 0 24px;
+  padding: 22px 24px 24px;
+  background: rgba(255,255,255,0.78);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.contact-support::before {
+  content: none;
+}
+.contact-support__title {
+  font-family: var(--font-jp-serif);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  color: var(--color-deep);
+  margin-bottom: 14px;
+}
+.contact-support__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.contact-support__list li {
+  position: relative;
+  padding-left: 22px;
+  font-size: var(--fs-sm);
+  line-height: 1.75;
+  color: var(--color-text);
+}
+.contact-support__list li::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid var(--color-main);
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+.contact-support__list li::after {
+  content: none;
+}
+@media (max-width: 720px) {
+  .contact__inner { grid-template-columns: 1fr; }
+  .contact-support { padding: 20px 20px 22px; }
+  .contact__tel { font-size: clamp(1.8rem, 9vw, 2.4rem); }
+}
+.contact__alt {
+  background: #fff;
+  padding: 24px 28px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+}
+.contact__alt-label {
+  font-family: var(--font-en);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.25em;
+  color: var(--color-sub);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.contact__tel {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--font-en);
+  font-weight: 600;
+  font-size: 2.4rem;
+  color: var(--color-deep);
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  transition: color 240ms var(--ease);
+  text-decoration: underline;
+  text-decoration-color: rgba(27,79,142,0.25);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+}
+.contact__tel:hover { color: var(--color-main-ink); text-decoration-color: var(--color-main-ink); }
+.contact__alt-note { font-size: var(--fs-sm); color: var(--color-sub); margin-top: 4px; }
+
+.contact__form {
+  background: #ffffff;
+  padding: 32px clamp(20px, 3vw, 40px);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 12px 40px rgba(27,79,142,0.06);
+}
+.form-row { margin: 0 0 22px; }
+.form-row label {
+  display: block;
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  margin-bottom: 8px;
+  color: var(--color-deep);
+}
+.required, .optional {
+  display: inline-block;
+  font-size: var(--fs-xxs);
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-left: 6px;
+  letter-spacing: 0.1em;
+  vertical-align: middle;
+}
+.required {
+  background: rgba(46,125,209,0.10);
+  color: var(--color-main-ink);
+  border: 1px solid rgba(46,125,209,0.25);
+}
+.optional {
+  background: var(--color-pale);
+  color: var(--color-sub);
+  border: 1px solid var(--color-border);
+}
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row input[type="tel"],
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: var(--fs-base);
+  min-height: 48px;
+  color: var(--color-text);
+  background: #fff;
+  border: 1px solid var(--color-border);
+  outline: 2px solid transparent;
+  outline-offset: 1px;
+  border-radius: 8px;
+  transition: border-color 200ms var(--ease), box-shadow 200ms var(--ease);
+}
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  border-color: var(--color-main-ink);
+}
+.form-row input:focus-visible,
+.form-row select:focus-visible,
+.form-row textarea:focus-visible {
+  outline-color: var(--color-main-ink);
+  box-shadow: none;
+}
+.form-row input:disabled,
+.form-row select:disabled,
+.form-row textarea:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: var(--color-pale);
+}
+.form-row input[aria-invalid="true"],
+.form-row select[aria-invalid="true"],
+.form-row textarea[aria-invalid="true"] {
+  border-color: var(--color-error);
+}
+@media (hover: hover) and (pointer: fine) {
+  .form-row input:not(:disabled):hover,
+  .form-row select:not(:disabled):hover,
+  .form-row textarea:not(:disabled):hover {
+    background: var(--color-pale);
+  }
+}
+.form-row textarea { resize: vertical; min-height: 140px; }
+.form-row--split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-row--check label {
+  display: flex; align-items: center; gap: 8px;
+  font-size: var(--fs-sm);
+  color: var(--color-text);
+  font-weight: 400;
+}
+.form-row--check input[type="checkbox"] {
+  width: 22px; height: 22px;
+  accent-color: var(--color-main);
+}
+.form-link {
+  color: var(--color-main-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.form-link:focus-visible {
+  outline: 2px solid var(--color-deep);
+  outline-offset: 3px;
+}
+.form-row--submit { text-align: center; margin-top: 32px; }
+.form-row--submit .btn { min-width: 220px; }
+.form-error {
+  display: block;
+  font-size: var(--fs-xxs);
+  color: var(--color-error);
+  margin-top: 4px;
+  min-height: 1.2em;
+}
+.form-status { text-align: center; margin-top: 16px; font-size: var(--fs-sm); }
+.form-status.is-success { color: var(--color-success); }
+.form-status.is-error { color: var(--color-error); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
